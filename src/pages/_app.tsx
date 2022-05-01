@@ -38,5 +38,6 @@ export default withTRPC<AppRouter>({
       },
     };
   },
-  ssr: true,
+  //! Bør være true ifølge trcp doc? Trcp krasjer av en eller annen grunn.
+  ssr: false,
 })(MyApp);

@@ -2,16 +2,21 @@ import * as trpc from '@trpc/server';
 import * as trpcNext from '@trpc/server/adapters/next';
 import { z } from 'zod';
 
-export const appRouter = trpc.router().query('hello', {
-  input: z
-    .object({
-      text: z.string().nullish(),
-    })
-    .nullish(),
-  resolve({ input }) {
-    return {
-      greeting: `hello ${input?.text ?? 'world'}`,
-    };
+const fetchHolidays = async () => {
+  return await fetch('https://webapi.no/api/v1/holidays/2022')
+    .then((response) => response.json())
+    .then((data) => data);
+};
+
+export const appRouter = trpc.router().query('get-holidays', {
+  output: z.object({
+    authenticated: z.boolean(),
+    data: z.array(z.object({ date: z.string(), description: z.string() })),
+    statusCode: z.number(),
+    timeTaken: z.number(),
+  }),
+  async resolve() {
+    return await fetchHolidays();
   },
 });
 
