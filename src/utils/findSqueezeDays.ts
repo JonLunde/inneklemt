@@ -9,7 +9,7 @@ dayjs.locale('nb'); // use locale
 
 const weekends = [6, 7];
 
-const findSqueezeDays = (holidays: Holiday[], squeezeDays: number) => {
+const findSqueezeDays = (holidays: Holiday[], SqueezeDaysRange: number) => {
   const squeezeDaysList: Dayjs[] = [];
 
   holidays.forEach((holiday, i) => {
@@ -32,7 +32,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDays: number) => {
     if (!followsAnotherHoliday) {
       const daysToPreviousWeekend = weekday - 1;
 
-      if (daysToPreviousWeekend <= squeezeDays) {
+      if (daysToPreviousWeekend <= SqueezeDaysRange) {
         for (let i = 1; i <= daysToPreviousWeekend; i++) {
           squeezeDaysList.push(momentDate.subtract(i, 'day'));
         }
@@ -41,7 +41,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDays: number) => {
     if (!proceedesAnotherHoliday) {
       const daysToNextWeekend = 5 - weekday;
 
-      if (daysToNextWeekend <= squeezeDays) {
+      if (daysToNextWeekend <= SqueezeDaysRange) {
         for (let i = 1; i <= daysToNextWeekend; i++) {
           squeezeDaysList.push(momentDate.add(i, 'day'));
         }
@@ -49,7 +49,13 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDays: number) => {
     }
   });
 
-  return squeezeDaysList;
+  // squeezeDaysList.push(dayjs(new Date()));
+  // squeezeDaysList.push(dayjs(new Date()));
+  // squeezeDaysList.push(dayjs(new Date()));
+  // squeezeDaysList.push(dayjs(new Date()));
+
+  //! Legg på hvilken helligdag som forårsaker inneklemte
+  return squeezeDaysList.sort((a, b) => a.dayOfYear() - b.dayOfYear());
 };
 
 export default findSqueezeDays;
