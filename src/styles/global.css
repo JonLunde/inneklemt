@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-blue-200 text-blue-900;
+  @apply bg-purple-100 text-purple-900;
 }
 
 /* .MuiYearPicker-root {

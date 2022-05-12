@@ -8,38 +8,26 @@ dayjs.locale('nb'); // use locale
 // @ts-ignore
 import holidaysNorway from 'holidays-norway';
 import { useState } from 'react';
-import { Holiday } from '../types';
 import findSqueezeDays from '../utils/findSqueezeDays';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Container from '../components/Container';
+import Content from '../components/Content';
 
 export default function IndexPage() {
   const [selectedYear, setSelectedYear] = useState<Dayjs>(dayjs());
   const [squeezeDayRange, setSqueezeDayRange] = useState(1);
 
-  const holidays = (holidaysNorway(selectedYear.year()) as Holiday[])
-    .map((holiday) => {
-      return {
-        ...holiday,
-        dayOfWeek: dayjs(holiday.date).isoWeekday(),
-      };
-    })
-    .sort(
-      (holidayA: Holiday, holidayB: Holiday) =>
-        new Date(holidayA.date).getMilliseconds() -
-        new Date(holidayB.date).getMilliseconds()
-    );
+  const holidays = holidaysNorway(selectedYear.year());
 
-  const squeezeDays = findSqueezeDays(holidays, squeezeDayRange);
+  const squeezeDayGroups = findSqueezeDays(holidays, squeezeDayRange);
+
+  //? Design: Dele inn i måneder? Obs; kanskje noen innklemte grupper strekker seg over flere måneder? Obs. 1. mai
 
   return (
-    <div className="flex flex-col justify-between h-screen pt-10 pb-5 px-20">
+    <div className="flex flex-col justify-between h-screen pt-10 pb-5 px-5 sm:px-20 ">
       <Header selectedYear={selectedYear} setSelectedYear={setSelectedYear} />
-      <Container
-        squeezeDays={squeezeDays}
-        selectedYear={selectedYear}
-        setSelectedYear={setSelectedYear}
+      <Content
+        squeezeDayGroups={squeezeDayGroups}
         squeezeDayRange={squeezeDayRange}
         setSqueezeDayRange={setSqueezeDayRange}
       />
