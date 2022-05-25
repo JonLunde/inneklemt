@@ -20,7 +20,6 @@ const findSqueezeDays = (holidays: Holiday[], SqueezeDaysRange: number) => {
   const transformedHolidays = holidays
     .sort((a, b) => dayjs(a.date).dayOfYear() - dayjs(b.date).dayOfYear())
     .map((holiday) => {
-      console.log(' holiday.date.toString()', holiday.date.toString());
       return {
         ...holiday,
         dayOfWeek: dayjs(holiday.date).isoWeekday(),
@@ -34,7 +33,7 @@ const findSqueezeDays = (holidays: Holiday[], SqueezeDaysRange: number) => {
   // Remove new year's eve
   transformedHolidays.pop();
 
-  console.log(transformedHolidays);
+  // console.log(transformedHolidays);
 
   transformedHolidays?.forEach((holiday, i) => {
     const { date } = holiday;

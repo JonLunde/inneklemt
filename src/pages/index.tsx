@@ -12,24 +12,29 @@ import findSqueezeDays from '../utils/findSqueezeDays';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Content from '../components/Content';
+import findSqueezeDays2 from '../utils/findSqueezeDays2';
 
 export default function IndexPage() {
-  const [selectedYear, setSelectedYear] = useState<Dayjs>(dayjs());
-  const [squeezeDayRange, setSqueezeDayRange] = useState(1);
+  const [selectedYear, setSelectedYear] = useState<number>(dayjs().year());
+  const [squeezeDayRange, setSqueezeDayRange] = useState(3);
 
-  const holidays = holidaysNorway(selectedYear.year());
+  const holidays = holidaysNorway(selectedYear);
 
-  const squeezeDayGroups = findSqueezeDays(holidays, squeezeDayRange);
+  const squeezeDayGroups = findSqueezeDays2(holidays, squeezeDayRange);
 
   //? Design: Dele inn i måneder? Obs; kanskje noen innklemte grupper strekker seg over flere måneder? Obs. 1. mai
 
   return (
-    <div className="flex flex-col justify-between h-screen pt-10 pb-5 px-5 sm:px-20 ">
-      <Header selectedYear={selectedYear} setSelectedYear={setSelectedYear} />
+    <div className="flex flex-col justify-between pt-10 pb-5 px-2 sm:px-20 min-h-screen">
+      <Header
+        selectedYear={selectedYear}
+        setSelectedYear={setSelectedYear}
+        squeezeDayRange={squeezeDayRange}
+        setSqueezeDayRange={setSqueezeDayRange}
+      />
       <Content
         squeezeDayGroups={squeezeDayGroups}
         squeezeDayRange={squeezeDayRange}
-        setSqueezeDayRange={setSqueezeDayRange}
       />
       <Footer />
     </div>

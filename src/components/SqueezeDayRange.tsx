@@ -37,11 +37,9 @@ function SqueezeDayRange(props: SqueezeDayRangeProps) {
       </div>
       <div className="flex flex-col justify-center">
         <IncrementButton
-          disabled={!(squeezeDayRange < 3)}
+          disabled={!(squeezeDayRange < 4)}
           onClick={() => {
-            if (squeezeDayRange < 3) {
-              setSqueezeDayRange((prevState) => prevState + 1);
-            }
+            setSqueezeDayRange((prevState) => prevState + 1);
           }}
         >
           <>+</>
@@ -52,9 +50,7 @@ function SqueezeDayRange(props: SqueezeDayRangeProps) {
         <IncrementButton
           disabled={!(squeezeDayRange > 1)}
           onClick={() => {
-            if (squeezeDayRange > 1) {
-              setSqueezeDayRange((prevState) => prevState - 1);
-            }
+            setSqueezeDayRange((prevState) => prevState - 1);
           }}
         >
           <>-</>
