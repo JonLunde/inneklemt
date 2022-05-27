@@ -1,11 +1,11 @@
-import { Holiday, SqueezeDayGroup } from '../types';
-import { Dayjs, default as dayjs } from 'dayjs';
-import { default as isoWeekday } from 'dayjs/plugin/isoWeek'; // import plugin
-import { default as dayOfYear } from 'dayjs/plugin/dayOfYear'; // import plugin
-import 'dayjs/locale/nb'; // import locale
+import { Holiday, SqueezeDayGroup } from "../types";
+import { Dayjs, default as dayjs } from "dayjs";
+import { default as isoWeekday } from "dayjs/plugin/isoWeek"; // import plugin
+import { default as dayOfYear } from "dayjs/plugin/dayOfYear"; // import plugin
+import "dayjs/locale/nb"; // import locale
 dayjs.extend(isoWeekday); // use plugin
 dayjs.extend(dayOfYear); // use plugin
-dayjs.locale('nb'); // use locale
+dayjs.locale("nb"); // use locale
 
 const weekends = [6, 7];
 
@@ -22,8 +22,8 @@ const transformHolidays = (holidays: Holiday[]) => {
         ...holiday,
         dayOfWeek: dayjs(holiday.date).isoWeekday(),
         name:
-          holiday.name === 'Kristi Himmelsprettsdag'
-            ? 'Kristi himmelfartsdag'
+          holiday.name === "Kristi Himmelsprettsdag"
+            ? "Kristi himmelfartsdag"
             : holiday.name,
       };
     });
@@ -33,11 +33,9 @@ const addPreviousHolidays = (
   squeezeDayGroup: SqueezeDayGroup,
   holidays: Holiday[]
 ) => {
-  // return;
   if (!squeezeDayGroup.length) return squeezeDayGroup;
 
-  let previousDay = squeezeDayGroup[0].day.subtract(1, 'day');
-  // console.log('squeezeDayGroup1', JSON.parse(JSON.stringify(squeezeDayGroup)));
+  let previousDay = squeezeDayGroup[0].day.subtract(1, "day");
 
   while (true) {
     const holiday = holidays.find(
@@ -46,15 +44,14 @@ const addPreviousHolidays = (
     if (weekends.includes(previousDay.isoWeekday()) || holiday) {
       squeezeDayGroup.splice(0, 0, {
         day: previousDay,
-        description: holiday ? holiday.name : 'helg',
+        description: holiday ? holiday.name : "helg",
       });
 
-      previousDay = previousDay.subtract(1, 'day');
+      previousDay = previousDay.subtract(1, "day");
     } else {
       break;
     }
   }
-  // console.log('squeezeDayGroup2', squeezeDayGroup);
   return squeezeDayGroup;
 };
 
@@ -62,12 +59,11 @@ const addFollowingHolidays = (
   squeezeDayGroup: SqueezeDayGroup,
   holidays: Holiday[]
 ) => {
-  // return;
   if (!squeezeDayGroup.length) return squeezeDayGroup;
 
   let followingHoliday = squeezeDayGroup[squeezeDayGroup.length - 1].day.add(
     1,
-    'day'
+    "day"
   );
 
   while (true) {
@@ -78,10 +74,10 @@ const addFollowingHolidays = (
     if (weekends.includes(followingHoliday.isoWeekday()) || holiday) {
       squeezeDayGroup.splice(squeezeDayGroup.length, 0, {
         day: followingHoliday,
-        description: holiday ? holiday.name : 'helg',
+        description: holiday ? holiday.name : "helg",
       });
 
-      followingHoliday = followingHoliday.add(1, 'day');
+      followingHoliday = followingHoliday.add(1, "day");
     } else {
       break;
     }
@@ -122,8 +118,8 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
         const squeezeDayGroup: SqueezeDayGroup = [];
         for (let i = 1; i <= daysToPreviousWeekend; i++) {
           squeezeDayGroup.push({
-            day: holidayDate.subtract(i, 'day'),
-            description: 'inneklemt',
+            day: holidayDate.subtract(i, "day"),
+            description: "inneklemt",
           });
         }
         squeezeDayGroup.sort((a, b) => a.day.dayOfYear() - b.day.dayOfYear());
@@ -141,14 +137,13 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
     }
     if (!proceedesAnotherHoliday) {
       const daysToNextWeekend = 5 - holidayWeekday;
-      console.log('holiday', holiday);
 
       if (daysToNextWeekend <= squeezeDaysRange) {
         const squeezeDayGroup = [];
         for (let i = 1; i <= daysToNextWeekend; i++) {
           squeezeDayGroup.push({
-            day: holidayDate.add(i, 'day'),
-            description: 'inneklemt',
+            day: holidayDate.add(i, "day"),
+            description: "inneklemt",
           });
         }
         squeezeDayGroup.sort((a, b) => a.day.dayOfYear() - b.day.dayOfYear());
@@ -158,7 +153,6 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
 
         // Add following day
         addFollowingHolidays(squeezeDayGroup, holidays);
-        console.log('squeezeDayGroup', squeezeDayGroup);
         if (squeezeDayGroup.length > 0) {
           squeezeDayGroups.push(squeezeDayGroup);
         }
@@ -168,17 +162,17 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
   const lastDayOfYear = dayjs(
     dayjs(
       holidays.find((holiday) => {
-        return dayjs(holiday.date).format('DD.MM') === '25.12';
+        return dayjs(holiday.date).format("DD.MM") === "25.12";
       })?.date
-    ).add(6, 'day')
+    ).add(6, "day")
   );
 
   const lastDayOfYearWeekday = dayjs(
     dayjs(
       holidays.find(
-        (holiday) => dayjs(holiday.date).format('DD.MM') === '25.12'
+        (holiday) => dayjs(holiday.date).format("DD.MM") === "25.12"
       )?.date
-    ).add(6, 'day')
+    ).add(6, "day")
   ).isoWeekday();
   const daysToNextWeekend = lastDayOfYearWeekday - 1;
 
@@ -186,8 +180,8 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
     const squeezeDayGroup = [];
     for (let i = 0; i <= daysToNextWeekend; i++) {
       squeezeDayGroup.push({
-        day: lastDayOfYear.subtract(i, 'day'),
-        description: 'inneklemt',
+        day: lastDayOfYear.subtract(i, "day"),
+        description: "inneklemt",
       });
     }
     squeezeDayGroup.sort((a, b) => a.day.dayOfYear() - b.day.dayOfYear());
@@ -201,7 +195,6 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
 
     squeezeDayGroups.push(squeezeDayGroup);
   }
-  console.log('squeezeDayGroups', squeezeDayGroups);
 
   return squeezeDayGroups;
 };

@@ -1,60 +1,27 @@
-import { ChangeEventHandler, useState } from 'react';
-import { DarkModeSwitch } from 'react-toggle-dark-mode';
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { ChangeEventHandler, useEffect, useState } from "react";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 const DarkMode = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
+  // resolved theme can be used to avoid layout shifting somehow...
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const toggleDarkMode = (checked: boolean) => {
-    setDarkMode(checked);
-    if (checked) {
-      setDark();
-    } else {
-      setLight();
-    }
-  };
+  // To avoid hydration style mismatch.
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
-  // 1
-  const setDark = () => {
-    // 2
-    localStorage.setItem('theme', 'dark');
-
-    // 3
-    document.documentElement.setAttribute('data-theme', 'dark');
-  };
-
-  const setLight = () => {
-    localStorage.setItem('theme', 'light');
-    document.documentElement.setAttribute('data-theme', 'light');
-  };
-
-  // 4
-  const storedTheme = localStorage.getItem('theme');
-
-  const prefersDark =
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  const defaultDark =
-    storedTheme === 'dark' || (storedTheme === null && prefersDark);
-
-  if (defaultDark) {
-    setDark();
-  }
-
-  // 5
-  const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
-    if (e.target.checked) {
-      setDark();
-    } else {
-      setLight();
-    }
+  const handleChange = () => {
+    if (theme === "dark") setTheme("light");
+    else setTheme("dark");
   };
 
   return (
     <DarkModeSwitch
-      style={{ marginBottom: '2rem' }}
-      checked={isDarkMode}
-      onChange={toggleDarkMode}
+      style={{ marginBottom: "2rem" }}
+      checked={theme === "dark"}
+      onChange={handleChange}
       size={40}
       //   moonColor="red"
       //   sunColor="red"

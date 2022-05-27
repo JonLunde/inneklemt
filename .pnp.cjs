@@ -50,6 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["holidays-norway", "npm:1.1.0"],\
             ["install", "npm:0.13.0"],\
             ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["next-themes", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:0.2.0"],\
             ["npm", "npm:8.10.0"],\
             ["postcss", "npm:8.4.12"],\
             ["react", "npm:18.1.0"],\
@@ -3802,6 +3803,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["holidays-norway", "npm:1.1.0"],\
             ["install", "npm:0.13.0"],\
             ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["next-themes", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:0.2.0"],\
             ["npm", "npm:8.10.0"],\
             ["postcss", "npm:8.4.12"],\
             ["react", "npm:18.1.0"],\
@@ -4694,6 +4696,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "react-dom",\
             "react",\
             "sass"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["next-themes", [\
+        ["npm:0.2.0", {\
+          "packageLocation": "./.yarn/cache/next-themes-npm-0.2.0-37d8b4073b-cee02db16b.zip/node_modules/next-themes/",\
+          "packageDependencies": [\
+            ["next-themes", "npm:0.2.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:0.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/next-themes-virtual-f9df1d89b9/0/cache/next-themes-npm-0.2.0-37d8b4073b-cee02db16b.zip/node_modules/next-themes/",\
+          "packageDependencies": [\
+            ["next-themes", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:0.2.0"],\
+            ["@types/next", null],\
+            ["@types/react", "npm:18.0.8"],\
+            ["@types/react-dom", "npm:18.0.0"],\
+            ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["react", "npm:18.1.0"],\
+            ["react-dom", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:18.1.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/next",\
+            "@types/react-dom",\
+            "@types/react",\
+            "next",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\
