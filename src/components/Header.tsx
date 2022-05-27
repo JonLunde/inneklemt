@@ -1,9 +1,9 @@
-import dayjs, { Dayjs } from 'dayjs';
-import React, { Dispatch, SetStateAction } from 'react';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import SqueezeDayRange from './SqueezeDayRange';
-import DarkMode from './DarkMode';
+import dayjs, { Dayjs } from "dayjs";
+import React, { Dispatch, SetStateAction } from "react";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SqueezeDayRange from "./SqueezeDayRange";
+import DarkMode from "./DarkMode";
 
 interface HeaderProps {
   selectedYear: number;
@@ -32,7 +32,7 @@ const YearButton = (props: YearButtonProps) => {
       <button
         onClick={onClick}
         className={`relative -left-1/2 ${className} ${
-          disabled ? 'text-blue-100' : 'inherit'
+          disabled ? "text-blue-100" : "inherit"
         }`}
         disabled={disabled}
       >
@@ -70,7 +70,7 @@ function Header(props: HeaderProps) {
                   className="bottom-6 sm:bottom-9"
                   disabled={!(selectedYear < dayjs().year() + 100)}
                 >
-                  <KeyboardArrowUpIcon className={'text-3xl sm:text-5xl'} />
+                  <KeyboardArrowUpIcon className={"text-3xl sm:text-5xl"} />
                 </YearButton>
                 <Text text={`${selectedYear.toString().substring(3, 4)}`} />
                 <YearButton
@@ -78,7 +78,7 @@ function Header(props: HeaderProps) {
                   className="top-8 sm:top-11"
                   disabled={!(selectedYear > dayjs().year() - 100)}
                 >
-                  <KeyboardArrowDownIcon className={'text-3xl sm:text-5xl'} />
+                  <KeyboardArrowDownIcon className={"text-3xl sm:text-5xl"} />
                 </YearButton>
               </div>
             </div>

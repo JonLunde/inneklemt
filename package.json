@@ -2,6 +2,7 @@
   "name": "inneklemt",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@3.2.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +11,7 @@
     "type-check": "npx tsc"
   },
   "dependencies": {
+    "@babel/runtime": "^7.18.3",
     "@date-io/dayjs": "^2.13.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
