@@ -47,6 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dayjs", "npm:1.11.1"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["fs-minipass", "npm:2.1.0"],\
             ["holidays-norway", "npm:1.1.0"],\
             ["install", "npm:0.13.0"],\
             ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
@@ -3800,6 +3801,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dayjs", "npm:1.11.1"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["fs-minipass", "npm:2.1.0"],\
             ["holidays-norway", "npm:1.1.0"],\
             ["install", "npm:0.13.0"],\
             ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\

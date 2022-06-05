@@ -2,20 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply dark:bg-violet-900 bg-violet-100 dark:text-purple-100 text-purple-900;
-}
-
-/* .MuiYearPicker-root {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center; 
-} */
-
-.PrivatePickersYear-root .Mui-selected,
-.PrivatePickersYear-root .Mui-selected:hover,
-.PrivatePickersYear-root .Mui-selected:focus {
-  background-color: theme('colors.red.500');
-  color: theme('colors.red.50');
+@layer base {
+  body {
+    @apply dark:bg-testColor-1000 bg-testColor-100 dark:text-testColor-100 text-testColor-1000;
+  }
 }

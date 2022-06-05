@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "npx tsc"
+    "type-check": "yarn tsc"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.3",

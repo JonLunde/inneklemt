@@ -93,7 +93,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
 
   // Remove new year's eve
   transformedHolidays.pop();
-
+  console.log("transformedHolidays", transformedHolidays);
   transformedHolidays?.forEach((holiday, i) => {
     const { date } = holiday;
     const holidayDate = dayjs(date);
@@ -102,11 +102,11 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
 
     const holidayFallsOnWeekend = weekends.includes(holidayWeekday);
 
-    const followsAnotherHoliday = holidays.some(
+    const followsAnotherHoliday = transformedHolidays.some(
       (holiday) => dayjs(holiday.date).dayOfYear() === holidayDayOfYear - 1
     );
 
-    const proceedesAnotherHoliday = holidays.some(
+    const proceedesAnotherHoliday = transformedHolidays.some(
       (holiday) => dayjs(holiday.date).dayOfYear() === holidayDayOfYear + 1
     );
 
@@ -125,10 +125,10 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
         squeezeDayGroup.sort((a, b) => a.day.dayOfYear() - b.day.dayOfYear());
 
         // Add previous dayc
-        addPreviousHolidays(squeezeDayGroup, holidays);
+        addPreviousHolidays(squeezeDayGroup, transformedHolidays);
 
         // Add following day
-        addFollowingHolidays(squeezeDayGroup, holidays);
+        addFollowingHolidays(squeezeDayGroup, transformedHolidays);
 
         if (squeezeDayGroup.length > 0) {
           squeezeDayGroups.push(squeezeDayGroup);
@@ -149,10 +149,10 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
         squeezeDayGroup.sort((a, b) => a.day.dayOfYear() - b.day.dayOfYear());
 
         // Add previous day
-        addPreviousHolidays(squeezeDayGroup, holidays);
+        addPreviousHolidays(squeezeDayGroup, transformedHolidays);
 
         // Add following day
-        addFollowingHolidays(squeezeDayGroup, holidays);
+        addFollowingHolidays(squeezeDayGroup, transformedHolidays);
         if (squeezeDayGroup.length > 0) {
           squeezeDayGroups.push(squeezeDayGroup);
         }
@@ -161,7 +161,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
   });
   const lastDayOfYear = dayjs(
     dayjs(
-      holidays.find((holiday) => {
+      transformedHolidays.find((holiday) => {
         return dayjs(holiday.date).format("DD.MM") === "25.12";
       })?.date
     ).add(6, "day")
@@ -169,7 +169,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
 
   const lastDayOfYearWeekday = dayjs(
     dayjs(
-      holidays.find(
+      transformedHolidays.find(
         (holiday) => dayjs(holiday.date).format("DD.MM") === "25.12"
       )?.date
     ).add(6, "day")
@@ -187,15 +187,15 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
     squeezeDayGroup.sort((a, b) => a.day.dayOfYear() - b.day.dayOfYear());
 
     // Add previous day
-    addPreviousHolidays(squeezeDayGroup, holidays);
+    addPreviousHolidays(squeezeDayGroup, transformedHolidays);
 
     // Add following day
-    addFollowingHolidays(squeezeDayGroup, holidays);
+    addFollowingHolidays(squeezeDayGroup, transformedHolidays);
     //! Tar vel ikke høyde for eventuell helg etter 1. jan
 
     squeezeDayGroups.push(squeezeDayGroup);
   }
-
+  console.log("squeezeDayGroups", squeezeDayGroups);
   return squeezeDayGroups;
 };
 
