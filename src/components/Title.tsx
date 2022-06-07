@@ -1,8 +1,7 @@
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import React, { Dispatch, SetStateAction } from "react";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import SqueezeDayRange from "./SqueezeDayRange";
 
 interface TitleProps {
   selectedYear: number;
@@ -15,6 +14,7 @@ interface YearButtonProps {
   disabled?: boolean;
   className?: string;
   style?: any;
+  ariaLabel: string;
 }
 
 interface TextProps {
@@ -23,10 +23,11 @@ interface TextProps {
 }
 
 const YearButton = (props: YearButtonProps) => {
-  const { children, onClick, disabled, className } = props;
+  const { children, onClick, disabled, className, ariaLabel } = props;
   return (
     <div className="absolute left-1/2">
       <button
+        aria-label={ariaLabel}
         onClick={onClick}
         className={`relative -left-1/2 ${className} ${
           disabled ? "text-blue-100" : "inherit"
@@ -61,6 +62,7 @@ function Title(props: TitleProps) {
               onClick={() => setSelectedYear((prevState) => prevState + 1)}
               className="bottom-6 sm:bottom-9"
               disabled={!(selectedYear < dayjs().year() + 100)}
+              ariaLabel="increment year"
             >
               <KeyboardArrowUpIcon className={"text-3xl sm:text-5xl"} />
             </YearButton>
@@ -69,6 +71,7 @@ function Title(props: TitleProps) {
               onClick={() => setSelectedYear((prevState) => prevState - 1)}
               className="top-8 sm:top-11"
               disabled={!(selectedYear > dayjs().year() - 100)}
+              ariaLabel="decrement year"
             >
               <KeyboardArrowDownIcon className={"text-3xl sm:text-5xl"} />
             </YearButton>

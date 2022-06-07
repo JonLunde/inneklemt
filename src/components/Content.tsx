@@ -1,8 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
-import SqueezeDayRange from "./SqueezeDayRange";
+import React from "react";
 import SqueezeGroup from "./SqueezeGroup";
 import { SqueezeDayGroup as SqueezeDayGroupType } from "../types";
-import dayjs from "dayjs";
 
 interface ContentProps {
   squeezeDayGroups: SqueezeDayGroupType[];

@@ -1,4 +1,3 @@
-import { Dayjs } from "dayjs";
 import React from "react";
 import { SqueezeDay } from "../types";
 

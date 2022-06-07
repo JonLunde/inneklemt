@@ -1,4 +1,3 @@
-import { Dayjs } from "dayjs";
 import React, { useState } from "react";
 import DayCard from "./DayCard";
 import { SqueezeDayGroup } from "../types";
@@ -46,6 +45,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
 
   const expandButton = (
     <button
+      aria-label={expanded ? "shrink" : "expand"}
       className="absolute -bottom-3 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400  w-10 "
       onClick={() => setExpanded((prevState) => !prevState)}
     >

@@ -1,4 +1,4 @@
-import { Dayjs, default as dayjs } from "dayjs";
+import { default as dayjs } from "dayjs";
 import { default as isoWeekday } from "dayjs/plugin/isoWeek"; // import plugin
 import { default as dayOfYear } from "dayjs/plugin/dayOfYear"; // import plugin
 import "dayjs/locale/nb"; // import locale
@@ -8,11 +8,10 @@ dayjs.locale("nb"); // use locale
 // @ts-ignore
 import holidaysNorway from "holidays-norway";
 import { useState } from "react";
-import findSqueezeDays from "../utils/findSqueezeDays";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Content from "../components/Content";
-import findSqueezeDays2 from "../utils/findSqueezeDays2";
+import findSqueezeDays from "../utils/findSqueezeDays";
 import Head from "next/head";
 
 export default function IndexPage() {
@@ -21,7 +20,7 @@ export default function IndexPage() {
 
   const holidays = holidaysNorway(selectedYear);
 
-  const squeezeDayGroups = findSqueezeDays2(holidays, squeezeDayRange);
+  const squeezeDayGroups = findSqueezeDays(holidays, squeezeDayRange);
 
   //? Design: Dele inn i måneder? Obs; kanskje noen innklemte grupper strekker seg over flere måneder? Obs. 1. mai
 
