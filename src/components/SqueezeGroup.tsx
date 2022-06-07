@@ -46,7 +46,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
 
   const expandButton = (
     <button
-      className="absolute -bottom-3 left-1/2 -translate-x-1/2 self-center rounded-md bg-testColor-300 dark:bg-testColor-700 w-10 "
+      className="absolute -bottom-3 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400  w-10 "
       onClick={() => setExpanded((prevState) => !prevState)}
     >
       {expanded ? (
@@ -58,7 +58,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   );
 
   return (
-    <div className="relative flex flex-col dark:bg-testColor-700 bg-testColor-500 mb-10 p-2 rounded-2xl w-72 sm:w-100 self-center">
+    <div className="relative flex flex-col opacity-95 mb-10 p-3 rounded-2xl w-72 sm:w-100 self-center  bg-gradient-to-br from-primary-200 to-gray-400">
       {totalHolidaysCounter}
       {dayCards}
       {expandButton}

@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply dark:bg-testColor-1000 bg-testColor-100 dark:text-testColor-100 text-testColor-1000;
+    @apply bg-primary-500 text-primary-800;
   }
 }

@@ -2929,7 +2929,6 @@ __metadata:
     dayjs: ^1.11.1
     eslint: 8.14.0
     eslint-config-next: 12.1.5
-    fs-minipass: ^2.1.0
     holidays-norway: ^1.1.0
     install: ^0.13.0
     next: 12.1.5

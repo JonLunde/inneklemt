@@ -10,21 +10,20 @@ interface DayCardProps {
 
 function DayCard(props: DayCardProps) {
   const { squeezeDay, index, squeezeDayRange } = props;
+
   return (
     <div
-      className={`flex justify-center  border-testColor-900 border-opacity-30 rounded-lg my-1 py-3 px-2  ${
+      className={`flex justify-center  border-primary-800 border-opacity-30 rounded-lg my-1 py-3 px-2  ${
         squeezeDay.description === "inneklemt"
-          ? "bg-testColor-900"
-          : "bg-testColor-100"
+          ? "bg-secondary-500"
+          : "bg-primary-400"
       } `}
     >
       <div className="flex flex-col">
         <p
-          className={`text-sm sm:text-xl font-semibold whitespace-nowrap  ${
-            squeezeDay.description === "inneklemt"
-              ? "text-testColor-100"
-              : "text-testColor-900"
-          }`}
+          className={
+            "text-sm sm:text-xl font-semibold whitespace-nowrap text-primary-800"
+          }
         >
           {`${squeezeDay.day.format("dddd D. MMMM")} - ${
             squeezeDay.description
