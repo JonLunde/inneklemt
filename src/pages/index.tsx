@@ -46,7 +46,7 @@ export default function IndexPage() {
         squeezeDayGroups={squeezeDayGroups}
         squeezeDayRange={squeezeDayRange}
       />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

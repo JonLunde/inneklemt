@@ -14,11 +14,15 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const totalHolidaysCounter = (
-    <span className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-2xl text-neutral-100  font-semibold">{`${squeezeDayGroup.length} fridager`}</span>
+    <span className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-2xl text-neutral-100 font-semibold">{`${squeezeDayGroup.length} fridager`}</span>
   );
 
   const dayCards = (
-    <div className="self-center mb-4 w-full">
+    <div
+      className={`self-center mb-4 w-full transition-all ease-in duration-1000 overflow-hidden ${
+        expanded ? "max-h-[300rem]" : "max-h-32"
+      }`}
+    >
       {expanded
         ? squeezeDayGroup.map((squeezeDay, index) => (
             <DayCard
@@ -33,7 +37,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
               return (
                 <div
                   key={index}
-                  className=" text-lg text-neutral-100 font-semibold text-center"
+                  className="text-lg text-neutral-100 font-semibold text-center"
                 >
                   <span>{squeezeDay.day.format("dddd D. MMMM")}</span>{" "}
                 </div>
@@ -46,7 +50,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const expandButton = (
     <button
       aria-label={expanded ? "shrink" : "expand"}
-      className="absolute -bottom-3 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400  w-10 "
+      className="absolute -bottom-3 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400  w-10"
       onClick={() => setExpanded((prevState) => !prevState)}
     >
       {expanded ? (
@@ -58,7 +62,9 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   );
 
   return (
-    <div className="relative flex flex-col opacity-95 mb-10 p-3 rounded-2xl w-72 sm:w-100 self-center  bg-gradient-to-br from-primary-200 to-gray-400">
+    <div
+      className={`relative flex flex-col opacity-95 mb-10 p-3 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 `}
+    >
       {totalHolidaysCounter}
       {dayCards}
       {expandButton}
