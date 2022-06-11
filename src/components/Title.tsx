@@ -64,7 +64,9 @@ function Title(props: TitleProps) {
               disabled={!(selectedYear < dayjs().year() + 100)}
               ariaLabel="increment year"
             >
-              <KeyboardArrowUpIcon className={"text-3xl sm:text-5xl"} />
+              <KeyboardArrowUpIcon
+                sx={{ fontSize: { xs: "1.875rem", sm: "3rem" } }}
+              />
             </YearButton>
             <Text text={`${selectedYear.toString().substring(3, 4)}`} />
             <YearButton
@@ -73,7 +75,9 @@ function Title(props: TitleProps) {
               disabled={!(selectedYear > dayjs().year() - 100)}
               ariaLabel="decrement year"
             >
-              <KeyboardArrowDownIcon className={"text-3xl sm:text-5xl"} />
+              <KeyboardArrowDownIcon
+                sx={{ fontSize: { xs: "1.875rem", sm: "3rem" } }}
+              />
             </YearButton>
           </div>
         </div>

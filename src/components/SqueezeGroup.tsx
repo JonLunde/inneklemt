@@ -14,7 +14,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const totalHolidaysCounter = (
-    <span className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-2xl text-neutral-100 font-semibold">{`${squeezeDayGroup.length} fridager`}</span>
+    <span className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-3xl font-semibold">{`${squeezeDayGroup.length} fridager`}</span>
   );
 
   const dayCards = (
@@ -37,7 +37,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
               return (
                 <div
                   key={index}
-                  className="text-lg text-neutral-100 font-semibold text-center"
+                  className="text-lg sm:text-2xl font-semibold text-center dark:opacity-95"
                 >
                   <span>{squeezeDay.day.format("dddd D. MMMM")}</span>{" "}
                 </div>
@@ -50,13 +50,21 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const expandButton = (
     <button
       aria-label={expanded ? "shrink" : "expand"}
-      className="absolute -bottom-5 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400 dark:bg-secondary-700  w-12"
+      className="absolute flex content-center justify-center -bottom-4 sm:-bottom-5 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400 dark:bg-secondary-700  w-12 sm:w-16"
       onClick={() => setExpanded((prevState) => !prevState)}
     >
       {expanded ? (
-        <KeyboardArrowUpIcon className={"-mb-1 text-3xl sm:text-4xl"} />
+        <KeyboardArrowUpIcon
+          sx={{
+            fontSize: { xs: "1.875rem", sm: "2.25rem" },
+          }}
+        />
       ) : (
-        <KeyboardArrowDownIcon className={"-mb-1 text-3xl sm:text-4xl"} />
+        <KeyboardArrowDownIcon
+          sx={{
+            fontSize: { xs: "1.875rem", sm: "2.25rem" },
+          }}
+        />
       )}
     </button>
   );
