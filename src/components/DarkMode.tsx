@@ -25,7 +25,7 @@ const DarkMode = () => {
       onChange={handleChange}
       size={width && width < 640 ? 30 : 60}
       //! Add tailwind final theme colors.
-      moonColor="#fdffe6"
+      moonColor="#F6FBFF"
       sunColor="#ffc229"
     />
   );

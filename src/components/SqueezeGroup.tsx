@@ -50,7 +50,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const expandButton = (
     <button
       aria-label={expanded ? "shrink" : "expand"}
-      className="absolute -bottom-3 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400  w-10"
+      className="absolute -bottom-5 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400 dark:bg-secondary-700  w-12"
       onClick={() => setExpanded((prevState) => !prevState)}
     >
       {expanded ? (
@@ -63,7 +63,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
 
   return (
     <div
-      className={`relative flex flex-col opacity-95 mb-10 p-3 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 `}
+      className={`relative flex flex-col opacity-95 mb-10 p-3 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 dark:from-secondary-800 dark:to-secondary-800`}
     >
       {totalHolidaysCounter}
       {dayCards}
