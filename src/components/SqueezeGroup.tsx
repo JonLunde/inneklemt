@@ -19,7 +19,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
 
   const dayCards = (
     <div
-      className={`self-center mb-4 w-full transition-all ease-in duration-1000 overflow-hidden ${
+      className={`self-center mb-4 w-full transition-[max-height] ease-in duration-1000 overflow-hidden ${
         expanded ? "max-h-[300rem]" : "max-h-32"
       }`}
     >
