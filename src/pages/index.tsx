@@ -25,28 +25,36 @@ export default function IndexPage() {
   //? Design: Dele inn i måneder? Obs; kanskje noen innklemte grupper strekker seg over flere måneder? Obs. 1. mai
 
   return (
-    <div className="flex flex-col justify-between pt-3 pb-5 px-3  min-h-screen max-w-md sm:max-w-4xl m-auto">
-      <Head>
-        <title>Inneklemt</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="author" content="Jon Lunde" />
-        <meta name="description" content="Få oversikt over inneklemte dager" />
-        <meta
-          name="keywords"
-          content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
+    <div>
+      <div className="flex flex-col justify-between pt-3 min-h-screen max-w-md sm:max-w-4xl m-auto">
+        <Head>
+          <title>Inneklemt</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+          <meta name="author" content="Jon Lunde" />
+          <meta
+            name="description"
+            content="Få oversikt over inneklemte dager"
+          />
+          <meta
+            name="keywords"
+            content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
+          />
+        </Head>
+        <Header
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
+          squeezeDayRange={squeezeDayRange}
+          setSqueezeDayRange={setSqueezeDayRange}
         />
-      </Head>
-      <Header
-        selectedYear={selectedYear}
-        setSelectedYear={setSelectedYear}
-        squeezeDayRange={squeezeDayRange}
-        setSqueezeDayRange={setSqueezeDayRange}
-      />
-      <Content
-        squeezeDayGroups={squeezeDayGroups}
-        squeezeDayRange={squeezeDayRange}
-      />
-      {/* <Footer /> */}
+        <Content
+          squeezeDayGroups={squeezeDayGroups}
+          squeezeDayRange={squeezeDayRange}
+        />
+      </div>
+      <Footer />
     </div>
   );
 }

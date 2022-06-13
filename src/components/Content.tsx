@@ -30,7 +30,7 @@ function Content(props: ContentProps) {
   const { squeezeDayGroups, squeezeDayRange } = props;
   return (
     <main className="flex-grow">
-      <div className="flex flex-col flex-1 m-auto dark:text-primary-200">
+      <div className="flex flex-col flex-1 m-auto dark:text-gray-400">
         {squeezeDayGroups.map((squeezeDayGroup, index) => (
           <SqueezeGroup
             key={index}

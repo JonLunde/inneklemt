@@ -14,7 +14,7 @@ function Header(props: HeaderProps) {
     props;
 
   return (
-    <header className="flex flex-col mb-10 sm:mb-20">
+    <header className="flex flex-col mb-16 sm:mb-24">
       <div className="flex justify-end">
         <DarkMode />
       </div>

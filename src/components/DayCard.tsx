@@ -21,7 +21,7 @@ function DayCard(props: DayCardProps) {
       <div className="flex flex-col">
         <p
           className={
-            "text-sm sm:text-xl font-semibold whitespace-nowrap text-primary-800 dark:text-primary-200"
+            "text-sm sm:text-xl font-semibold whitespace-nowrap text-primary-800 dark:text-gray-600"
           }
         >
           {`${squeezeDay.day.format("dddd D. MMMM")} - ${

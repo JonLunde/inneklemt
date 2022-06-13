@@ -50,28 +50,30 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const expandButton = (
     <button
       aria-label={expanded ? "shrink" : "expand"}
-      className="absolute flex content-center justify-center -bottom-4 sm:-bottom-5 left-1/2 -translate-x-1/2 self-center rounded-md  bg-gray-400 dark:bg-secondary-700  w-12 sm:w-16"
+      className="absolute -bottom-4 sm:-bottom-6 left-1/2 flex content-center justify-center -translate-x-1/2 self-center rounded-md  bg-gray-600 dark:bg-secondary-800 w-12 sm:w-16 shadow-lg border-2 border-gray-500 dark:border-secondary-700"
       onClick={() => setExpanded((prevState) => !prevState)}
     >
-      {expanded ? (
-        <KeyboardArrowUpIcon
-          sx={{
-            fontSize: { xs: "1.875rem", sm: "2.25rem" },
-          }}
-        />
-      ) : (
-        <KeyboardArrowDownIcon
-          sx={{
-            fontSize: { xs: "1.875rem", sm: "2.25rem" },
-          }}
-        />
-      )}
+      <div>
+        {expanded ? (
+          <KeyboardArrowUpIcon
+            sx={{
+              fontSize: { xs: "1.875rem", sm: "2.25rem" },
+            }}
+          />
+        ) : (
+          <KeyboardArrowDownIcon
+            sx={{
+              fontSize: { xs: "1.875rem", sm: "2.25rem" },
+            }}
+          />
+        )}
+      </div>
     </button>
   );
 
   return (
     <div
-      className={`relative flex flex-col opacity-95 mb-10 p-3 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 dark:from-secondary-800 dark:to-secondary-800`}
+      className={`relative flex flex-col opacity-90 mb-20 sm:mb-28 p-3 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 dark:from-secondary-800 dark:to-secondary-800 shadow-lg`}
     >
       {totalHolidaysCounter}
       {dayCards}
