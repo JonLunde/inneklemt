@@ -5,6 +5,7 @@ import Script from "next/script";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import * as gtag from "../lib/gtag.js";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -41,6 +42,27 @@ function MyApp({ Component, pageProps }: AppProps) {
           `,
         }}
       />
+
+      <Head>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
+      </Head>
 
       <ThemeProvider
         attribute="class"

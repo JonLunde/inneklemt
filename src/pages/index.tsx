@@ -44,26 +44,6 @@ export default function IndexPage() {
             content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
           />
           <link rel="canonical" href="https://www.inneklemt.no" />
-
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/images/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/images/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/images/favicon-16x16.png"
-          />
-          <link rel="manifest" href="/images/site.webmanifest" />
-          <meta name="theme-color" content="#0e0e0e" />
         </Head>
         <Header
           selectedYear={selectedYear}
