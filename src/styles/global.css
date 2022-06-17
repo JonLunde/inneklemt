@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply bg-primary-500 text-primary-800;
+    @apply dark:bg-primary-800 bg-primary-500 dark:text-secondary-600 text-primary-800;
   }
 }

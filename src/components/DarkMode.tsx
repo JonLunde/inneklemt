@@ -23,9 +23,8 @@ const DarkMode = () => {
       style={{ marginBottom: "2rem" }}
       checked={resolvedTheme === "dark"}
       onChange={handleChange}
-      size={width && width < 640 ? 30 : 60}
-      //! Add tailwind final theme colors.
-      moonColor="#fdffe6"
+      size={width && width < 600 ? 30 : 60}
+      moonColor="#F6FBFF"
       sunColor="#ffc229"
     />
   );

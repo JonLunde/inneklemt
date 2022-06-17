@@ -25,11 +25,11 @@ interface TextProps {
 const YearButton = (props: YearButtonProps) => {
   const { children, onClick, disabled, className, ariaLabel } = props;
   return (
-    <div className="absolute left-1/2">
+    <div className={`absolute left-1/2 mt-[2px] sm:mt-[6px] ${className}`}>
       <button
         aria-label={ariaLabel}
         onClick={onClick}
-        className={`relative -left-1/2 ${className} ${
+        className={`relative -left-1/2  ${
           disabled ? "text-blue-100" : "inherit"
         }`}
         disabled={disabled}
@@ -62,20 +62,24 @@ function Title(props: TitleProps) {
           <div className="flex flex-col relative">
             <YearButton
               onClick={() => setSelectedYear((prevState) => prevState + 1)}
-              className="bottom-6 sm:bottom-9"
+              className="bottom-5 sm:bottom-8"
               disabled={!(selectedYear < dayjs().year() + 100)}
               ariaLabel="increment year"
             >
-              <KeyboardArrowUpIcon className={"text-3xl sm:text-5xl"} />
+              <KeyboardArrowUpIcon
+                sx={{ fontSize: { xs: "1.875rem", sm: "3rem" } }}
+              />
             </YearButton>
             <Text text={`${selectedYear.toString().substring(3, 4)}`} />
             <YearButton
               onClick={() => setSelectedYear((prevState) => prevState - 1)}
-              className="top-8 sm:top-11"
+              className="top-5 sm:top-8"
               disabled={!(selectedYear > dayjs().year() - 100)}
               ariaLabel="decrement year"
             >
-              <KeyboardArrowDownIcon className={"text-3xl sm:text-5xl"} />
+              <KeyboardArrowDownIcon
+                sx={{ fontSize: { xs: "1.875rem", sm: "3rem" } }}
+              />
             </YearButton>
           </div>
         </div>

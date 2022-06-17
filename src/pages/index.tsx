@@ -24,33 +24,38 @@ export default function IndexPage() {
 
   //! "Loading skygger" for å bedre "First Contentful Paint"?
   return (
-    <div className="flex flex-col justify-between pt-3 pb-5 px-3  min-h-screen max-w-md sm:max-w-4xl m-auto">
-      <Head>
-        <title>{`Inneklemte dager ${dayjs(new Date()).year()}`}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="author" content="Jon Lunde" />
-        <meta
-          name="description"
-          content={`Få oversikt over alle inneklemte dager i ${dayjs(
-            new Date()
-          ).year()}. Slik at du kan få mest mulig ut av feriedagene dine!`}
+    <div>
+      <div className="flex flex-col justify-between pt-3 min-h-screen max-w-md sm:max-w-4xl m-auto">
+        <Head>
+          <title>{`Inneklemte dager ${dayjs(new Date()).year()}`}</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+          <meta name="author" content="Jon Lunde" />
+          <meta
+            name="description"
+            content={`Få oversikt over alle inneklemte dager i ${dayjs(
+              new Date()
+            ).year()}. Slik at du kan få mest mulig ut av feriedagene dine!`}
+          />
+          <meta
+            name="keywords"
+            content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
+          />
+          <link rel="canonical" href="https://www.inneklemt.no" />
+        </Head>
+        <Header
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
+          squeezeDayRange={squeezeDayRange}
+          setSqueezeDayRange={setSqueezeDayRange}
         />
-        <meta
-          name="keywords"
-          content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
+        <Content
+          squeezeDayGroups={squeezeDayGroups}
+          squeezeDayRange={squeezeDayRange}
         />
-        <link rel="canonical" href="https://www.inneklemt.no" />
-      </Head>
-      <Header
-        selectedYear={selectedYear}
-        setSelectedYear={setSelectedYear}
-        squeezeDayRange={squeezeDayRange}
-        setSqueezeDayRange={setSqueezeDayRange}
-      />
-      <Content
-        squeezeDayGroups={squeezeDayGroups}
-        squeezeDayRange={squeezeDayRange}
-      />
+      </div>
       <Footer />
     </div>
   );
