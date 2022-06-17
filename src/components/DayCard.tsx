@@ -19,7 +19,7 @@ function DayCard(props: DayCardProps) {
       } `}
     >
       <div className="flex flex-col">
-        <p
+        <h3
           className={
             "text-sm sm:text-xl font-semibold whitespace-nowrap text-primary-800"
           }
@@ -27,7 +27,7 @@ function DayCard(props: DayCardProps) {
           {`${squeezeDay.day.format("dddd D. MMMM")} - ${
             squeezeDay.description
           }`}
-        </p>
+        </h3>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   const [expanded, setExpanded] = useState<boolean>(false);
 
   const totalHolidaysCounter = (
-    <span className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-2xl text-neutral-100  font-semibold">{`${squeezeDayGroup.length} fridager`}</span>
+    <h2 className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-2xl text-neutral-100  font-semibold">{`${squeezeDayGroup.length} fridager`}</h2>
   );
 
   const dayCards = (
@@ -35,7 +35,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
                   key={index}
                   className=" text-lg text-neutral-100 font-semibold text-center"
                 >
-                  <span>{squeezeDay.day.format("dddd D. MMMM")}</span>{" "}
+                  <h3>{squeezeDay.day.format("dddd D. MMMM")}</h3>
                 </div>
               );
             }

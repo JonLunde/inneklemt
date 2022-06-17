@@ -43,9 +43,11 @@ const YearButton = (props: YearButtonProps) => {
 const Text = (props: TextProps) => {
   const { text, className } = props;
   return (
-    <h1 className={`self-center text-2xl sm:text-5xl font-bold  ${className}`}>
+    <span
+      className={`self-center text-2xl sm:text-5xl font-bold  ${className}`}
+    >
       {text}
-    </h1>
+    </span>
   );
 };
 
@@ -53,7 +55,7 @@ function Title(props: TitleProps) {
   const { selectedYear, setSelectedYear } = props;
   return (
     <div className="relative">
-      <div className="flex">
+      <h1 className="flex">
         <Text text="Inneklemte dager" className="flex-shrink-0 mr-2" />
         <div className="flex">
           <Text text={selectedYear.toString().substring(0, 3)} />
@@ -77,7 +79,7 @@ function Title(props: TitleProps) {
             </YearButton>
           </div>
         </div>
-      </div>
+      </h1>
     </div>
   );
 }
