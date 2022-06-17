@@ -64,7 +64,7 @@ function Title(props: TitleProps) {
               onClick={() => setSelectedYear((prevState) => prevState + 1)}
               className="bottom-5 sm:bottom-8"
               disabled={!(selectedYear < dayjs().year() + 100)}
-              ariaLabel="increment year"
+              ariaLabel="neste år"
             >
               <KeyboardArrowUpIcon
                 sx={{ fontSize: { xs: "1.875rem", sm: "3rem" } }}
@@ -75,7 +75,7 @@ function Title(props: TitleProps) {
               onClick={() => setSelectedYear((prevState) => prevState - 1)}
               className="top-5 sm:top-8"
               disabled={!(selectedYear > dayjs().year() - 100)}
-              ariaLabel="decrement year"
+              ariaLabel="forrige år"
             >
               <KeyboardArrowDownIcon
                 sx={{ fontSize: { xs: "1.875rem", sm: "3rem" } }}

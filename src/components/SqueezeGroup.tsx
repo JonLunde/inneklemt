@@ -49,7 +49,9 @@ function SqueezeGroup(props: SqueezeGroupProps) {
 
   const expandButton = (
     <button
-      aria-label={expanded ? "shrink" : "expand"}
+      aria-label={
+        expanded ? "lukke detaljert visning" : "åpne detaljert visning"
+      }
       className="absolute -bottom-4 sm:-bottom-6 left-1/2 flex content-center justify-center -translate-x-1/2 self-center rounded-md  bg-gray-600 dark:bg-secondary-800 w-12 sm:w-16 shadow-lg border-2 border-gray-500 dark:border-secondary-700"
       onClick={() => setExpanded((prevState) => !prevState)}
     >

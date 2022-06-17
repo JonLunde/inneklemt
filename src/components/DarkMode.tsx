@@ -19,14 +19,22 @@ const DarkMode = () => {
     else setTheme("dark");
   };
   return (
-    <DarkModeSwitch
-      style={{ marginBottom: "2rem" }}
-      checked={resolvedTheme === "dark"}
-      onChange={handleChange}
-      size={width && width < 600 ? 30 : 60}
-      moonColor="#F6FBFF"
-      sunColor="#ffc229"
-    />
+    <button
+      aria-label={
+        resolvedTheme === "dark" ? "skru av mørkt tema" : "sku på mørkt tema"
+      }
+      onClick={handleChange}
+    >
+      <DarkModeSwitch
+        style={{ marginBottom: "2rem" }}
+        checked={resolvedTheme === "dark"}
+        onClick={handleChange}
+        onChange={handleChange}
+        size={width && width < 600 ? 30 : 60}
+        moonColor="#F6FBFF"
+        sunColor="#ffc229"
+      />
+    </button>
   );
 };
 
