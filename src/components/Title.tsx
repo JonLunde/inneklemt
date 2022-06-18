@@ -29,7 +29,7 @@ const YearButton = (props: YearButtonProps) => {
       <button
         aria-label={ariaLabel}
         onClick={onClick}
-        className={`relative -left-1/2  ${
+        className={`relative -left-1/2 hover:scale-[1.15] transition-[transform] text-primary-900 ${
           disabled ? "text-blue-100" : "inherit"
         }`}
         disabled={disabled}

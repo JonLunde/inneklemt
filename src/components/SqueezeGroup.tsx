@@ -52,7 +52,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
       aria-label={
         expanded ? "lukke detaljert visning" : "åpne detaljert visning"
       }
-      className="absolute -bottom-4 sm:-bottom-6 left-1/2 flex content-center justify-center -translate-x-1/2 self-center rounded-md  bg-gray-600 dark:bg-secondary-800 w-12 sm:w-16 shadow-lg border-2 border-gray-500 dark:border-secondary-700"
+      className={`absolute -bottom-4 sm:-bottom-6 left-1/2 flex content-center justify-center -translate-x-1/2 self-center rounded-md  bg-gray-600 dark:bg-secondary-800 w-12 sm:w-16 shadow-lg border-2 border-gray-500 dark:border-secondary-700 hover:scale-105 hover:shadow-xl transition-[transform]`}
       onClick={() => setExpanded((prevState) => !prevState)}
     >
       <div>

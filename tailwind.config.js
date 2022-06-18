@@ -32,6 +32,8 @@ module.exports = {
         400: "#F2F2F2",
         500: "#ECECEC",
         600: "#D8D8D8",
+        700: "#696969",
+        800: "#383838",
       },
       transparent: "transparent",
       inherit: "inherit",

@@ -16,7 +16,7 @@ import Head from "next/head";
 
 export default function IndexPage() {
   const [selectedYear, setSelectedYear] = useState<number>(dayjs().year());
-  const [squeezeDayRange, setSqueezeDayRange] = useState(3);
+  const [squeezeDayRange, setSqueezeDayRange] = useState(4);
 
   const holidays = holidaysNorway(selectedYear);
 
@@ -25,7 +25,7 @@ export default function IndexPage() {
   //! "Loading skygger" for å bedre "First Contentful Paint"?
   return (
     <div>
-      <div className="flex flex-col justify-between pt-3 min-h-screen max-w-md sm:max-w-4xl m-auto">
+      <div className="flex flex-col justify-between pt-3 px-2 min-h-screen  sm:max-w-4xl m-auto">
         <Head>
           <title>{`Inneklemte dager ${dayjs(new Date()).year()}`}</title>
           <meta

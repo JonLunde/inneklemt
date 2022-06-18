@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import DarkMode from "./DarkMode";
+import Filter from "./Filter";
 import Title from "./Title";
 
 interface HeaderProps {
@@ -14,19 +15,19 @@ function Header(props: HeaderProps) {
     props;
 
   return (
-    <header className="flex flex-col mb-16 sm:mb-24">
+    <header className="flex flex-col mb-8 sm:mb-16">
       <div className="flex justify-end">
         <DarkMode />
       </div>
       <div className="flex content-center justify-center">
         <Title selectedYear={selectedYear} setSelectedYear={setSelectedYear} />
       </div>
-      {/* <div>
-        <SqueezeDayRange
+      <div>
+        <Filter
           squeezeDayRange={squeezeDayRange}
           setSqueezeDayRange={setSqueezeDayRange}
         />
-      </div> */}
+      </div>
     </header>
   );
 }
