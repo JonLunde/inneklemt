@@ -43,7 +43,6 @@ export default function IndexPage() {
             name="keywords"
             content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
           />
-          <link rel="canonical" href="https://www.inneklemt.no" />
 
           <link
             rel="apple-touch-icon"
