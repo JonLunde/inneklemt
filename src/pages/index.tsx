@@ -43,6 +43,7 @@ export default function IndexPage() {
             name="keywords"
             content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
           />
+          <meta name="robots" content="noodp,noydir" />
 
           <link
             rel="apple-touch-icon"
