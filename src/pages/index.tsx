@@ -27,7 +27,7 @@ export default function IndexPage() {
     <div>
       <div className="flex flex-col justify-between pt-3 px-2 min-h-screen  sm:max-w-4xl m-auto">
         <Head>
-          <title>{`Inneklemte dager ${dayjs(new Date()).year()}`}</title>
+          <title>{`Inneklemte dager i ${dayjs(new Date()).year()}`}</title>
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
