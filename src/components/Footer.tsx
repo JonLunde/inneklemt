@@ -6,7 +6,7 @@ function Footer() {
   );
 
   return (
-    <footer className=" flex flex-col content-center mt-6 bg-gray-500 dark:bg-secondary-900 dark:text-gray-600 opacity-90 dark:opacity-100 w-full pt-4">
+    <footer className=" flex flex-col content-center mt-6 bg-primary-200 dark:bg-secondary-900 dark:text-gray-600 dark:opacity-100 w-full pt-4">
       <div className="flex justify-between self-center w-52">
         <a href="https://github.com/JonLunde/">GitHub</a>
         <div className="relative left-7">
