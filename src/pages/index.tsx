@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import Content from "../components/Content";
 import findSqueezeDays from "../utils/findSqueezeDays";
 import Head from "next/head";
+import Description from "../components/Description";
 
 export default function IndexPage() {
   const [selectedYear, setSelectedYear] = useState<number>(dayjs().year());
@@ -71,10 +72,13 @@ export default function IndexPage() {
           squeezeDayRange={squeezeDayRange}
           setSqueezeDayRange={setSqueezeDayRange}
         />
+        <main className="flex flex-col justify-center items-center ">
+          <Description selectedYear={selectedYear} />
         <Content
           squeezeDayGroups={squeezeDayGroups}
           squeezeDayRange={squeezeDayRange}
         />
+        </main>
       </div>
       <Footer />
     </div>

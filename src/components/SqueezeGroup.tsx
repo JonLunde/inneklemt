@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DayCard from "./DayCard";
 import { SqueezeDayGroup } from "../types";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import InfoIcon from "@mui/icons-material/InfoSharp";
-import { Tooltip, ClickAwayListener } from "@mui/material";
+import { Tooltip, styled, TooltipProps, tooltipClasses } from "@mui/material";
+import { useTheme } from "next-themes";
 
 interface SqueezeGroupProps {
   squeezeDayGroup: SqueezeDayGroup;
@@ -13,8 +14,9 @@ interface SqueezeGroupProps {
 
 function SqueezeGroup(props: SqueezeGroupProps) {
   const { squeezeDayGroup, squeezeDayRange } = props;
-  const [expanded, setExpanded] = useState<boolean>(false);
 
+  const { theme } = useTheme();
+  const [expanded, setExpanded] = useState<boolean>(false);
   const [openTooltip, setOpenTooltip] = useState(false);
 
   const handleTooltipClose = () => {
@@ -26,7 +28,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
   };
 
   const totalHolidaysCounter = (
-    <h2 className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-3xl font-semibold">{`${squeezeDayGroup.length} fridager`}</h2>
+    <h3 className="self-center mt-2 mb-4 sm:mt-3 sm:mb-6 text-xl sm:text-3xl font-semibold">{`${squeezeDayGroup.length} fridager`}</h3>
   );
 
   const inneklemtCounter = squeezeDayGroup.filter(
@@ -37,24 +39,40 @@ function SqueezeGroup(props: SqueezeGroupProps) {
     (group) => group.description !== "inneklemt"
   ).length;
 
+  const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme: muiTheme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme === "light" ? "#ffc229" : "#2A1000",
+      color: theme === "light" ? "#000312" : "#F2F2F2",
+      boxShadow: muiTheme.shadows[6],
+      fontSize: 12,
+    },
+  }));
+
   const holidayValue = (
-    <Tooltip
+    <StyledTooltip
       open={openTooltip}
       onClose={handleTooltipClose}
       onOpen={handleTooltipOpen}
-      title="Antall ekstra fridager du får per arbeidsdag du tar fri. Høyere tall betyr at du får mer fri ut av feriedagene dine!"
+      title={
+        <p className="text-lg p-2 ">
+          Antall ekstra fridager du får per arbeidsdag du tar fri. Høyere tall
+          betyr at du får mer fri ut av feriedagene dine!
+        </p>
+      }
       placement="top"
       arrow
       enterTouchDelay={0}
       leaveTouchDelay={10000}
     >
-      <div className="absolute top-0 right-0 p-2 rounded-tr-xl rounded-sm bg-secondary-600 ">
+      <div className="absolute top-0 right-0 p-2 rounded-tr-xl rounded-sm bg-secondary-600 dark:bg-secondary-900 ">
         <span className=" flex text-md sm:text-xl font-semibold cursor-default items-center">
           {(holidaysCounter / inneklemtCounter).toFixed(1)}
           <InfoIcon sx={{ marginLeft: "0.2rem" }} />
         </span>
       </div>
-    </Tooltip>
+    </StyledTooltip>
   );
 
   const dayCards = (
@@ -77,9 +95,9 @@ function SqueezeGroup(props: SqueezeGroupProps) {
               return (
                 <div
                   key={index}
-                  className="text-lg sm:text-2xl font-semibold text-center dark:opacity-95"
+                  className="text-lg sm:text-2xl font-semibold text-center"
                 >
-                  <h3>{squeezeDay.day.format("dddd D. MMMM")}</h3>
+                  <h4>{squeezeDay.day.format("dddd D. MMMM")}</h4>
                 </div>
               );
             }
@@ -115,7 +133,7 @@ function SqueezeGroup(props: SqueezeGroupProps) {
 
   return (
     <div
-      className={`relative flex flex-col  px-3 opacity-90 mb-20 sm:mb-28 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 dark:from-secondary-800 dark:to-secondary-800 shadow-lg`}
+      className={`relative flex flex-col  px-3 mb-20 sm:mb-28 rounded-2xl w-72 sm:w-100 self-center bg-gradient-to-br from-primary-200 to-gray-400 dark:from-secondary-800 dark:to-secondary-800 shadow-lg`}
     >
       {totalHolidaysCounter}
       {holidayValue}

@@ -22,12 +22,6 @@ function Header(props: HeaderProps) {
       <div className="flex content-center justify-center">
         <Title selectedYear={selectedYear} setSelectedYear={setSelectedYear} />
       </div>
-      <div>
-        <Filter
-          squeezeDayRange={squeezeDayRange}
-          setSqueezeDayRange={setSqueezeDayRange}
-        />
-      </div>
     </header>
   );
 }

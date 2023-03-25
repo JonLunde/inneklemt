@@ -55,7 +55,7 @@ function Title(props: TitleProps) {
   const { selectedYear, setSelectedYear } = props;
   return (
     <div className="relative">
-      <h1 className="flex">
+      <h1 className="flex dark:text-secondary-600">
         <Text text="Inneklemte dager" className="flex-shrink-0 mr-2" />
         <div className="flex">
           <Text text={selectedYear.toString().substring(0, 3)} />
