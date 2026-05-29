@@ -1,0 +1,51 @@
+---
+import type { SqueezeDayGroup } from '../types';
+import DayCard from './DayCard.astro';
+
+interface Props {
+  group: SqueezeDayGroup;
+}
+
+const { group } = Astro.props;
+
+const inneklemtDays = group.filter((d) => d.description === 'inneklemt');
+const inneklemtCount = inneklemtDays.length;
+const totalDays = group.length;
+const nonInneklemtDays = totalDays - inneklemtCount;
+const valueRatio = (nonInneklemtDays / inneklemtCount).toFixed(1);
+
+const monthName = inneklemtDays[0]?.day.format('MMMM') ?? '';
+const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
+const summaryText = `${inneklemtCount} ${dayWord} i ${monthName}`;
+---
+
+<details class="group bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
+  <summary class="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-bg transition-colors">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+      <span class="font-semibold text-text capitalize">{summaryText}</span>
+      <span class="text-text-muted text-sm">{totalDays} fridager totalt</span>
+    </div>
+    <div class="flex items-center gap-3 flex-shrink-0">
+      <div class="tooltip-anchor">
+        <span class="bg-highlight text-text text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
+          {valueRatio}×
+        </span>
+        <div class="tooltip-content">
+          Fridager du får per feriedag du tar ut. Høyere er bedre.
+        </div>
+      </div>
+      <svg
+        class="w-5 h-5 text-text-muted transition-transform duration-200 group-open:rotate-180"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </summary>
+  <div class="divide-y divide-border border-t border-border">
+    {group.map((day) => <DayCard day={day} />)}
+  </div>
+</details>
