@@ -1,0 +1,41 @@
+---
+interface Props {
+  year: number;
+  prevYear: number;
+  nextYear: number;
+  minYear: number;
+  maxYear: number;
+}
+
+const { year, prevYear, nextYear, minYear, maxYear } = Astro.props;
+const hasPrev = prevYear >= minYear;
+const hasNext = nextYear <= maxYear;
+---
+
+<nav class="flex items-center justify-center gap-8 py-4" aria-label="Årsnavigasjon">
+  {hasPrev ? (
+    <a
+      href={`/${prevYear}`}
+      class="text-accent hover:underline font-medium"
+      aria-label={`Se inneklemte dager i ${prevYear}`}
+    >
+      ← {prevYear}
+    </a>
+  ) : (
+    <span class="text-text-muted opacity-30 select-none">←</span>
+  )}
+
+  <span class="text-2xl font-bold text-text">{year}</span>
+
+  {hasNext ? (
+    <a
+      href={`/${nextYear}`}
+      class="text-accent hover:underline font-medium"
+      aria-label={`Se inneklemte dager i ${nextYear}`}
+    >
+      {nextYear} →
+    </a>
+  ) : (
+    <span class="text-text-muted opacity-30 select-none">→</span>
+  )}
+</nav>
