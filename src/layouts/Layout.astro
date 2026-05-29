@@ -10,8 +10,7 @@ interface Props {
   canonicalUrl: string;
 }
 
-const { title, description, year, inneklemtCount, canonicalUrl } = Astro.props;
-const ogImageUrl = `https://inneklemt.no/og/${year}.png`;
+const { title, description, canonicalUrl } = Astro.props;
 
 const webAppSchema = {
   '@context': 'https://schema.org',
@@ -43,12 +42,10 @@ const webAppSchema = {
     <meta property="og:locale" content="nb_NO" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageUrl} />
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
 
     <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
 
