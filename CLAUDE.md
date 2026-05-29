@@ -26,9 +26,9 @@ Node ≥ 22 is required. If the default Node is too old, use:
 - **Astro 6** — pure SSG, zero React, zero client-side JavaScript
 - **Tailwind CSS v4** — configured via `@theme {}` in `src/styles/global.css` (no `tailwind.config.js`)
 - **TypeScript** — strict mode
+- **Node 24.x** — pinned in `package.json` engines field
 - **dayjs** — date handling with `nb` locale, `isoWeek` + `dayOfYear` plugins
 - **holidays-norway** — Norwegian public holiday data (no TypeScript types — use `// @ts-ignore` and `module.default ?? module` CJS workaround)
-- **satori + @resvg/resvg-js** — OG image generation at build time
 - **npm** — package manager (not yarn)
 
 ## Architecture
@@ -44,6 +44,9 @@ holidays-norway (CJS package)
 findSqueezeDays(holidays, 4)   ← src/utils/findSqueezeDays.ts
     │ returns SqueezeDayGroup[]
     ▼
+groupByMonth(squeezeDayGroups) ← src/utils/groupByMonth.ts
+    │ returns MonthGroup[]  (one entry per month, may contain multiple periods)
+    ▼
 [year].astro → SqueezeGroup → DayCard
 ```
 
@@ -54,7 +57,6 @@ findSqueezeDays(holidays, 4)   ← src/utils/findSqueezeDays.ts
 | `/` | `src/pages/index.astro` | Renders current year, canonical → `/{year}` |
 | `/{year}` | `src/pages/[year].astro` | One page per year (currentYear ±5) |
 | `/{year}.ics` | `src/pages/[year].ics.ts` | iCal download with inneklemt days |
-| `/og/{year}.png` | `src/pages/og/[year].png.ts` | OG image (1200×630) |
 | `/sitemap.xml` | `src/pages/sitemap.xml.ts` | Dynamic sitemap |
 
 ### Components
@@ -63,7 +65,7 @@ findSqueezeDays(holidays, 4)   ← src/utils/findSqueezeDays.ts
 |-----------|---------|
 | `src/layouts/Layout.astro` | HTML shell, SEO head, analytics |
 | `src/components/YearNav.astro` | Prev/next year `<a>` links |
-| `src/components/SqueezeGroup.astro` | `<details>`/`<summary>` card with value ratio tooltip |
+| `src/components/SqueezeGroup.astro` | `<details>`/`<summary>` month card; takes a `MonthGroup`; handles single and multi-period months |
 | `src/components/DayCard.astro` | Single day row |
 | `src/components/FAQ.astro` | Static FAQ + FAQPage JSON-LD |
 
@@ -74,6 +76,7 @@ findSqueezeDays(holidays, 4)   ← src/utils/findSqueezeDays.ts
 | `Holiday` | `{ name: string; date: Date }` |
 | `SqueezeDay` | `{ day: Dayjs; description: string }` — description is `"inneklemt"`, a holiday name, or `"helg"` |
 | `SqueezeDayGroup` | `SqueezeDay[]` — one contiguous free-day block |
+| `MonthGroup` | `{ monthName: string; groups: SqueezeDayGroup[] }` — all periods for a given month |
 
 ### Colour tokens (Tailwind v4 — defined in `src/styles/global.css`)
 
@@ -83,10 +86,15 @@ findSqueezeDays(holidays, 4)   ← src/utils/findSqueezeDays.ts
 | `surface` | `#FFFFFF` | Card backgrounds |
 | `border` | `#E5E7EB` | Borders |
 | `text` | `#111827` | Primary text |
-| `text-muted` | `#6B7280` | Secondary text |
+| `text-muted` | `#4B5563` | Secondary text (darkened for WCAG AA contrast) |
 | `accent` | `#113E74` | Links, focus rings |
-| `highlight` | `#FFD340` | Inneklemt badge, value ratio |
-| `highlight-tint` | `#FFFBEB` | Inneklemt row background |
+| `highlight` | `#FFD340` | Inneklemt day row left-border accent |
+| `highlight-tint` | `#FFFBEB` | Inneklemt row background tint |
+
+Value ratio badges use **inline styles** (not Tailwind tokens) with three green levels:
+- `< 2×` → `#22C55E` background, white text
+- `2–2.9×` → `#16A34A` background, white text
+- `≥ 3×` → `#15803D` background, white text
 
 ### Core algorithm
 
@@ -96,13 +104,15 @@ For each non-weekend holiday, `findSqueezeDays` checks:
 
 Each match becomes a `SqueezeDayGroup`, padded with adjacent weekends/holidays via `addPreviousHolidays` / `addFollowingHolidays`. Special-case logic handles the romjul period (Dec 25 → Jan 1). Cross-group "split squeeze days" are a known limitation (marked with `//!` comments).
 
+`groupByMonth` then merges groups by the month of their first inneklemt day into `MonthGroup[]`. Multiple periods in the same month appear as sub-sections within one card, each with its own value ratio badge.
+
 ### Localisation
 
 All UI text is Norwegian Bokmål. `dayjs` is configured with the `nb` locale in both `src/utils/dayjs.ts` (shared) and `src/utils/findSqueezeDays.ts` (self-contained).
 
 ### Analytics
 
-- **Vercel Analytics** — `inject()` from `@vercel/analytics` in `Layout.astro`
+- **Vercel Analytics** — `<Analytics />` from `@vercel/analytics/astro` in `Layout.astro`
 - **Vercel Speed Insights** — `<SpeedInsights />` from `@vercel/speed-insights/astro` in `Layout.astro`
 
 ## Git workflow
@@ -119,3 +129,4 @@ All UI text is Norwegian Bokmål. `dayjs` is configured with the `nb` locale in 
 - `//!` comments in `findSqueezeDays.ts` mark known bugs or planned improvements — treat them as TODO items.
 - `squeezeDayRange` is hardcoded to `4` and not exposed in the UI.
 - No dark mode — single clean light design.
+- No OG image generation — removed to reduce dependency risk on yearly rebuilds.
