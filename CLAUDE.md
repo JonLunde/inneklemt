@@ -108,8 +108,9 @@ All UI text is Norwegian Bokmål. `dayjs` is configured with the `nb` locale in 
 ## Git workflow
 
 - **Never push directly to `main`.** All changes go to the `staging` branch first.
+- **Always run `npm run build` locally before committing.** This catches the same errors Vercel would, including type errors and broken imports. Never push code that hasn't built successfully.
 - The `staging` branch auto-deploys to a Vercel preview URL for review.
-- Only merge `staging` → `main` when the user confirms the preview looks correct.
+- Only merge `staging` → `main` when the user explicitly confirms the preview looks correct.
 - For larger features, branch off `staging`, then PR into `staging`.
 
 ## Conventions
