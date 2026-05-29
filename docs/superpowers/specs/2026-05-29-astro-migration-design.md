@@ -1,38 +1,43 @@
 # Design: Migrate inneklemt.no to Astro
 
 **Date:** 2026-05-29
-**Goal:** Modernise the stack, redesign the UI (clean & minimal), and achieve top Google.no ranking for "inneklemte dager".
+**Goal:** Modernise the stack, redesign the UI (clean light design, no dark mode), and achieve top Google.no ranking for "inneklemte dager".
 
 ---
 
 ## Overview
 
-Replace the current Next.js 12 / Pages Router app with a fresh Astro project in the same repo. The primary wins are:
+Replace the current Next.js 12 / Pages Router app with a fresh Astro project in the same repo. No React. No dark mode toggle. One clean, well-crafted light design.
 
-1. **SEO** — current year's squeeze days land in static HTML; Google crawls full content instead of an empty shell.
-2. **Performance** — zero framework JS for static content; React only ships for the interactive island.
-3. **Modernisation** — current stack, shadcn/ui components, Tailwind v3, clean architecture.
-4. **Redesign** — clean & minimal visual style replacing the current heavy gradient cards.
+Primary wins:
+
+1. **SEO** — every year's squeeze days land in fully pre-rendered static HTML; Google crawls complete content.
+2. **Performance** — zero JavaScript shipped by default; interactivity via native HTML only.
+3. **Modernisation** — current Astro stack, shadcn-inspired Tailwind design tokens, clean architecture.
+4. **Redesign** — clean & minimal light design; no gradients, no dark mode complexity.
 
 ---
 
 ## Architecture
 
-### Approach: Astro SSG + single React island
+### Approach: Pure Astro SSG, zero React
 
-Astro pre-renders the current year's squeeze days at build time. One React island (`App.tsx`) owns all interactivity. Astro server-renders the island's initial output into static HTML — Google sees the full squeeze day list. React hydrates on the client and the year picker becomes interactive.
+Astro generates one static page per year via `getStaticPaths`. Each page is fully pre-rendered HTML. Interactivity is handled entirely by native browser features:
+
+- **Year navigation** — `<a>` links to `/` (current year) and `/{year}` routes
+- **Expand/collapse cards** — native `<details>` / `<summary>` elements
+- **Value ratio tooltip** — CSS-only tooltip on hover/focus
+
+No JavaScript bundle shipped. No hydration. No framework runtime.
 
 ```
-index.astro
-  → runs findSqueezeDays(currentYear) at build time
-  → <App client:load initialYear={currentYear} initialData={squeezeDayGroups} />
-      → Astro SSR output: full squeeze day list in static HTML ✓
-      → React hydrates: year picker interactive, recalculates on year change
+Build time:
+  getStaticPaths() → generates pages for currentYear-5 to currentYear+5
+  Each page: findSqueezeDays(year) → fully rendered HTML
+
+Runtime:
+  Zero JS — all interactivity via native HTML/CSS
 ```
-
-### Why not a pure Astro (no React) approach?
-
-The dark mode toggle (`react-toggle-dark-mode`) and the stateful year picker + expand/collapse cards make React the pragmatic choice. The app is small enough that one island is clean and justified.
 
 ---
 
@@ -41,24 +46,25 @@ The dark mode toggle (`react-toggle-dark-mode`) and the stateful year picker + e
 ```
 src/
   pages/
-    index.astro          ← static page entry point
+    index.astro          ← redirects to /[currentYear] or renders current year
+    [year].astro         ← dynamic route, generates one page per year
   layouts/
-    Layout.astro         ← <html>, SEO <head>, dark mode init script
+    Layout.astro         ← <html>, SEO <head>, fonts, global styles
   components/
-    App.tsx              ← React island (client:load); owns year state
-    YearPicker.tsx       ← React; inline ↑↓ year navigation in H1
-    SqueezeGroup.tsx     ← React; card with expand/collapse + value tooltip
-    DayCard.tsx          ← React; single day row
-    DarkModeToggle.tsx   ← React; animated toggle + localStorage
-    ui/                  ← shadcn/ui generated components (Tooltip, etc.)
+    YearNav.astro        ← prev/next year links
+    SqueezeGroup.astro   ← <details>/<summary> card
+    DayCard.astro        ← single day row
+    FAQ.astro            ← static FAQ section
   utils/
-    findSqueezeDays.ts   ← ported unchanged from current codebase
+    findSqueezeDays.ts   ← ported unchanged
   types/
-    index.ts             ← ported unchanged from current codebase
+    index.ts             ← ported unchanged
+  styles/
+    global.css           ← Tailwind base + custom tokens
 public/
   favicons/              ← kept as-is
-  robots.txt             ← kept as-is
-  sitemap.xml            ← updated
+  robots.txt             ← updated to include year routes
+  sitemap.xml            ← updated to include year URLs
 ```
 
 ---
@@ -66,68 +72,74 @@ public/
 ## Components
 
 ### `Layout.astro`
-- Renders `<html lang="nb">`, full SEO `<head>`, Vercel analytics scripts.
-- Contains an inline `<script>` that reads `localStorage.getItem('theme')` and sets the `dark` class on `<html>` **before first paint** — eliminates flash of wrong theme.
-- Accepts `title`, `description`, `year` props for per-page SEO values.
+- Renders `<html lang="nb">`, full SEO `<head>`.
+- No dark mode script, no theme detection.
+- Accepts `title`, `description`, `year` props.
+- Links to Vercel Analytics + Speed Insights scripts.
+
+### `[year].astro`
+- `getStaticPaths` generates pages for current year −5 to +5 (11 pages total).
+- Runs `findSqueezeDays(year)` at build time.
+- Renders `<YearNav>`, squeeze groups, `<FAQ>`.
+- Each page has its own SEO title/description with the year.
 
 ### `index.astro`
-- Imports `findSqueezeDays` and `holidays-norway`, runs them at build time with `new Date().getFullYear()`.
-- Renders `<App client:load initialYear={year} initialData={groups} />`.
-- Renders a static FAQ section below the island (pure HTML, fully crawlable).
+- Redirects to the current year's page (e.g. `/2026`).
 
-### `App.tsx` (React island)
-- Holds `selectedYear` and `squeezeDayRange` state (default range: 4).
-- On year change: recalculates squeeze days client-side.
-- Renders: `<YearPicker>`, `<DarkModeToggle>`, squeeze day cards, `<Description>`.
-- Accepts `initialYear` and `initialData` props for the SSR-rendered first paint.
+### `YearNav.astro`
+- Displays current year prominently.
+- Prev / next `<a>` links styled as subtle arrow buttons.
+- Disables (visually) at the bounds of generated pages.
 
-### `YearPicker.tsx`
-- Inline component sitting beside the year digits in the H1.
-- Lucide `ChevronUp` / `ChevronDown` buttons with `aria-label`.
-- Disables buttons at ±100 years from current year.
+### `SqueezeGroup.astro`
+- Native `<details>` / `<summary>` for expand/collapse — no JS needed.
+- `<summary>`: month label, total days, inneklemt count.
+- Value ratio badge with CSS tooltip (`:hover` + `::after` pseudo-element).
+- Expanded content: list of `<DayCard>` components.
 
-### `SqueezeGroup.tsx`
-- shadcn `Tooltip` on the value ratio badge (replaces MUI Tooltip).
-- Lucide `Info` icon inside the badge.
-- Collapsed state: shows only inneklemt day names.
-- Expanded state: shows all days via `DayCard`.
-- Expand trigger: plain text link `"Se alle X dager ↓"` — no floating circle.
-
-### `DayCard.tsx`
+### `DayCard.astro`
 - Single row: `{weekday} {date} · {description}`.
 - Subtle left-border accent: amber for inneklemt, neutral for holiday/weekend.
 
-### `DarkModeToggle.tsx`
-- Uses `react-toggle-dark-mode` for the animated sun/moon.
-- On toggle: flips `dark` class on `<html>`, updates `localStorage`.
-- Reads initial state from `document.documentElement.classList` (set by Layout script).
+### `FAQ.astro`
+- Three static questions and answers in Norwegian Bokmål.
+- Plain HTML, fully crawlable — primary SEO content depth signal.
 
 ---
 
 ## Visual Design
 
-**Style:** Clean & minimal. Data-first. Lots of whitespace.
+**Style:** Clean & minimal light design. Data-first. Generous whitespace.
 
-**Font:** System font stack — `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`.
+**Colour palette** (Tailwind custom tokens, keep existing names):
+- Background: `#F8F9FA` (off-white, not harsh white)
+- Surface (cards): `#FFFFFF` with `1px` border `#E5E7EB`
+- Primary accent: existing `primary` blue — used for links, year nav, focus rings
+- Inneklemt highlight: existing `secondary` amber — left border + very light tint on inneklemt rows
+- Text: `#111827` (near-black) for headings, `#6B7280` for secondary text
 
-**Colours:** Retain the existing custom Tailwind palette (`primary` blues, `secondary` ambers) but use them sparingly as accents, not fills. Light mode: white/near-white surfaces. Dark mode: dark surfaces.
+**Typography:**
+- Font: system font stack — `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
+- H1: large, bold — `"Inneklemte dager 2026"`
+- Card headers: medium weight, slightly muted
+- Day rows: regular weight
 
 **Cards (`SqueezeGroup`):**
-- White (light) / dark-surface (dark) background.
-- Subtle `1px` border, `rounded-xl`.
-- No heavy gradients.
-- Value ratio badge: top-right corner, amber accent, shadcn Tooltip on hover/tap.
+- White background, `rounded-xl`, subtle border
+- No gradients
+- Value ratio badge: top-right, amber background, CSS tooltip on hover
+- `<summary>` styled as a clean header row — browser's default triangle replaced with Lucide-style chevron via CSS
 
 **Day rows (`DayCard`):**
-- Full-width rows inside the card.
-- Inneklemt days: subtle amber left border + light amber background tint.
-- Holidays/weekends: neutral background.
+- Full-width inside card
+- Inneklemt: `3px` amber left border + `#FFFBEB` background tint
+- Holiday/weekend: no border, neutral background
 
-**H1:** `"Inneklemte dager"` + year with inline ↑↓ pickers. Large, bold. This is the primary keyword target.
+**Year navigation:**
+- Centered below H1
+- `← 2025   2026   2027 →` — plain text links, minimal styling
 
-**Description:** Single sentence below H1. Static for current year in SSR output.
-
-**FAQ section:** Plain text, no accordion. Three questions with short answers. Placed below the squeeze day list.
+**No dark mode.** One design, done well.
 
 ---
 
@@ -135,15 +147,16 @@ public/
 
 | Signal | Implementation |
 |---|---|
-| Crawlable content | Squeeze days in static HTML via Astro SSR of React island |
+| Crawlable content | Full squeeze day list in static HTML for every year |
+| Multiple year URLs | `/2025`, `/2026`, `/2027` etc. — each indexed separately |
 | H1 keyword | `<h1>Inneklemte dager {year}</h1>` in static HTML |
 | Meta description | Dynamic per year, Norwegian Bokmål |
-| Canonical | `https://inneklemt.no` |
-| OG / Twitter | Carried over from current implementation |
-| JSON-LD | `WebApplication` schema — keep existing, add `FAQPage` schema for FAQ section |
+| Canonical | `https://inneklemt.no/{year}` per page |
+| OG / Twitter | Per-page title + description |
+| JSON-LD | `WebApplication` schema on root + `FAQPage` schema on FAQ section |
 | FAQ content | 3 questions targeting "inneklemt", "inneklemte dager", "fridager norge" |
-| Sitemap | Single URL, `changefreq: monthly` (data changes each new year) |
-| robots.txt | Unchanged |
+| Sitemap | One entry per generated year page, `changefreq: yearly` per past year, `monthly` for current |
+| robots.txt | Allow all, sitemap reference |
 
 ### FAQ questions (Norwegian Bokmål)
 1. **Hva er en inneklemt dag?** — En inneklemt dag er en arbeidsdag som ligger mellom en helligdag og en helg, slik at du kan ta fri én dag og få en lang sammenhengende fritid.
@@ -157,50 +170,30 @@ public/
 | Package | Purpose | Replaces |
 |---|---|---|
 | `astro` | Framework | `next` |
-| `@astrojs/react` | React integration | — |
 | `@astrojs/tailwind` | Tailwind integration | — |
-| `react`, `react-dom` | React island | — |
 | `tailwindcss` | Styling | — |
 | `dayjs` | Date handling | — (kept) |
 | `holidays-norway` | Holiday data | — (kept) |
-| `lucide-react` | Icons | `@mui/icons-material` |
-| `shadcn/ui` + `@radix-ui/react-tooltip` | Tooltip, base components | `@mui/material` |
-| `react-toggle-dark-mode` | Dark mode switch animation | — (kept) |
 | `@vercel/analytics` | Analytics | — (kept) |
 | `@vercel/speed-insights` | Performance tracking | — (kept) |
 
-Removed: `next`, `@mui/material`, `@mui/icons-material`, `@mui/x-date-pickers`, `next-themes`, `@sendgrid/*`, `dotenv`, `axios`.
+**Removed entirely:** `react`, `react-dom`, `@astrojs/react`, `next`, `next-themes`, `@mui/material`, `@mui/icons-material`, `@mui/x-date-pickers`, `react-toggle-dark-mode`, `@sendgrid/*`, `dotenv`, `axios`, `shadcn/ui`, `lucide-react`.
 
----
-
-## Dark Mode
-
-No `next-themes`. Replaced with:
-
-1. `Layout.astro` inline script (runs before paint):
-   ```js
-   const theme = localStorage.getItem('theme') ?? 'system';
-   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-   if (theme === 'dark' || (theme === 'system' && prefersDark)) {
-     document.documentElement.classList.add('dark');
-   }
-   ```
-2. `DarkModeToggle.tsx` toggles `document.documentElement.classList` and writes to `localStorage`.
-3. Tailwind `darkMode: 'class'` strategy — unchanged from current config.
+Zero npm dependencies for UI components. Native HTML + Tailwind only.
 
 ---
 
 ## Migration Steps (high level)
 
-1. Delete all Next.js source files and config.
-2. `npm create astro@latest` in the same directory (minimal template).
-3. `npx shadcn@latest init` — configures Tailwind, Radix, Lucide.
+1. Delete all Next.js source files, config, and unused dependencies.
+2. `npm create astro@latest` in the same directory (minimal/empty template).
+3. Add `@astrojs/tailwind` integration.
 4. Copy `src/utils/findSqueezeDays.ts` and `src/types/index.ts` unchanged.
 5. Copy `public/favicons/`, `public/robots.txt`.
-6. Build `Layout.astro` with SEO head + dark mode script.
-7. Build `index.astro` with build-time data + FAQ.
-8. Build React components (`App`, `YearPicker`, `SqueezeGroup`, `DayCard`, `DarkModeToggle`).
-9. Update `tailwind.config.js` (keep custom palette, update content paths).
-10. Update `sitemap.xml`.
-11. Verify Vercel build command (should auto-detect Astro).
-12. Deploy.
+6. Port custom Tailwind colour tokens from existing `tailwind.config.js`.
+7. Build `Layout.astro` with SEO head.
+8. Build `[year].astro` with `getStaticPaths` + data fetching.
+9. Build Astro components (`YearNav`, `SqueezeGroup`, `DayCard`, `FAQ`).
+10. Update `sitemap.xml` to include all year URLs.
+11. Verify Vercel build command (auto-detects Astro).
+12. Deploy and verify Google Search Console.
