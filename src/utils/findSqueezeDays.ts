@@ -1,4 +1,4 @@
-import { Holiday, SqueezeDayGroup } from "../types";
+import type { Holiday, SqueezeDayGroup } from "../types";
 import { default as dayjs } from "dayjs";
 import { default as isoWeekday } from "dayjs/plugin/isoWeek";
 import { default as dayOfYear } from "dayjs/plugin/dayOfYear";
