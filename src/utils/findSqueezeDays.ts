@@ -125,7 +125,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
     (h) => dayjs(h.date).format("DD.MM") === "25.12"
   );
   if (christmasDay) {
-    const lastDayOfYear = dayjs(dayjs(christmasDay.date).add(6, "day")); // Dec 25 + 6 = Dec 31
+    const lastDayOfYear = dayjs(christmasDay.date).endOf('year').startOf('day');
     const lastDayOfYearWeekday = lastDayOfYear.isoWeekday();
     const daysToNextWeekend = lastDayOfYearWeekday - 1;
     if (daysToNextWeekend <= squeezeDaysRange) {
