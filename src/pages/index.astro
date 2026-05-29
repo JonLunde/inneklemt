@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import YearNav from '../components/YearNav.astro';
+import SqueezeGroup from '../components/SqueezeGroup.astro';
+import FAQ from '../components/FAQ.astro';
+import findSqueezeDays from '../utils/findSqueezeDays';
+// @ts-ignore
+import holidaysNorwayModule from 'holidays-norway';
+const holidaysNorway = (holidaysNorwayModule as any).default ?? holidaysNorwayModule;
+
+const year = new Date().getFullYear();
+const currentYear = year;
+const minYear = currentYear - 5;
+const maxYear = currentYear + 5;
+
+const holidays = holidaysNorway(year);
+const squeezeDayGroups = findSqueezeDays(holidays, 4);
+
+const inneklemtCount = squeezeDayGroups.reduce(
+  (acc, group) => acc + group.filter((d) => d.description === 'inneklemt').length,
+  0
+);
+
+const title = `${inneklemtCount} inneklemte dager i ${year}`;
+const description = `Få oversikt over alle ${inneklemtCount} inneklemte dager i ${year} i Norge. Planlegg ferien smartere og få mest mulig fri!`;
+const canonicalUrl = `https://inneklemt.no/${year}`;
+---
+
+<Layout
+  title={title}
+  description={description}
+  year={year}
+  inneklemtCount={inneklemtCount}
+  canonicalUrl={canonicalUrl}
+>
+  <div class="max-w-2xl mx-auto w-full px-4 py-12">
+    <header class="mb-8">
+      <h1 class="text-4xl sm:text-5xl font-bold text-text mb-2">
+        Inneklemte dager
+      </h1>
+      <p class="text-text-muted">
+        {inneklemtCount} inneklemte dager i {year}
+      </p>
+    </header>
+
+    <YearNav
+      year={year}
+      prevYear={year - 1}
+      nextYear={year + 1}
+      minYear={minYear}
+      maxYear={maxYear}
+    />
+
+    <div class="mt-2 mb-4 text-center">
+      <a
+        href={`/${year}.ics`}
+        download
+        class="text-sm text-accent hover:underline"
+      >
+        Legg til i kalender (.ics)
+      </a>
+    </div>
+
+    <div class="mt-8 space-y-4">
+      {squeezeDayGroups.map((group) => (
+        <SqueezeGroup group={group} />
+      ))}
+    </div>
+
+    <FAQ />
+  </div>
+
+  <footer class="border-t border-border py-8 text-center text-text-muted text-sm">
+    <div class="flex justify-center gap-8 mb-3">
+      <a href="https://github.com/JonLunde/" class="hover:text-accent transition-colors">GitHub</a>
+      <a href="https://lunde.dev" class="hover:text-accent transition-colors">Lunde.dev</a>
+    </div>
+    <p>&copy; 2022 Jon Lunde</p>
+  </footer>
+</Layout>
