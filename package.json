@@ -23,6 +23,8 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@types/node": "^25.9.1"
+    "@fontsource/inter": "^5.2.8",
+    "@types/node": "^25.9.1",
+    "inter-font": "^3.19.0"
   }
 }
