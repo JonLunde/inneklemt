@@ -38,13 +38,63 @@ export default function IndexPage() {
             name="description"
             content={`Få oversikt over alle inneklemte dager i ${dayjs(
               new Date()
-            ).year()}. Slik at du kan få mest mulig ut av feriedagene dine!`}
+            ).year()} i Norge. Planlegg ferien smartere og få mest mulig fri!`}
           />
           <meta
             name="keywords"
-            content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend"
+            content="inneklemt, inneklemte, dager, ferie, fri, langhelg, helg, ovalweekend, oval, weekend, norge, norsk, fridager, planlegge ferie"
           />
-          <meta name="robots" content="noodp,noydir" />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://inneklemt.no" />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://inneklemt.no" />
+          <meta property="og:site_name" content="Inneklemt.no" />
+          <meta property="og:locale" content="nb_NO" />
+          <meta
+            property="og:title"
+            content={`Inneklemte dager i ${dayjs(new Date()).year()}`}
+          />
+          <meta
+            property="og:description"
+            content="Få oversikt over alle inneklemte dager i Norge — planlegg ferien smartere og få mest mulig fri!"
+          />
+          <meta
+            property="og:image"
+            content="https://inneklemt.no/favicons/apple-touch-icon.png"
+          />
+
+          <meta name="twitter:card" content="summary" />
+          <meta
+            name="twitter:title"
+            content={`Inneklemte dager i ${dayjs(new Date()).year()}`}
+          />
+          <meta
+            name="twitter:description"
+            content="Få oversikt over alle inneklemte dager i Norge — planlegg ferien smartere og få mest mulig fri!"
+          />
+          <meta
+            name="twitter:image"
+            content="https://inneklemt.no/favicons/apple-touch-icon.png"
+          />
+
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                name: "Inneklemt.no",
+                url: "https://inneklemt.no",
+                description:
+                  "Oversikt over inneklemte dager i Norge for å hjelpe deg med å planlegge ferien smartere.",
+                applicationCategory: "Utility",
+                inLanguage: "nb-NO",
+                operatingSystem: "Web",
+                offers: { "@type": "Offer", price: "0", priceCurrency: "NOK" },
+              }),
+            }}
+          />
 
           <link
             rel="apple-touch-icon"

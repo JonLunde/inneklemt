@@ -21,7 +21,7 @@ const DarkMode = () => {
   return (
     <button
       aria-label={
-        resolvedTheme === "dark" ? "skru av mørkt tema" : "sku på mørkt tema"
+        resolvedTheme === "dark" ? "skru av mørkt tema" : "slå på mørkt tema"
       }
       onClick={handleChange}
     >
