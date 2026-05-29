@@ -4,6 +4,7 @@ import YearNav from '../components/YearNav.astro';
 import SqueezeGroup from '../components/SqueezeGroup.astro';
 import FAQ from '../components/FAQ.astro';
 import findSqueezeDays from '../utils/findSqueezeDays';
+import { groupByMonth } from '../utils/groupByMonth';
 // @ts-ignore
 import holidaysNorwayModule from 'holidays-norway';
 const holidaysNorway = holidaysNorwayModule.default ?? holidaysNorwayModule;
@@ -21,7 +22,7 @@ const minYear = currentYear - 5;
 const maxYear = currentYear + 5;
 
 const holidays = holidaysNorway(year);
-const squeezeDayGroups = findSqueezeDays(holidays, 4);
+const squeezeDayGroups = groupByMonth(findSqueezeDays(holidays, 4));
 
 const inneklemtCount = squeezeDayGroups.reduce(
   (acc, group) => acc + group.filter((d) => d.description === 'inneklemt').length,
