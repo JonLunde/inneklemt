@@ -46,7 +46,7 @@ const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager'
 
   <div class="border-t border-border p-4 space-y-3">
     {groupStats.map((gs) => (
-      <div class="rounded-lg border border-border overflow-hidden">
+      <div class="rounded-lg border border-border">
         <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
           <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
           <div class="tooltip-anchor">
@@ -63,7 +63,7 @@ const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager'
             </div>
           </div>
         </div>
-        <div class="divide-y divide-border">
+        <div class="divide-y divide-border overflow-hidden rounded-b-lg">
           {gs.group.map((day) => <DayCard day={day} />)}
         </div>
       </div>
