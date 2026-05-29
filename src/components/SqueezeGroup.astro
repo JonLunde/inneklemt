@@ -1,5 +1,4 @@
 ---
-import type { SqueezeDayGroup } from '../types';
 import type { MonthGroup } from '../utils/groupByMonth';
 import DayCard from './DayCard.astro';
 
@@ -8,6 +7,8 @@ interface Props {
 }
 
 const { monthGroup: { monthName, groups } } = Astro.props;
+
+const tooltipText = 'Fridager du får per feriedag du tar ut. Høyere er bedre.';
 
 const groupStats = groups.map((group) => {
   const inneklemtDays = group.filter((d) => d.description === 'inneklemt');
@@ -22,7 +23,8 @@ const groupStats = groups.map((group) => {
         ? 'background:#16A34A;color:#fff'
         : 'background:#22C55E;color:#fff';
   const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
-  return { group, inneklemtCount, nonInneklemtDays, valueRatio, badgeStyle, dayWord };
+  const badgeLabel = `${valueRatio} fridager per feriedag. ${tooltipText}`;
+  return { group, inneklemtCount, nonInneklemtDays, valueRatio, badgeStyle, dayWord, badgeLabel };
 });
 
 const totalInneklemt = groupStats.reduce((sum, gs) => sum + gs.inneklemtCount, 0);
@@ -39,11 +41,18 @@ const isMultiGroup = groups.length > 1;
     <div class="flex items-center gap-3 flex-shrink-0">
       {!isMultiGroup && (
         <div class="tooltip-anchor">
-          <span style={groupStats[0].badgeStyle} class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
+          <span
+            style={groupStats[0].badgeStyle}
+            class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none"
+            tabindex="0"
+            role="img"
+            aria-label={groupStats[0].badgeLabel}
+            title={tooltipText}
+          >
             {groupStats[0].valueRatio}×
           </span>
-          <div class="tooltip-content">
-            Fridager du får per feriedag du tar ut. Høyere er bedre.
+          <div class="tooltip-content" aria-hidden="true">
+            {tooltipText}
           </div>
         </div>
       )}
@@ -66,11 +75,18 @@ const isMultiGroup = groups.length > 1;
           <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
             <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
             <div class="tooltip-anchor">
-              <span style={gs.badgeStyle} class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
+              <span
+                style={gs.badgeStyle}
+                class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none"
+                tabindex="0"
+                role="img"
+                aria-label={gs.badgeLabel}
+                title={tooltipText}
+              >
                 {gs.valueRatio}×
               </span>
-              <div class="tooltip-content">
-                Fridager du får per feriedag du tar ut. Høyere er bedre.
+              <div class="tooltip-content" aria-hidden="true">
+                {tooltipText}
               </div>
             </div>
           </div>
