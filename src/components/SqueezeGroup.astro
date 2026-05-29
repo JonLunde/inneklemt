@@ -1,6 +1,7 @@
 ---
 import type { MonthGroup } from '../utils/groupByMonth';
 import DayCard from './DayCard.astro';
+import ValueBadge from './ValueBadge.astro';
 
 interface Props {
   monthGroup: MonthGroup;
@@ -15,21 +16,13 @@ const groupStats = groups.map((group) => {
   const inneklemtCount = inneklemtDays.length;
   const nonInneklemtDays = group.length - inneklemtCount;
   const ratioNum = nonInneklemtDays / inneklemtCount;
-  const valueRatio = ratioNum.toFixed(1);
-  const badgeStyle =
-    ratioNum >= 3
-      ? 'background:#15803D;color:#fff'
-      : ratioNum >= 2
-        ? 'background:#16A34A;color:#fff'
-        : 'background:#22C55E;color:#fff';
   const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
-  const badgeLabel = `${valueRatio} fridager per feriedag. ${tooltipText}`;
-  return { group, inneklemtCount, nonInneklemtDays, valueRatio, badgeStyle, dayWord, badgeLabel };
+  const badgeLabel = `${ratioNum.toFixed(1)} fridager per feriedag. ${tooltipText}`;
+  return { group, inneklemtCount, ratioNum, dayWord, badgeLabel };
 });
 
 const totalInneklemt = groupStats.reduce((sum, gs) => sum + gs.inneklemtCount, 0);
 const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager';
-const isMultiGroup = groups.length > 1;
 ---
 
 <details class="group bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
@@ -57,16 +50,14 @@ const isMultiGroup = groups.length > 1;
         <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
           <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
           <div class="tooltip-anchor">
-            <span
-              style={gs.badgeStyle}
-              class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none"
+            <ValueBadge
+              ratio={gs.ratioNum}
+              class="cursor-help select-none"
               tabindex="0"
               role="img"
               aria-label={gs.badgeLabel}
               title={tooltipText}
-            >
-              {gs.valueRatio}×
-            </span>
+            />
             <div class="tooltip-content" aria-hidden="true">
               {tooltipText}
             </div>

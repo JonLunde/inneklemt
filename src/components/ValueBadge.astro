@@ -1,0 +1,22 @@
+---
+interface Props {
+  ratio: number;
+  tabindex?: string;
+  role?: string;
+  'aria-label'?: string;
+  title?: string;
+}
+
+const { ratio, ...attrs } = Astro.props;
+
+const style =
+  ratio >= 3
+    ? 'background:#15803D;color:#fff'
+    : ratio >= 2
+      ? 'background:#16A34A;color:#fff'
+      : 'background:#22C55E;color:#fff';
+---
+
+<span style={style} class="text-sm font-bold px-2.5 py-1 rounded" {...attrs}>
+  {ratio.toFixed(1)}×
+</span>
