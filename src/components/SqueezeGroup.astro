@@ -14,8 +14,7 @@ const tooltipText = 'Fridager du får per feriedag du tar ut. Høyere er bedre.'
 const groupStats = groups.map((group) => {
   const inneklemtDays = group.filter((d) => d.description === 'inneklemt');
   const inneklemtCount = inneklemtDays.length;
-  const nonInneklemtDays = group.length - inneklemtCount;
-  const ratioNum = nonInneklemtDays / inneklemtCount;
+  const ratioNum = group.length / inneklemtCount;
   const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
   const badgeLabel = `${ratioNum.toFixed(1)} fridager per feriedag. ${tooltipText}`;
   return { group, inneklemtCount, ratioNum, dayWord, badgeLabel };

@@ -10,9 +10,9 @@ interface Props {
 const { ratio, ...attrs } = Astro.props;
 
 const style =
-  ratio >= 3
+  ratio >= 4
     ? 'background:#15803D;color:#fff'
-    : ratio >= 2
+    : ratio >= 3
       ? 'background:#16A34A;color:#fff'
       : 'background:#22C55E;color:#fff';
 ---
