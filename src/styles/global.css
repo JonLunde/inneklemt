@@ -34,8 +34,9 @@ details > summary::-webkit-details-marker {
 .tooltip-content {
   display: none;
   position: absolute;
-  bottom: calc(100% + 8px);
-  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: calc(100% + 8px);
   width: 220px;
   background: #111827;
   color: #f9fafb;
@@ -51,10 +52,11 @@ details > summary::-webkit-details-marker {
 .tooltip-content::after {
   content: '';
   position: absolute;
-  top: 100%;
-  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 100%;
   border: 6px solid transparent;
-  border-top-color: #111827;
+  border-left-color: #111827;
 }
 
 .tooltip-anchor:hover .tooltip-content,
