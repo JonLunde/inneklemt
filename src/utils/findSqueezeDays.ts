@@ -71,10 +71,13 @@ const addFollowingHolidays = (
 
 const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
   const squeezeDayGroups: SqueezeDayGroup[] = [];
-  const transformedHolidays = transformHolidays(holidays);
-  transformedHolidays.pop();
+  // holidays-norway includes Nyttårsaften (Dec 31) which is not a public holiday.
+  // Exclude it so it doesn't generate duplicate squeeze groups with the romjul block below.
+  const transformedHolidays = transformHolidays(holidays).filter(
+    (h) => dayjs(h.date).format('DD.MM') !== '31.12'
+  );
 
-  transformedHolidays?.forEach((holiday) => {
+  transformedHolidays.forEach((holiday) => {
     const { date } = holiday;
     const holidayDate = dayjs(date);
     const holidayWeekday = holidayDate.isoWeekday();
@@ -122,7 +125,7 @@ const findSqueezeDays = (holidays: Holiday[], squeezeDaysRange: number) => {
     (h) => dayjs(h.date).format("DD.MM") === "25.12"
   );
   if (christmasDay) {
-    const lastDayOfYear = dayjs(dayjs(christmasDay.date).add(6, "day"));
+    const lastDayOfYear = dayjs(dayjs(christmasDay.date).add(6, "day")); // Dec 25 + 6 = Dec 31
     const lastDayOfYearWeekday = lastDayOfYear.isoWeekday();
     const daysToNextWeekend = lastDayOfYearWeekday - 1;
     if (daysToNextWeekend <= squeezeDaysRange) {
