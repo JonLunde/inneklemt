@@ -40,13 +40,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mui/icons-material", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:5.6.2"],\
             ["@mui/material", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:5.7.0"],\
             ["@mui/x-date-pickers", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:5.0.0-alpha.2"],\
-            ["@sendgrid/mail", "npm:7.7.0"],\
             ["@types/node", "npm:17.0.29"],\
             ["@types/react", "npm:18.0.8"],\
             ["@types/react-dom", "npm:18.0.0"],\
+            ["@vercel/analytics", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.1"],\
+            ["@vercel/speed-insights", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.0"],\
             ["autoprefixer", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:10.4.5"],\
             ["dayjs", "npm:1.11.1"],\
-            ["dotenv", "npm:16.0.1"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
             ["holidays-norway", "npm:1.1.0"],\
@@ -1499,38 +1499,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@sendgrid/client", [\
-        ["npm:7.7.0", {\
-          "packageLocation": "./.yarn/cache/@sendgrid-client-npm-7.7.0-5f79fe887b-81299ff65b.zip/node_modules/@sendgrid/client/",\
-          "packageDependencies": [\
-            ["@sendgrid/client", "npm:7.7.0"],\
-            ["@sendgrid/helpers", "npm:7.7.0"],\
-            ["axios", "npm:0.26.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@sendgrid/helpers", [\
-        ["npm:7.7.0", {\
-          "packageLocation": "./.yarn/cache/@sendgrid-helpers-npm-7.7.0-6af68b3344-20387aae1b.zip/node_modules/@sendgrid/helpers/",\
-          "packageDependencies": [\
-            ["@sendgrid/helpers", "npm:7.7.0"],\
-            ["deepmerge", "npm:4.2.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@sendgrid/mail", [\
-        ["npm:7.7.0", {\
-          "packageLocation": "./.yarn/cache/@sendgrid-mail-npm-7.7.0-347c053cdb-8bd446c367.zip/node_modules/@sendgrid/mail/",\
-          "packageDependencies": [\
-            ["@sendgrid/mail", "npm:7.7.0"],\
-            ["@sendgrid/client", "npm:7.7.0"],\
-            ["@sendgrid/helpers", "npm:7.7.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@tootallnate/once", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/@tootallnate-once-npm-2.0.0-e36cf4f140-ad87447820.zip/node_modules/@tootallnate/once/",\
@@ -1713,6 +1681,102 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/visitor-keys", "npm:5.10.1"],\
             ["@typescript-eslint/types", "npm:5.10.1"],\
             ["eslint-visitor-keys", "npm:3.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vercel/analytics", [\
+        ["npm:2.0.1", {\
+          "packageLocation": "./.yarn/cache/@vercel-analytics-npm-2.0.1-728d94e8b4-7ac7a3ce63.zip/node_modules/@vercel/analytics/",\
+          "packageDependencies": [\
+            ["@vercel/analytics", "npm:2.0.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.1", {\
+          "packageLocation": "./.yarn/__virtual__/@vercel-analytics-virtual-28af96437f/0/cache/@vercel-analytics-npm-2.0.1-728d94e8b4-7ac7a3ce63.zip/node_modules/@vercel/analytics/",\
+          "packageDependencies": [\
+            ["@vercel/analytics", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.1"],\
+            ["@remix-run/react", null],\
+            ["@sveltejs/kit", null],\
+            ["@types/next", null],\
+            ["@types/nuxt", null],\
+            ["@types/react", "npm:18.0.8"],\
+            ["@types/remix-run__react", null],\
+            ["@types/svelte", null],\
+            ["@types/sveltejs__kit", null],\
+            ["@types/vue", null],\
+            ["@types/vue-router", null],\
+            ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["nuxt", null],\
+            ["react", "npm:18.1.0"],\
+            ["svelte", null],\
+            ["vue", null],\
+            ["vue-router", null]\
+          ],\
+          "packagePeers": [\
+            "@remix-run/react",\
+            "@sveltejs/kit",\
+            "@types/next",\
+            "@types/nuxt",\
+            "@types/react",\
+            "@types/remix-run__react",\
+            "@types/svelte",\
+            "@types/sveltejs__kit",\
+            "@types/vue-router",\
+            "@types/vue",\
+            "next",\
+            "nuxt",\
+            "react",\
+            "svelte",\
+            "vue-router",\
+            "vue"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@vercel/speed-insights", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/@vercel-speed-insights-npm-2.0.0-5600a71a55-618336b186.zip/node_modules/@vercel/speed-insights/",\
+          "packageDependencies": [\
+            ["@vercel/speed-insights", "npm:2.0.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.0", {\
+          "packageLocation": "./.yarn/__virtual__/@vercel-speed-insights-virtual-c58972f197/0/cache/@vercel-speed-insights-npm-2.0.0-5600a71a55-618336b186.zip/node_modules/@vercel/speed-insights/",\
+          "packageDependencies": [\
+            ["@vercel/speed-insights", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.0"],\
+            ["@sveltejs/kit", null],\
+            ["@types/next", null],\
+            ["@types/nuxt", null],\
+            ["@types/react", "npm:18.0.8"],\
+            ["@types/svelte", null],\
+            ["@types/sveltejs__kit", null],\
+            ["@types/vue", null],\
+            ["@types/vue-router", null],\
+            ["next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
+            ["nuxt", null],\
+            ["react", "npm:18.1.0"],\
+            ["svelte", null],\
+            ["vue", null],\
+            ["vue-router", null]\
+          ],\
+          "packagePeers": [\
+            "@sveltejs/kit",\
+            "@types/next",\
+            "@types/nuxt",\
+            "@types/react",\
+            "@types/svelte",\
+            "@types/sveltejs__kit",\
+            "@types/vue-router",\
+            "@types/vue",\
+            "next",\
+            "nuxt",\
+            "react",\
+            "svelte",\
+            "vue-router",\
+            "vue"\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2027,16 +2091,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/axe-core-npm-4.4.1-95b0d6a519-ad14c5b710.zip/node_modules/axe-core/",\
           "packageDependencies": [\
             ["axe-core", "npm:4.4.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["axios", [\
-        ["npm:0.26.1", {\
-          "packageLocation": "./.yarn/cache/axios-npm-0.26.1-a6641ce4e3-d9eb58ff4b.zip/node_modules/axios/",\
-          "packageDependencies": [\
-            ["axios", "npm:0.26.1"],\
-            ["follow-redirects", "virtual:a6641ce4e3bdcc0997f8f53d9481b67c5d38e21276de8eeee7bf92881685b3ad5600bae416c2af904ceab8132bac649e7efd0af93f18e158e0e65ee05a263d72#npm:1.15.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2574,15 +2628,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["deepmerge", [\
-        ["npm:4.2.2", {\
-          "packageLocation": "./.yarn/cache/deepmerge-npm-4.2.2-112165ced2-a8c43a1ed8.zip/node_modules/deepmerge/",\
-          "packageDependencies": [\
-            ["deepmerge", "npm:4.2.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["defaults", [\
         ["npm:1.0.3", {\
           "packageLocation": "./.yarn/cache/defaults-npm-1.0.3-e829107b9e-96e2112da6.zip/node_modules/defaults/",\
@@ -2716,15 +2761,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["dom-helpers", "npm:5.2.1"],\
             ["@babel/runtime", "npm:7.17.9"],\
             ["csstype", "npm:3.0.11"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["dotenv", [\
-        ["npm:16.0.1", {\
-          "packageLocation": "./.yarn/cache/dotenv-npm-16.0.1-d99e72bb95-f459ffce07.zip/node_modules/dotenv/",\
-          "packageDependencies": [\
-            ["dotenv", "npm:16.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3388,28 +3424,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["follow-redirects", [\
-        ["npm:1.15.1", {\
-          "packageLocation": "./.yarn/cache/follow-redirects-npm-1.15.1-6b191885cd-6aa4e3e3cd.zip/node_modules/follow-redirects/",\
-          "packageDependencies": [\
-            ["follow-redirects", "npm:1.15.1"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:a6641ce4e3bdcc0997f8f53d9481b67c5d38e21276de8eeee7bf92881685b3ad5600bae416c2af904ceab8132bac649e7efd0af93f18e158e0e65ee05a263d72#npm:1.15.1", {\
-          "packageLocation": "./.yarn/__virtual__/follow-redirects-virtual-7946991bdf/0/cache/follow-redirects-npm-1.15.1-6b191885cd-6aa4e3e3cd.zip/node_modules/follow-redirects/",\
-          "packageDependencies": [\
-            ["follow-redirects", "virtual:a6641ce4e3bdcc0997f8f53d9481b67c5d38e21276de8eeee7bf92881685b3ad5600bae416c2af904ceab8132bac649e7efd0af93f18e158e0e65ee05a263d72#npm:1.15.1"],\
-            ["@types/debug", null],\
-            ["debug", null]\
-          ],\
-          "packagePeers": [\
-            "@types/debug",\
-            "debug"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["fraction.js", [\
         ["npm:4.2.0", {\
           "packageLocation": "./.yarn/cache/fraction.js-npm-4.2.0-28efe4afc7-8c76a6e21d.zip/node_modules/fraction.js/",\
@@ -3877,13 +3891,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@mui/icons-material", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:5.6.2"],\
             ["@mui/material", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:5.7.0"],\
             ["@mui/x-date-pickers", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:5.0.0-alpha.2"],\
-            ["@sendgrid/mail", "npm:7.7.0"],\
             ["@types/node", "npm:17.0.29"],\
             ["@types/react", "npm:18.0.8"],\
             ["@types/react-dom", "npm:18.0.0"],\
+            ["@vercel/analytics", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.1"],\
+            ["@vercel/speed-insights", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:2.0.0"],\
             ["autoprefixer", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:10.4.5"],\
             ["dayjs", "npm:1.11.1"],\
-            ["dotenv", "npm:16.0.1"],\
             ["eslint", "npm:8.14.0"],\
             ["eslint-config-next", "virtual:4170622dfe30bbc6a38bdb73196d3b47b82d3da78123caf68192267c11fcb5f5aec634593a2755027a9a75600efcb12de1bd080eebd7a4887af2e94b14ecb102#npm:12.1.5"],\
             ["holidays-norway", "npm:1.1.0"],\

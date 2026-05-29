@@ -1,5 +1,7 @@
 import "../styles/global.css";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
 import { useRouter } from "next/router";
@@ -49,6 +51,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         enableSystem={true}
       >
         <Component {...pageProps} />
+        <Analytics />
+        <SpeedInsights />
       </ThemeProvider>
     </>
   );
