@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# Inneklemt.no
 
-```sh
-npm create astro@latest -- --template minimal
+Norwegian web app that calculates *inneklemte dager* — workdays sandwiched between public holidays and weekends where one day of vacation gives you a long stretch of free time.
+
+**Live:** [inneklemt.no](https://inneklemt.no)
+
+## What it does
+
+Displays all squeeze days for a given year, grouped by period. Each card shows how many vacation days you need and how many free days you get in return (the value ratio). Year navigation is URL-bound (`/2025`, `/2026`, etc.) — each year is a separate, fully indexed page. You can also download all inneklemt days as a calendar file (`.ics`).
+
+## Tech
+
+- [Astro 6](https://astro.build) — pure static site generation, zero client JS
+- [Tailwind CSS v4](https://tailwindcss.com) — custom role-based colour tokens
+- [holidays-norway](https://www.npmjs.com/package/holidays-norway) — Norwegian public holiday data
+- [dayjs](https://day.js.org) — date handling with Norwegian locale
+- [satori](https://github.com/vercel/satori) + [@resvg/resvg-js](https://github.com/RazrFalcon/resvg) — OG image generation
+
+## Development
+
+Requires Node ≥ 22.
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Open [http://localhost:4321](http://localhost:4321).
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build    # Production build → dist/
+npm run preview  # Preview the production build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Project structure
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```
+src/
+  pages/
+    index.astro        # Root — renders current year
+    [year].astro       # One static page per year (currentYear ±5)
+    [year].ics.ts      # iCal download endpoint
+    sitemap.xml.ts     # Dynamic sitemap
+    og/[year].png.ts   # OG image per year
+  layouts/
+    Layout.astro       # HTML shell with SEO head and analytics
+  components/
+    YearNav.astro      # Prev/next year navigation links
+    SqueezeGroup.astro # Expandable card for one squeeze period
+    DayCard.astro      # Single day row
+    FAQ.astro          # FAQ section with JSON-LD
+  utils/
+    findSqueezeDays.ts # Core algorithm
+    dayjs.ts           # Configured dayjs instance (nb locale)
+  types/
+    index.ts           # Holiday, SqueezeDay, SqueezeDayGroup
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deployment
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Deployed on [Vercel](https://vercel.com). Pushes to `main` deploy to production. Pushes to `staging` deploy to a preview URL. A GitHub Actions workflow triggers a rebuild on January 1st each year so the default year stays current.
