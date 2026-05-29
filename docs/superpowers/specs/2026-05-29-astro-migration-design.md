@@ -48,6 +48,9 @@ src/
   pages/
     index.astro          ← redirects to /[currentYear] or renders current year
     [year].astro         ← dynamic route, generates one page per year
+    [year].ics.ts        ← iCal download endpoint, one file per year
+    og/
+      [year].png.ts      ← OG image endpoint, one PNG per year
   layouts/
     Layout.astro         ← <html>, SEO <head>, fonts, global styles
   components/
@@ -93,7 +96,7 @@ public/
 
 ### `SqueezeGroup.astro`
 - Native `<details>` / `<summary>` for expand/collapse — no JS needed.
-- `<summary>`: month label, total days, inneklemt count.
+- `<summary>`: `"{N} inneklemte dager i {month}"` — e.g. "2 inneklemte dager i mai". Consistent with the page title pattern.
 - Value ratio badge with CSS tooltip (`:hover` + `::after` pseudo-element).
 - Expanded content: list of `<DayCard>` components.
 
@@ -104,6 +107,18 @@ public/
 ### `FAQ.astro`
 - Three static questions and answers in Norwegian Bokmål.
 - Plain HTML, fully crawlable — primary SEO content depth signal.
+
+### `[year].ics.ts` (API endpoint)
+- Astro endpoint that generates a valid `.ics` (iCalendar) file for each year.
+- Contains one `VEVENT` per inneklemt day: full-day event, title `"Inneklemt dag"`, Norwegian description.
+- Linked from each year page as a `"Legg til i kalender"` download button.
+- Generated at build time — static file, no server required.
+
+### `og/[year].png.ts` (OG image endpoint)
+- Astro endpoint using `satori` + `@resvg/resvg-js` to generate a 1200×630 PNG per year.
+- Content: large year number, "Inneklemte dager", count of inneklemt days for that year.
+- Clean light design matching the site — off-white background, primary blue heading, amber accent.
+- Referenced in each page's `<meta property="og:image">` and `<meta name="twitter:image">`.
 
 ---
 
@@ -150,12 +165,14 @@ public/
 | Crawlable content | Full squeeze day list in static HTML for every year |
 | Multiple year URLs | `/2025`, `/2026`, `/2027` etc. — each indexed separately |
 | H1 keyword | `<h1>Inneklemte dager {year}</h1>` in static HTML |
+| Page `<title>` | `"{N} inneklemte dager i {year}"` — count first, keyword + year, compelling in search results |
 | Meta description | Dynamic per year, Norwegian Bokmål |
 | Canonical | `https://inneklemt.no/{year}` per page |
-| OG / Twitter | Per-page title + description |
+| OG / Twitter | Per-page title + description + generated image (`/og/{year}.png`) |
 | JSON-LD | `WebApplication` schema on root + `FAQPage` schema on FAQ section |
 | FAQ content | 3 questions targeting "inneklemt", "inneklemte dager", "fridager norge" |
-| Sitemap | One entry per generated year page, `changefreq: yearly` per past year, `monthly` for current |
+| Internal linking | Each year page links to previous and next year with descriptive anchor text: "Se inneklemte dager i 2025 →". Helps Google crawl and understand site structure. |
+| Sitemap | One entry per generated year page. `changefreq: monthly` + `priority: 1.0` for current year; `changefreq: yearly` + `priority: 0.8` for adjacent years; `priority: 0.6` for the rest. `changefreq` is advisory — tells Google how often to re-crawl. Past year pages never change; current year may update. |
 | robots.txt | Allow all, sitemap reference |
 
 ### FAQ questions (Norwegian Bokmål)
@@ -176,6 +193,8 @@ public/
 | `holidays-norway` | Holiday data | — (kept) |
 | `@vercel/analytics` | Analytics | — (kept) |
 | `@vercel/speed-insights` | Performance tracking | — (kept) |
+| `satori` | OG image generation | — |
+| `@resvg/resvg-js` | SVG→PNG rendering for OG images | — |
 
 **Removed entirely:** `react`, `react-dom`, `@astrojs/react`, `next`, `next-themes`, `@mui/material`, `@mui/icons-material`, `@mui/x-date-pickers`, `react-toggle-dark-mode`, `@sendgrid/*`, `dotenv`, `axios`, `shadcn/ui`, `lucide-react`.
 
@@ -194,6 +213,9 @@ Zero npm dependencies for UI components. Native HTML + Tailwind only.
 7. Build `Layout.astro` with SEO head.
 8. Build `[year].astro` with `getStaticPaths` + data fetching.
 9. Build Astro components (`YearNav`, `SqueezeGroup`, `DayCard`, `FAQ`).
-10. Update `sitemap.xml` to include all year URLs.
-11. Verify Vercel build command (auto-detects Astro).
-12. Deploy and verify Google Search Console.
+10. Build `[year].ics.ts` iCal endpoint.
+11. Build `og/[year].png.ts` OG image endpoint.
+12. Update `sitemap.xml` to include all year URLs.
+13. Verify Vercel build command (auto-detects Astro).
+14. Deploy to production.
+15. Submit sitemap to Google Search Console (`https://inneklemt.no/sitemap.xml`). Request indexing for the current year URL manually to speed up initial crawl.
