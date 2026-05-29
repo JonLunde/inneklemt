@@ -1,0 +1,43 @@
+---
+const faqs = [
+  {
+    question: 'Hva er en inneklemt dag?',
+    answer:
+      'En inneklemt dag er en arbeidsdag som ligger mellom en helligdag og en helg, slik at du kan ta fri én dag og få en lang sammenhengende fritid.',
+  },
+  {
+    question: 'Hvordan fungerer kalkulatoren?',
+    answer:
+      'Siden beregner automatisk alle inneklemte dager for valgt år basert på norske helligdager, og viser hvor mye fri du får per feriedag du bruker.',
+  },
+  {
+    question: 'Støtter siden andre år enn inneværende år?',
+    answer:
+      'Ja, du kan bla gjennom alle år ved hjelp av pilknappene ved siden av årstallet.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+---
+
+<section class="mt-16 pt-10 border-t border-border">
+  <h2 class="text-xl font-semibold text-text mb-6">Vanlige spørsmål</h2>
+  <dl class="space-y-6">
+    {faqs.map((faq) => (
+      <div>
+        <dt class="font-medium text-text mb-1">{faq.question}</dt>
+        <dd class="text-text-muted leading-relaxed">{faq.answer}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
