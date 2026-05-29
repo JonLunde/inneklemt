@@ -39,23 +39,6 @@ const isMultiGroup = groups.length > 1;
       <span class="text-text-muted font-normal text-sm ml-2">· {totalInneklemt} {totalDayWord}</span>
     </span>
     <div class="flex items-center gap-3 flex-shrink-0">
-      {!isMultiGroup && (
-        <div class="tooltip-anchor">
-          <span
-            style={groupStats[0].badgeStyle}
-            class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none"
-            tabindex="0"
-            role="img"
-            aria-label={groupStats[0].badgeLabel}
-            title={tooltipText}
-          >
-            {groupStats[0].valueRatio}×
-          </span>
-          <div class="tooltip-content" aria-hidden="true">
-            {tooltipText}
-          </div>
-        </div>
-      )}
       <svg
         class="w-5 h-5 text-text-muted transition-transform duration-200 group-open:rotate-180"
         fill="none"
@@ -71,26 +54,24 @@ const isMultiGroup = groups.length > 1;
   <div class="border-t border-border p-4 space-y-3">
     {groupStats.map((gs) => (
       <div class="rounded-lg border border-border overflow-hidden">
-        {isMultiGroup && (
-          <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
-            <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
-            <div class="tooltip-anchor">
-              <span
-                style={gs.badgeStyle}
-                class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none"
-                tabindex="0"
-                role="img"
-                aria-label={gs.badgeLabel}
-                title={tooltipText}
-              >
-                {gs.valueRatio}×
-              </span>
-              <div class="tooltip-content" aria-hidden="true">
-                {tooltipText}
-              </div>
+        <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
+          <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
+          <div class="tooltip-anchor">
+            <span
+              style={gs.badgeStyle}
+              class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none"
+              tabindex="0"
+              role="img"
+              aria-label={gs.badgeLabel}
+              title={tooltipText}
+            >
+              {gs.valueRatio}×
+            </span>
+            <div class="tooltip-content" aria-hidden="true">
+              {tooltipText}
             </div>
           </div>
-        )}
+        </div>
         <div class="divide-y divide-border">
           {gs.group.map((day) => <DayCard day={day} />)}
         </div>
