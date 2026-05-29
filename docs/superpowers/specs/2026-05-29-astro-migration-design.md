@@ -126,12 +126,20 @@ public/
 
 **Style:** Clean & minimal light design. Data-first. Generous whitespace.
 
-**Colour palette** (Tailwind custom tokens, keep existing names):
-- Background: `#F8F9FA` (off-white, not harsh white)
-- Surface (cards): `#FFFFFF` with `1px` border `#E5E7EB`
-- Primary accent: existing `primary` blue — used for links, year nav, focus rings
-- Inneklemt highlight: existing `secondary` amber — left border + very light tint on inneklemt rows
-- Text: `#111827` (near-black) for headings, `#6B7280` for secondary text
+**Colour palette** (role-based Tailwind custom tokens):
+
+| Token | Value | Used for |
+|---|---|---|
+| `bg` | `#F8F9FA` | Page background — warm off-white |
+| `surface` | `#FFFFFF` | Card backgrounds |
+| `border` | `#E5E7EB` | Card borders, dividers |
+| `text` | `#111827` | Primary text, headings |
+| `text-muted` | `#6B7280` | Secondary text, labels |
+| `accent` | `#113E74` | Links, year nav, focus rings (from old `primary-600`) |
+| `highlight` | `#FFD340` | Inneklemt badge, value ratio (from old `secondary-400`) |
+| `highlight-tint` | `#FFFBEB` | Inneklemt row background tint |
+
+Old `primary` / `secondary` / `gray` tokens removed. Tailwind defaults available for utility grays.
 
 **Typography:**
 - Font: system font stack — `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
