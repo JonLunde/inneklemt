@@ -66,6 +66,13 @@ All UI text is Norwegian Bokmål. `dayjs` is configured globally with the `nb` l
 
 Google Analytics is wired via `src/lib/gtag.js`. The GA measurement ID is read from `NEXT_PUBLIC_GOOGLE_ANALYTICS` (must be set in `.env.local` for local GA tracking; the app runs fine without it).
 
+## Git workflow
+
+- **Never push directly to `main`.** All changes go to the `staging` branch first.
+- The `staging` branch deploys to a Vercel preview URL for review before going live.
+- Only merge `staging` → `main` when the user has confirmed the change looks correct in the preview.
+- For larger features, create a feature branch off `staging`, then PR into `staging`.
+
 ## Conventions
 
 - The `Filter` / `SqueezeDayRange` components exist in the tree but the filter UI was removed from `Header` (see commit history). `squeezeDayRange` defaults to `4` and is no longer exposed in the UI — keep this in mind if re-adding filter controls.
