@@ -1,0 +1,29 @@
+---
+import type { SqueezeDay } from '../types';
+import '../utils/dayjs'; // side-effect: ensures nb locale is configured
+
+interface Props {
+  day: SqueezeDay;
+}
+
+const { day } = Astro.props;
+const isInneklemt = day.description === 'inneklemt';
+const formattedDate = day.day.format('dddd D. MMMM');
+---
+
+<div
+  class:list={[
+    'flex items-center px-4 py-3 text-sm sm:text-base gap-2',
+    isInneklemt
+      ? 'bg-highlight-tint border-l-4 border-highlight'
+      : 'bg-surface',
+  ]}
+>
+  <span class:list={['capitalize', isInneklemt ? 'font-semibold text-text' : 'text-text-muted']}>
+    {formattedDate}
+  </span>
+  <span class="text-text-muted">·</span>
+  <span class:list={[isInneklemt ? 'font-semibold text-text' : 'text-text-muted']}>
+    {day.description}
+  </span>
+</div>
