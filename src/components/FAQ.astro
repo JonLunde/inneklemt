@@ -13,7 +13,9 @@ const faqs = [
       'Formålet med siden er å gi en enkel oversikt over årets inneklemte dager, slik at du kan få mest mulig utbytte av feriedagene dine.',
   },
   {
-    question: 'Hva betyr ×-indikatoren på kortene?',
+    question: 'Hva betyr ×-indikatoren?',
+    questionPrefix: 'Hva betyr ',
+    questionSuffix: '-indikatoren?',
     answer:
       'Det er en indikator som forteller hvor mye den inneklemte dagen er verdt. En høyere score indikerer at du får mer sammenhengende fri for hver feriedag du bruker.',
     showBadge: true,
@@ -41,9 +43,10 @@ const faqSchema = {
   <dl class="space-y-6">
     {faqs.map((faq) => (
       <div>
-        <dt class="font-medium text-text mb-1 flex items-center gap-2 flex-wrap">
-          {faq.showBadge && <ValueBadge ratio={3} aria-hidden="true" />}
-          {faq.question}
+        <dt class="font-medium text-text mb-1 flex items-center gap-1 flex-wrap">
+          {faq.showBadge
+            ? <>{faq.questionPrefix}<ValueBadge ratio={3} aria-hidden="true" />{faq.questionSuffix}</>
+            : faq.question}
         </dt>
         <dd class="text-text-muted leading-relaxed">{faq.answer}</dd>
       </div>
