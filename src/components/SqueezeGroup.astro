@@ -59,11 +59,11 @@ const isMultiGroup = groups.length > 1;
     </div>
   </summary>
 
-  <div class="border-t border-border">
-    {groupStats.map((gs, i) => (
-      <div>
+  <div class="border-t border-border p-4 space-y-3">
+    {groupStats.map((gs) => (
+      <div class="rounded-lg border border-border overflow-hidden">
         {isMultiGroup && (
-          <div class="flex items-center justify-between px-5 py-3 bg-bg border-b border-border">
+          <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
             <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
             <div class="tooltip-anchor">
               <span style={gs.badgeStyle} class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
@@ -78,9 +78,6 @@ const isMultiGroup = groups.length > 1;
         <div class="divide-y divide-border">
           {gs.group.map((day) => <DayCard day={day} />)}
         </div>
-        {i < groupStats.length - 1 && (
-          <div class="border-t-4 border-bg" />
-        )}
       </div>
     ))}
   </div>
