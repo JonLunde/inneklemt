@@ -25,7 +25,10 @@ const holidays = holidaysNorway(year);
 const squeezeDayGroups = groupByMonth(findSqueezeDays(holidays, 4));
 
 const inneklemtCount = squeezeDayGroups.reduce(
-  (acc, group) => acc + group.filter((d) => d.description === 'inneklemt').length,
+  (acc, { groups }) => acc + groups.reduce(
+    (sum, group) => sum + group.filter((d) => d.description === 'inneklemt').length,
+    0
+  ),
   0
 );
 
@@ -60,8 +63,8 @@ const canonicalUrl = `https://inneklemt.no/${year}`;
     />
 
     <div class="mt-8 space-y-4">
-      {squeezeDayGroups.map((group) => (
-        <SqueezeGroup group={group} />
+      {squeezeDayGroups.map((monthGroup) => (
+        <SqueezeGroup monthGroup={monthGroup} />
       ))}
     </div>
 

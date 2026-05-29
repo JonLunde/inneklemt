@@ -1,44 +1,52 @@
 ---
 import type { SqueezeDayGroup } from '../types';
+import type { MonthGroup } from '../utils/groupByMonth';
 import DayCard from './DayCard.astro';
 
 interface Props {
-  group: SqueezeDayGroup;
+  monthGroup: MonthGroup;
 }
 
-const { group } = Astro.props;
+const { monthGroup: { monthName, groups } } = Astro.props;
 
-const inneklemtDays = group.filter((d) => d.description === 'inneklemt');
-const inneklemtCount = inneklemtDays.length;
-const totalDays = group.length;
-const nonInneklemtDays = totalDays - inneklemtCount;
-const valueRatio = (nonInneklemtDays / inneklemtCount).toFixed(1);
+const groupStats = groups.map((group) => {
+  const inneklemtDays = group.filter((d) => d.description === 'inneklemt');
+  const inneklemtCount = inneklemtDays.length;
+  const nonInneklemtDays = group.length - inneklemtCount;
+  const ratioNum = nonInneklemtDays / inneklemtCount;
+  const valueRatio = ratioNum.toFixed(1);
+  const badgeStyle =
+    ratioNum >= 3
+      ? 'background:#15803D;color:#fff'
+      : ratioNum >= 2
+        ? 'background:#16A34A;color:#fff'
+        : 'background:#22C55E;color:#fff';
+  const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
+  return { group, inneklemtCount, nonInneklemtDays, valueRatio, badgeStyle, dayWord };
+});
 
-const monthName = inneklemtDays[0]?.day.format('MMMM') ?? '';
-const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
-const summaryText = `${inneklemtCount} ${dayWord} i ${monthName}`;
-
-const ratioNum = nonInneklemtDays / inneklemtCount;
-const badgeStyle =
-  ratioNum >= 3
-    ? 'background:#15803D;color:#fff'
-    : ratioNum >= 2
-      ? 'background:#16A34A;color:#fff'
-      : 'background:#22C55E;color:#fff';
+const totalInneklemt = groupStats.reduce((sum, gs) => sum + gs.inneklemtCount, 0);
+const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager';
+const isMultiGroup = groups.length > 1;
 ---
 
 <details class="group bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
   <summary class="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-bg transition-colors">
-    <span class="font-semibold text-text">{summaryText}</span>
+    <span class="font-semibold text-text">
+      {monthName}
+      <span class="text-text-muted font-normal text-sm ml-2">· {totalInneklemt} {totalDayWord}</span>
+    </span>
     <div class="flex items-center gap-3 flex-shrink-0">
-      <div class="tooltip-anchor">
-        <span style={badgeStyle} class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
-          {valueRatio}×
-        </span>
-        <div class="tooltip-content">
-          Fridager du får per feriedag du tar ut. Høyere er bedre.
+      {!isMultiGroup && (
+        <div class="tooltip-anchor">
+          <span style={groupStats[0].badgeStyle} class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
+            {groupStats[0].valueRatio}×
+          </span>
+          <div class="tooltip-content">
+            Fridager du får per feriedag du tar ut. Høyere er bedre.
+          </div>
         </div>
-      </div>
+      )}
       <svg
         class="w-5 h-5 text-text-muted transition-transform duration-200 group-open:rotate-180"
         fill="none"
@@ -50,7 +58,30 @@ const badgeStyle =
       </svg>
     </div>
   </summary>
-  <div class="divide-y divide-border border-t border-border">
-    {group.map((day) => <DayCard day={day} />)}
+
+  <div class="border-t border-border">
+    {groupStats.map((gs, i) => (
+      <div>
+        {isMultiGroup && (
+          <div class="flex items-center justify-between px-5 py-3 bg-bg border-b border-border">
+            <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
+            <div class="tooltip-anchor">
+              <span style={gs.badgeStyle} class="text-sm font-bold px-2.5 py-1 rounded cursor-help select-none">
+                {gs.valueRatio}×
+              </span>
+              <div class="tooltip-content">
+                Fridager du får per feriedag du tar ut. Høyere er bedre.
+              </div>
+            </div>
+          </div>
+        )}
+        <div class="divide-y divide-border">
+          {gs.group.map((day) => <DayCard day={day} />)}
+        </div>
+        {i < groupStats.length - 1 && (
+          <div class="border-t-4 border-bg" />
+        )}
+      </div>
+    ))}
   </div>
 </details>
