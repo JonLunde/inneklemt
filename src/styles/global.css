@@ -1,2 +1,63 @@
-@import "tailwindcss/theme" layer(base);
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+
+@theme {
+  /* Role-based colour tokens */
+  --color-bg: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-border: #E5E7EB;
+  --color-text: #111827;
+  --color-text-muted: #6B7280;
+  --color-accent: #113E74;
+  --color-highlight: #FFD340;
+  --color-highlight-tint: #FFFBEB;
+
+  /* Font family */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Custom breakpoint */
+  --breakpoint-sm: 600px;
+}
+
+/* Remove default <details> triangle */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* CSS-only tooltip on value ratio badge */
+.tooltip-anchor {
+  position: relative;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 10;
+  pointer-events: none;
+  text-align: left;
+}
+
+.tooltip-content::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 14px;
+  border: 6px solid transparent;
+  border-top-color: #111827;
+}
+
+.tooltip-anchor:hover .tooltip-content,
+.tooltip-anchor:focus-within .tooltip-content {
+  display: block;
+}
