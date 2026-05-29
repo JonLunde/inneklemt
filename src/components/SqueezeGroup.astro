@@ -19,7 +19,7 @@ const dayWord = inneklemtCount === 1 ? 'inneklemt dag' : 'inneklemte dager';
 const summaryText = `${inneklemtCount} ${dayWord} i ${monthName}`;
 ---
 
-<details class="group bg-surface border border-border rounded-xl shadow-sm">
+<details class="group bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
   <summary class="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-bg transition-colors">
     <div class="flex flex-col sm:flex-row sm:items-center sm:gap-3">
       <span class="font-semibold text-text capitalize">{summaryText}</span>
@@ -45,7 +45,7 @@ const summaryText = `${inneklemtCount} ${dayWord} i ${monthName}`;
       </svg>
     </div>
   </summary>
-  <div class="divide-y divide-border border-t border-border overflow-hidden rounded-b-xl">
+  <div class="divide-y divide-border border-t border-border">
     {group.map((day) => <DayCard day={day} />)}
   </div>
 </details>
