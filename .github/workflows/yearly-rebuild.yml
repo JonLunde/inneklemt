@@ -3,6 +3,7 @@ name: Yearly rebuild
 on:
   schedule:
     - cron: '0 6 1 1 *'  # 06:00 UTC on January 1st every year
+  workflow_dispatch:
 
 jobs:
   trigger-deploy:
