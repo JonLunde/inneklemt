@@ -5,6 +5,7 @@ import SqueezeGroup from '../components/SqueezeGroup.astro';
 import FAQ from '../components/FAQ.astro';
 import findSqueezeDays from '../utils/findSqueezeDays';
 import { groupByMonth } from '../utils/groupByMonth';
+import dayjs from '../utils/dayjs';
 // @ts-ignore
 import holidaysNorwayModule from 'holidays-norway';
 const holidaysNorway = holidaysNorwayModule.default ?? holidaysNorwayModule;
@@ -31,6 +32,9 @@ const inneklemtCount = squeezeDayGroups.reduce(
   ),
   0
 );
+
+const currentMonthKey = dayjs().format('YYYY-MM');
+const openMonthIndex = squeezeDayGroups.findIndex((mg) => mg.monthKey >= currentMonthKey);
 
 const title = `Inneklemte dager ${year} — ${inneklemtCount} dager`;
 const description = `Få oversikt over alle ${inneklemtCount} inneklemte dager i ${year} i Norge. Planlegg ferien smartere og få mest mulig fri!`;
@@ -63,8 +67,8 @@ const canonicalUrl = `https://inneklemt.no/${year}`;
     />
 
     <div class="mt-8 space-y-4">
-      {squeezeDayGroups.map((monthGroup) => (
-        <SqueezeGroup monthGroup={monthGroup} />
+      {squeezeDayGroups.map((monthGroup, i) => (
+        <SqueezeGroup monthGroup={monthGroup} isOpen={i === openMonthIndex} />
       ))}
     </div>
 

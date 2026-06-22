@@ -2,6 +2,7 @@ import type { SqueezeDayGroup } from '../types';
 
 export interface MonthGroup {
   monthName: string;
+  monthKey: string; // YYYY-MM
   groups: SqueezeDayGroup[];
 }
 
@@ -17,7 +18,7 @@ export function groupByMonth(squeezeDayGroups: SqueezeDayGroup[]): MonthGroup[] 
     const monthName = firstDay.format('MMMM');
 
     if (!byMonth.has(monthKey)) {
-      byMonth.set(monthKey, { monthName, groups: [] });
+      byMonth.set(monthKey, { monthName, monthKey, groups: [] });
     }
     byMonth.get(monthKey)!.groups.push(group);
   }
