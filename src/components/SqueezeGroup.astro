@@ -5,9 +5,10 @@ import ValueBadge from './ValueBadge.astro';
 
 interface Props {
   monthGroup: MonthGroup;
+  isOpen?: boolean;
 }
 
-const { monthGroup: { monthName, groups } } = Astro.props;
+const { monthGroup: { monthName, groups }, isOpen = false } = Astro.props;
 
 const tooltipText = 'Fridager du får per feriedag du tar ut. Høyere er bedre.';
 
@@ -24,7 +25,7 @@ const totalInneklemt = groupStats.reduce((sum, gs) => sum + gs.inneklemtCount, 0
 const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager';
 ---
 
-<details class="group bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
+<details open={isOpen} class="group bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
   <summary class="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-bg transition-colors">
     <span class="font-semibold text-text">
       {monthName}
