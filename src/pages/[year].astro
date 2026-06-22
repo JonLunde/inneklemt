@@ -34,7 +34,9 @@ const inneklemtCount = squeezeDayGroups.reduce(
 );
 
 const currentMonthKey = dayjs().format('YYYY-MM');
-const openMonthIndex = squeezeDayGroups.findIndex((mg) => mg.monthKey >= currentMonthKey);
+const openMonthIndex = year === currentYear
+  ? squeezeDayGroups.findIndex((mg) => mg.monthKey >= currentMonthKey)
+  : -1;
 
 const title = `Inneklemte dager ${year} — ${inneklemtCount} dager`;
 const description = `Få oversikt over alle ${inneklemtCount} inneklemte dager i ${year} i Norge. Planlegg ferien smartere og få mest mulig fri!`;
