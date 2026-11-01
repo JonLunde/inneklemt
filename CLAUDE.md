@@ -31,10 +31,13 @@ CI (`.github/workflows/ci.yml`) runs on every PR to `staging`/`main`: typecheck 
 - **Visual baselines (`tests/e2e/__screenshots__/`)** — only valid when generated in the Playwright Docker image CI uses (the site uses system fonts). Never regenerate them locally or as part of a dependency PR. To re-baseline deliberately: run the "Update visual baselines" workflow on the branch, or push a commit containing `[update-screenshots]`, then push again to re-run CI.
 - Locally without the bundled browser: `PW_CHANNEL=chrome npm run test:e2e` (visual tests will differ from CI baselines; that's expected).
 
-### Dependency PRs
+### Dependency updates (Renovate + Sunday job)
 
-- `deps/weekly-*` → `staging`: auto-merged by CI when all checks are green and the PR doesn't touch tests, baselines or CI config.
-- `deps/major-*`: always manual.
+- **Renovate** (`renovate.json` on `main` — Renovate only reads config from the default branch) opens every PR against `staging`, security fixes included.
+- Green minor/patch PRs (grouped as "minor og patch") and lockfile maintenance are auto-merged into `staging` by Renovate.
+- Majors and Playwright get their own PRs and are never auto-merged. The weekly Claude scheduled task fixes red PRs and majors, merges them into `staging` when CI is green, opens a release PR `staging` → `main` and reports to Jon.
+- Golden-file or screenshot diffs are never accepted automatically — they need Jon's decision.
+- **Nothing reaches `main` except through a PR Jon merges himself.**
 
 ## Stack
 
