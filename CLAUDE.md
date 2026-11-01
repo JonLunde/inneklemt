@@ -74,7 +74,6 @@ groupByMonth(squeezeDayGroups) ← src/utils/groupByMonth.ts
 |------|------|---------|
 | `/` | `src/pages/index.astro` | Renders current year, canonical → `/{year}` |
 | `/{year}` | `src/pages/[year].astro` | One page per year (currentYear ±5) |
-| `/{year}.ics` | `src/pages/[year].ics.ts` | iCal download with inneklemt days |
 | `/sitemap.xml` | `src/pages/sitemap.xml.ts` | Dynamic sitemap |
 
 ### Components
@@ -148,3 +147,4 @@ All UI text is Norwegian Bokmål. `dayjs` is configured with the `nb` locale in 
 - `squeezeDayRange` is hardcoded to `4` and not exposed in the UI.
 - No dark mode — single clean light design.
 - No OG image generation — removed to reduce dependency risk on yearly rebuilds.
+- No iCal (`.ics`) export — removed deliberately (`chore: remove iCal export feature`).
