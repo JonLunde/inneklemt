@@ -32,6 +32,15 @@ npm run build    # Production build → dist/
 npm run preview  # Preview the production build
 ```
 
+## Tests
+
+```bash
+npm test          # unit tests (Vitest, golden files)
+npm run test:e2e  # Playwright: smoke, interaction, visual regression
+```
+
+CI runs both on every PR. See `CLAUDE.md` → *Tests* for how golden files and visual baselines work.
+
 ## Project structure
 
 ```

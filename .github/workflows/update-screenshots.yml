@@ -1,0 +1,51 @@
+name: Update visual baselines
+
+# Regenerates tests/e2e/__screenshots__ in the same Playwright image CI compares against,
+# and commits them to the branch. Run it deliberately, never as part of a dependency PR:
+#   - Actions → "Update visual baselines" → Run workflow (pick the branch), or
+#   - push a commit whose message contains [update-screenshots].
+# Pushes made by this workflow do not re-trigger CI; push any commit afterwards to re-run it.
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore: [main, staging]
+
+permissions:
+  contents: write
+
+jobs:
+  versions:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[update-screenshots]')
+    runs-on: ubuntu-latest
+    outputs:
+      playwright: ${{ steps.pw.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: pw
+        run: echo "version=$(node -p "require('./package-lock.json').packages['node_modules/@playwright/test'].version")" >> "$GITHUB_OUTPUT"
+
+  update:
+    needs: versions
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.versions.outputs.playwright }}-noble
+    env:
+      HOME: /root
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright test visual --update-snapshots=all
+      - name: Commit baselines
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898237+github-actions[bot]@users.noreply.github.com"
+          git add tests/e2e/__screenshots__
+          git diff --cached --quiet && { echo "Baselines unchanged."; exit 0; }
+          git commit -m "test: update visual baselines (Playwright ${{ needs.versions.outputs.playwright }})"
+          git push
