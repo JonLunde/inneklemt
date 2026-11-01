@@ -60,33 +60,3 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 14
-
-  # Weekly dependency PRs (deps/weekly-*) into staging are merged automatically once every
-  # check above is green. Major upgrades (deps/major-*) and anything touching the test
-  # baselines always need a human.
-  automerge:
-    name: Auto-merge weekly deps PR
-    needs: [unit, e2e]
-    if: >-
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.base.ref == 'staging' &&
-      startsWith(github.event.pull_request.head.ref, 'deps/weekly-') &&
-      !github.event.pull_request.draft &&
-      github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    env:
-      GH_TOKEN: ${{ github.token }}
-      PR: ${{ github.event.pull_request.number }}
-    steps:
-      - name: Refuse if the PR changes tests or baselines
-        run: |
-          changed=$(gh pr diff "$PR" --repo "$GITHUB_REPOSITORY" --name-only)
-          echo "$changed"
-          if echo "$changed" | grep -E '^(tests/|playwright\.config\.ts|vitest\.config\.ts|\.github/)'; then
-            echo "::warning::PR touches tests, baselines or CI config — needs manual review."
-            exit 0
-          fi
-          gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
