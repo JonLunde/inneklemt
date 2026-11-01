@@ -4,4 +4,4 @@ exports[`headline count (shown in <title> and <h1>) > 2025 is stable 1`] = `27`;
 
 exports[`headline count (shown in <title> and <h1>) > 2026 is stable 1`] = `28`;
 
-exports[`headline count (shown in <title> and <h1>) > 2027 is stable 1`] = `24`;
+exports[`headline count (shown in <title> and <h1>) > 2027 is stable 1`] = `20`;

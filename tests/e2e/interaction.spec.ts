@@ -53,21 +53,81 @@ test.describe('year navigation', () => {
 });
 
 test.describe('value badge tooltip', () => {
-  test('shows on keyboard focus and hides again', async ({ page }) => {
+  const firstAnchor = (page: import('@playwright/test').Page) => page.locator('main details[open] .tooltip-anchor').first();
+
+  test('keyboard: Enter opens it, Escape closes it', async ({ page }) => {
     await page.goto('/');
-    const anchor = page.locator('main details[open] .tooltip-anchor').first();
+    const anchor = firstAnchor(page);
     const tooltip = anchor.locator('.tooltip-content');
     await expect(tooltip).toBeHidden();
-    await anchor.locator('[role="img"]').focus();
+    await anchor.locator('button').focus();
+    await page.keyboard.press('Enter');
     await expect(tooltip).toBeVisible();
     await expect(tooltip).toHaveText('Fridager du får per feriedag du tar ut. Høyere er bedre.');
+    await page.keyboard.press('Escape');
     await page.locator('h1').click();
     await expect(tooltip).toBeHidden();
   });
 
+  test('tap/click opens it; tapping/clicking outside closes it', async ({ page }, testInfo) => {
+    await page.goto('/');
+    const anchor = firstAnchor(page);
+    const badge = anchor.locator('button');
+    const tooltip = anchor.locator('.tooltip-content');
+    const isMobile = testInfo.project.name === 'mobile';
+    const press = (l: import('@playwright/test').Locator) => (isMobile ? l.tap() : l.click());
+
+    await press(badge);
+    await expect(tooltip).toBeVisible();
+
+    // Plain, non-interactive text outside the badge.
+    await press(page.locator('section dl dd').first());
+    await expect(tooltip).toBeHidden();
+  });
+
+  test('tapping the badge again closes it', async ({ page }, testInfo) => {
+    await page.goto('/');
+    const anchor = firstAnchor(page);
+    const badge = anchor.locator('button');
+    const tooltip = anchor.locator('.tooltip-content');
+    const press = () => (testInfo.project.name === 'mobile' ? badge.tap() : badge.click());
+    await press();
+    await expect(tooltip).toBeVisible();
+    await page.mouse.move(0, 0); // leave hover on desktop
+    await press();
+    await page.mouse.move(0, 0);
+    await expect(tooltip).toBeHidden();
+  });
+
+  test('desktop: shows on hover and hides when the pointer leaves', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'desktop', 'hover only applies to real pointers');
+    await page.goto('/');
+    const anchor = firstAnchor(page);
+    const tooltip = anchor.locator('.tooltip-content');
+    await anchor.locator('button').hover();
+    await expect(tooltip).toBeVisible();
+    await page.locator('h1').hover();
+    await expect(tooltip).toBeHidden();
+  });
+
+  test('touch: hover never opens it (no sticky hover)', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile', 'touch only');
+    await page.goto('/');
+    expect(await page.evaluate(() => matchMedia('(hover: hover)').matches)).toBe(false);
+  });
+
+  test('each tooltip has a unique id and is wired to its badge', async ({ page }) => {
+    await page.goto('/2025');
+    const ids = await page.locator('.tooltip-content').evaluateAll((els) => els.map((e) => e.id));
+    expect(ids.length).toBeGreaterThan(0);
+    expect(new Set(ids).size).toBe(ids.length);
+    const targets = await page.locator('.tooltip-trigger').evaluateAll((els) => els.map((e) => e.getAttribute('popovertarget')));
+    expect(targets).toEqual(ids);
+  });
+
   test('badge has an accessible label with the ratio', async ({ page }) => {
     await page.goto('/');
-    const badge = page.locator('main details[open] [role="img"]').first();
+    const badge = firstAnchor(page).locator('button');
     await expect(badge).toHaveAttribute('aria-label', /^\d+\.\d fridager per feriedag\./);
   });
 });

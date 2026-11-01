@@ -26,7 +26,7 @@ Node ≥ 22 is required. If the default Node is too old, use:
 
 CI (`.github/workflows/ci.yml`) runs on every PR to `staging`/`main`: typecheck → unit tests → build → Playwright.
 
-- **Unit (`tests/unit/`)** — golden files in `tests/unit/__golden__/` lock the holiday data and the full squeeze-day output for 2021–2035, *including* known `//!` limitations (e.g. the duplicate May 2027 group when 17. mai and 2. pinsedag coincide). A deliberate algorithm change → review the diff, then `npm test -- -u`.
+- **Unit (`tests/unit/`)** — golden files in `tests/unit/__golden__/` lock the holiday data and the full squeeze-day output for 2021–2035, *including* known `//!` limitations. A deliberate algorithm change → review the diff, then `npm test -- -u`.
 - **E2E (`tests/e2e/`)** — the site is built with a frozen clock (`tests/e2e/freeze-time.mjs`, 2026-05-10) so the current year, the ±5 range and the open month card never drift. Every test fails on console errors or 4xx/5xx requests.
 - **Visual baselines (`tests/e2e/__screenshots__/`)** — only valid when generated in the Playwright Docker image CI uses (the site uses system fonts). Never regenerate them locally or as part of a dependency PR. To re-baseline deliberately: run the "Update visual baselines" workflow on the branch, or push a commit containing `[update-screenshots]`, then push again to re-run CI.
 - Locally without the bundled browser: `PW_CHANNEL=chrome npm run test:e2e` (visual tests will differ from CI baselines; that's expected).
@@ -74,7 +74,6 @@ groupByMonth(squeezeDayGroups) ← src/utils/groupByMonth.ts
 |------|------|---------|
 | `/` | `src/pages/index.astro` | Renders current year, canonical → `/{year}` |
 | `/{year}` | `src/pages/[year].astro` | One page per year (currentYear ±5) |
-| `/{year}.ics` | `src/pages/[year].ics.ts` | iCal download with inneklemt days |
 | `/sitemap.xml` | `src/pages/sitemap.xml.ts` | Dynamic sitemap |
 
 ### Components
@@ -120,7 +119,7 @@ For each non-weekend holiday, `findSqueezeDays` checks:
 - Days between the holiday and the **previous** weekend (if ≤ `squeezeDayRange`)
 - Days between the holiday and the **next** weekend (if ≤ `squeezeDayRange`)
 
-Each match becomes a `SqueezeDayGroup`, padded with adjacent weekends/holidays via `addPreviousHolidays` / `addFollowingHolidays`. Special-case logic handles the romjul period (Dec 25 → Jan 1). Cross-group "split squeeze days" are a known limitation (marked with `//!` comments).
+Each match becomes a `SqueezeDayGroup`, padded with adjacent weekends/holidays via `addPreviousHolidays` / `addFollowingHolidays`. Special-case logic handles the romjul period (Dec 25 → Jan 1). Holidays sharing a date (17. mai + 2. pinsedag in 2027/2032) are merged in `transformHolidays` into one entry labelled `"2. pinsedag og 17. mai"`. Cross-group "split squeeze days" are a known limitation (marked with `//!` comments).
 
 `groupByMonth` then merges groups by the month of their first inneklemt day into `MonthGroup[]`. Multiple periods in the same month appear as sub-sections within one card, each with its own value ratio badge.
 
@@ -148,3 +147,4 @@ All UI text is Norwegian Bokmål. `dayjs` is configured with the `nb` locale in 
 - `squeezeDayRange` is hardcoded to `4` and not exposed in the UI.
 - No dark mode — single clean light design.
 - No OG image generation — removed to reduce dependency risk on yearly rebuilds.
+- No iCal (`.ics`) export — removed deliberately (`chore: remove iCal export feature`).

@@ -26,17 +26,27 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* CSS-only tooltip on value ratio badge */
+/* Value-badge tooltip — a native [popover] anchored to its badge button.
+   - Tap / click / Enter toggles it; tapping outside or Esc closes it (browser light dismiss).
+   - Devices with a real pointer also show it on hover; keyboard users on focus.
+   No client-side JavaScript. */
 .tooltip-anchor {
   position: relative;
 }
 
 .tooltip-content {
-  display: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: calc(100% + 8px);
+  /* Reset the browser's default popover box (centred, bordered). */
+  inset: auto;
+  margin: 0;
+  border: 0;
+  overflow: visible;
+
+  /* Anchor to the left of the badge, vertically centred (CSS anchor positioning). */
+  position: fixed;
+  right: anchor(left);
+  top: anchor(center);
+  translate: -8px -50%;
+
   width: 220px;
   background: #111827;
   color: #f9fafb;
@@ -59,7 +69,43 @@ details > summary::-webkit-details-marker {
   border-left-color: #111827;
 }
 
-.tooltip-anchor:hover .tooltip-content,
-.tooltip-anchor:focus-within .tooltip-content {
+/* An open popover gets a full-screen, fixed ::backdrop. It is invisible, but iOS Safari
+   treats a fixed element covering the viewport as an overlay and stops drawing the page
+   behind its toolbars (opaque bands top and bottom). The tooltip needs no backdrop. */
+.tooltip-content::backdrop {
+  display: none;
+  inset: auto;
+  width: 0;
+  height: 0;
+  background: none;
+}
+
+.tooltip-anchor:has(.tooltip-trigger:focus-visible) .tooltip-content {
   display: block;
+}
+
+@media (hover: hover) {
+  .tooltip-anchor:hover .tooltip-content {
+    display: block;
+  }
+}
+
+/* Browsers without anchor positioning: keep the old placement for hover/focus, and show an
+   opened popover centred on screen instead. */
+@supports not (anchor-name: --a) {
+  .tooltip-content:not(:popover-open) {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 8px);
+    translate: 0 -50%;
+  }
+  .tooltip-content:popover-open {
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    translate: none;
+  }
+  .tooltip-content:popover-open::after {
+    display: none;
+  }
 }
