@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [staging, main]
+  push:
+    branches: [staging, main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Typecheck, unit tests, build
+    runs-on: ubuntu-latest
+    outputs:
+      playwright: ${{ steps.pw.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run test:coverage
+      - run: npm run build
+      # The e2e container must match the installed @playwright/test version exactly,
+      # so read it from the lockfile instead of hard-coding it.
+      - id: pw
+        run: echo "version=$(node -p "require('./node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+
+  e2e:
+    name: Playwright (smoke, interaction, visual)
+    needs: unit
+    runs-on: ubuntu-latest
+    container:
+      # Visual baselines are generated in this exact image; never compare against another OS.
+      image: mcr.microsoft.com/playwright:v${{ needs.unit.outputs.playwright }}-noble
+    env:
+      HOME: /root
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+
+  # Weekly dependency PRs (deps/weekly-*) into staging are merged automatically once every
+  # check above is green. Major upgrades (deps/major-*) and anything touching the test
+  # baselines always need a human.
+  automerge:
+    name: Auto-merge weekly deps PR
+    needs: [unit, e2e]
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.base.ref == 'staging' &&
+      startsWith(github.event.pull_request.head.ref, 'deps/weekly-') &&
+      !github.event.pull_request.draft &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - name: Refuse if the PR changes tests or baselines
+        run: |
+          changed=$(gh pr diff "$PR" --repo "$GITHUB_REPOSITORY" --name-only)
+          echo "$changed"
+          if echo "$changed" | grep -E '^(tests/|playwright\.config\.ts|vitest\.config\.ts|\.github/)'; then
+            echo "::warning::PR touches tests, baselines or CI config — needs manual review."
+            exit 0
+          fi
+          gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
