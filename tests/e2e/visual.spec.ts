@@ -31,7 +31,8 @@ test('year navigation at both boundaries', async ({ page }) => {
 test('value badge tooltip', async ({ page }) => {
   await page.goto('/');
   const card = page.locator('main details[open]');
-  await card.locator('.tooltip-anchor [role="img"]').first().focus();
+  await card.locator('.tooltip-anchor button').first().click();
+  await page.mouse.move(0, 0);
   await expect(card.locator('.tooltip-content').first()).toBeVisible();
   await expect(card).toHaveScreenshot('tooltip.png');
 });
