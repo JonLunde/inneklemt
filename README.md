@@ -6,7 +6,7 @@ Norwegian web app that calculates *inneklemte dager* — workdays sandwiched bet
 
 ## What it does
 
-Displays all squeeze days for a given year, grouped by month. Each month card shows one or more squeeze periods, each with a colour-coded value ratio badge (how many free days you get per vacation day used). Year navigation is URL-bound (`/2025`, `/2026`, etc.) — each year is a separate, fully indexed page. You can also download all inneklemt days as a calendar file (`.ics`).
+Displays all squeeze days for a given year, grouped by month. Each month card shows one or more squeeze periods, each with a colour-coded value ratio badge (how many free days you get per vacation day used). Year navigation is URL-bound (`/2025`, `/2026`, etc.) — each year is a separate, fully indexed page.
 
 ## Tech
 
@@ -48,7 +48,6 @@ src/
   pages/
     index.astro        # Root — renders current year
     [year].astro       # One static page per year (currentYear ±5)
-    [year].ics.ts      # iCal download endpoint
     sitemap.xml.ts     # Dynamic sitemap
   layouts/
     Layout.astro       # HTML shell with SEO head and analytics
