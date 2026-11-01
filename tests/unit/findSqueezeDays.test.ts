@@ -84,6 +84,24 @@ describe('hand-verified cases, 2026', () => {
   });
 });
 
+describe('two holidays on the same date', () => {
+  // 17. mai and 2. pinsedag both fall on Monday 17 May in 2027 and 2032.
+  it.each([2027, 2032])('%i: Tue–Fri after 17. mai appears once, labelled with both holidays', (year) => {
+    const groups = squeezeGroupsFor(year).filter((g) => g.some((d) => d.day.format('MM-DD') === '05-18'));
+    expect(groups).toHaveLength(1);
+    const monday = groups[0].find((d) => d.day.format('MM-DD') === '05-17')!;
+    expect(monday.description).toBe('2. pinsedag og 17. mai');
+    expect(inneklemtDates(year).filter((d) => d.endsWith('-05-18'))).toHaveLength(1);
+  });
+
+  it('no year 2021–2035 contains duplicate squeeze groups', () => {
+    for (const year of GOLDEN_YEARS) {
+      const keys = squeezeGroupsFor(year).map((g) => g.map((d) => d.day.format('YYYY-MM-DD')).join(','));
+      expect(new Set(keys).size, String(year)).toBe(keys.length);
+    }
+  });
+});
+
 describe('squeezeDayRange', () => {
   it('a smaller range never yields more squeeze days', () => {
     const h = holidaysNorway(2026);

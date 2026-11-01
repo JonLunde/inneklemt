@@ -10,7 +10,7 @@ dayjs.locale("nb");
 const weekends = [6, 7];
 
 const transformHolidays = (holidays: Holiday[]) => {
-  return holidays
+  const transformed = [...holidays]
     .sort((a, b) => dayjs(a.date).dayOfYear() - dayjs(b.date).dayOfYear())
     .map((holiday) => ({
       ...holiday,
@@ -20,6 +20,17 @@ const transformHolidays = (holidays: Holiday[]) => {
           ? "Kristi himmelfartsdag"
           : holiday.name,
     }));
+
+  // Two holidays can fall on the same date (e.g. 17. mai and 2. pinsedag in 2027 and 2032).
+  // Merge them into one entry so the date produces a single squeeze group, labelled with both names.
+  const byDate = new Map<number, (typeof transformed)[number]>();
+  for (const holiday of transformed) {
+    const key = dayjs(holiday.date).dayOfYear();
+    const existing = byDate.get(key);
+    if (existing) existing.name = `${existing.name} og ${holiday.name}`;
+    else byDate.set(key, { ...holiday });
+  }
+  return [...byDate.values()];
 };
 
 const addPreviousHolidays = (
