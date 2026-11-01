@@ -1,0 +1,41 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate opens all PRs against staging; nothing reaches main without Jon merging a release PR. Green minor/patch PRs auto-merge to staging. Majors and Playwright wait for the Sunday job.",
+  "extends": ["config:recommended", ":dependencyDashboard"],
+  "baseBranchPatterns": ["staging"],
+  "timezone": "Europe/Oslo",
+  "labels": ["dependencies"],
+  "prHourlyLimit": 0,
+  "platformAutomerge": false,
+  "automergeType": "pr",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "vulnerabilityAlerts": {
+    "labels": ["dependencies", "security"],
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "description": "All non-major updates in one PR, merged automatically once CI is green",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "minor og patch",
+      "automerge": true
+    },
+    {
+      "description": "Majors get their own PR and are never auto-merged",
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "major"],
+      "automerge": false
+    },
+    {
+      "description": "A new Playwright version ships a new Chromium, which can change the visual baselines, so it always gets its own PR and is never auto-merged",
+      "matchPackageNames": ["@playwright/test", "playwright", "playwright-core"],
+      "groupName": "playwright",
+      "labels": ["dependencies", "playwright"],
+      "automerge": false
+    }
+  ]
+}
