@@ -8,7 +8,7 @@ interface Props {
   isOpen?: boolean;
 }
 
-const { monthGroup: { monthName, groups }, isOpen = false } = Astro.props;
+const { monthGroup: { monthName, monthKey, groups }, isOpen = false } = Astro.props;
 
 const tooltipText = 'Fridager du får per feriedag du tar ut. Høyere er bedre.';
 
@@ -20,6 +20,9 @@ const groupStats = groups.map((group) => {
   const badgeLabel = `${ratioNum.toFixed(1)} fridager per feriedag. ${tooltipText}`;
   return { group, inneklemtCount, ratioNum, dayWord, badgeLabel };
 });
+
+// Unique per page: one tooltip per period, keyed by month and position.
+const tooltipId = (i: number) => `tip-${monthKey}-${i}`;
 
 const totalInneklemt = groupStats.reduce((sum, gs) => sum + gs.inneklemtCount, 0);
 const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager';
@@ -45,20 +48,23 @@ const totalDayWord = totalInneklemt === 1 ? 'inneklemt dag' : 'inneklemte dager'
   </summary>
 
   <div class="border-t border-border p-4 space-y-3">
-    {groupStats.map((gs) => (
+    {groupStats.map((gs, i) => (
       <div class="rounded-lg border border-border">
         <div class="flex items-center justify-between px-4 py-2.5 bg-bg border-b border-border">
           <span class="text-sm font-medium text-text-muted">{gs.inneklemtCount} {gs.dayWord}</span>
+          {/* Native popover: opens on tap/click/Enter and closes on tap outside or Esc (light dismiss),
+              with zero client JS. Hover still shows it on devices with a real pointer (see global.css). */}
           <div class="tooltip-anchor">
-            <ValueBadge
-              ratio={gs.ratioNum}
-              class="cursor-help select-none"
-              tabindex="0"
-              role="img"
+            <button
+              type="button"
+              class="tooltip-trigger cursor-help select-none rounded"
+              popovertarget={tooltipId(i)}
               aria-label={gs.badgeLabel}
-              title={tooltipText}
-            />
-            <div class="tooltip-content" aria-hidden="true">
+              style={`anchor-name: --${tooltipId(i)}`}
+            >
+              <ValueBadge ratio={gs.ratioNum} aria-hidden="true" />
+            </button>
+            <div id={tooltipId(i)} popover class="tooltip-content" style={`position-anchor: --${tooltipId(i)}`}>
               {tooltipText}
             </div>
           </div>

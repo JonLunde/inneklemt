@@ -26,17 +26,27 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* CSS-only tooltip on value ratio badge */
+/* Value-badge tooltip — a native [popover] anchored to its badge button.
+   - Tap / click / Enter toggles it; tapping outside or Esc closes it (browser light dismiss).
+   - Devices with a real pointer also show it on hover; keyboard users on focus.
+   No client-side JavaScript. */
 .tooltip-anchor {
   position: relative;
 }
 
 .tooltip-content {
-  display: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: calc(100% + 8px);
+  /* Reset the browser's default popover box (centred, bordered). */
+  inset: auto;
+  margin: 0;
+  border: 0;
+  overflow: visible;
+
+  /* Anchor to the left of the badge, vertically centred (CSS anchor positioning). */
+  position: fixed;
+  right: anchor(left);
+  top: anchor(center);
+  translate: -8px -50%;
+
   width: 220px;
   background: #111827;
   color: #f9fafb;
@@ -59,10 +69,7 @@ details > summary::-webkit-details-marker {
   border-left-color: #111827;
 }
 
-/* Shown on keyboard/tap focus everywhere, and on hover only for real pointers.
-   Touch browsers (iOS in particular) keep a "sticky" :hover after a tap, so hover
-   is limited to devices that can actually hover. */
-.tooltip-anchor:focus-within .tooltip-content {
+.tooltip-anchor:has(.tooltip-trigger:focus-visible) .tooltip-content {
   display: block;
 }
 
@@ -72,13 +79,22 @@ details > summary::-webkit-details-marker {
   }
 }
 
-/* iOS Safari only treats a tap as a click (and moves focus away from the badge) when it
-   lands on something "clickable". Marking the page as clickable on touch devices makes a
-   tap anywhere outside the badge close the tooltip. The tap highlight is turned off so
-   the page doesn't flash grey. */
-@media (hover: none) {
-  body {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+/* Browsers without anchor positioning: keep the old placement for hover/focus, and show an
+   opened popover centred on screen instead. */
+@supports not (anchor-name: --a) {
+  .tooltip-content:not(:popover-open) {
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 8px);
+    translate: 0 -50%;
+  }
+  .tooltip-content:popover-open {
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    translate: none;
+  }
+  .tooltip-content:popover-open::after {
+    display: none;
   }
 }
