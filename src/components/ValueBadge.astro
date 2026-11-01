@@ -1,13 +1,11 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends Pick<HTMLAttributes<'span'>, 'class' | 'tabindex' | 'role' | 'aria-label' | 'aria-hidden' | 'title'> {
   ratio: number;
-  tabindex?: string;
-  role?: string;
-  'aria-label'?: string;
-  title?: string;
 }
 
-const { ratio, ...attrs } = Astro.props;
+const { ratio, class: className, ...attrs } = Astro.props;
 
 const style =
   ratio >= 3
@@ -17,6 +15,6 @@ const style =
       : 'background:#22C55E;color:#fff';
 ---
 
-<span style={style} class="text-sm font-bold px-2.5 py-1 rounded" {...attrs}>
+<span style={style} class:list={['text-sm font-bold px-2.5 py-1 rounded', className]} {...attrs}>
   {ratio.toFixed(1)}×
 </span>

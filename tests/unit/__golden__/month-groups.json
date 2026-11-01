@@ -1,0 +1,1735 @@
+{
+  "2021": [
+    {
+      "monthKey": "2021-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2021-03-27 lø. helg",
+          "2021-03-28 sø. Palmesøndag",
+          "2021-03-29 ma. inneklemt",
+          "2021-03-30 ti. inneklemt",
+          "2021-03-31 on. inneklemt",
+          "2021-04-01 to. Skjærtorsdag",
+          "2021-04-02 fr. Langfredag",
+          "2021-04-03 lø. helg",
+          "2021-04-04 sø. 1. påskedag",
+          "2021-04-05 ma. 2. påskedag"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2021-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2021-04-01 to. Skjærtorsdag",
+          "2021-04-02 fr. Langfredag",
+          "2021-04-03 lø. helg",
+          "2021-04-04 sø. 1. påskedag",
+          "2021-04-05 ma. 2. påskedag",
+          "2021-04-06 ti. inneklemt",
+          "2021-04-07 on. inneklemt",
+          "2021-04-08 to. inneklemt",
+          "2021-04-09 fr. inneklemt",
+          "2021-04-10 lø. helg",
+          "2021-04-11 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2021-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2021-05-08 lø. helg",
+          "2021-05-09 sø. helg",
+          "2021-05-10 ma. inneklemt",
+          "2021-05-11 ti. inneklemt",
+          "2021-05-12 on. inneklemt",
+          "2021-05-13 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2021-05-13 to. Kristi himmelfartsdag",
+          "2021-05-14 fr. inneklemt",
+          "2021-05-15 lø. helg",
+          "2021-05-16 sø. helg",
+          "2021-05-17 ma. 17. mai"
+        ],
+        [
+          "2021-05-15 lø. helg",
+          "2021-05-16 sø. helg",
+          "2021-05-17 ma. 17. mai",
+          "2021-05-18 ti. inneklemt",
+          "2021-05-19 on. inneklemt",
+          "2021-05-20 to. inneklemt",
+          "2021-05-21 fr. inneklemt",
+          "2021-05-22 lø. helg",
+          "2021-05-23 sø. 1. pinsedag",
+          "2021-05-24 ma. 2. pinsedag"
+        ],
+        [
+          "2021-05-22 lø. helg",
+          "2021-05-23 sø. 1. pinsedag",
+          "2021-05-24 ma. 2. pinsedag",
+          "2021-05-25 ti. inneklemt",
+          "2021-05-26 on. inneklemt",
+          "2021-05-27 to. inneklemt",
+          "2021-05-28 fr. inneklemt",
+          "2021-05-29 lø. helg",
+          "2021-05-30 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2021-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2021-12-25 lø. 1. juledag",
+          "2021-12-26 sø. 2. juledag",
+          "2021-12-27 ma. inneklemt",
+          "2021-12-28 ti. inneklemt",
+          "2021-12-29 on. inneklemt",
+          "2021-12-30 to. inneklemt",
+          "2021-12-31 fr. inneklemt",
+          "2022-01-01 lø. Nyttårsdag",
+          "2022-01-02 sø. helg"
+        ]
+      ]
+    }
+  ],
+  "2022": [
+    {
+      "monthKey": "2022-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2022-04-09 lø. helg",
+          "2022-04-10 sø. Palmesøndag",
+          "2022-04-11 ma. inneklemt",
+          "2022-04-12 ti. inneklemt",
+          "2022-04-13 on. inneklemt",
+          "2022-04-14 to. Skjærtorsdag",
+          "2022-04-15 fr. Langfredag",
+          "2022-04-16 lø. helg",
+          "2022-04-17 sø. 1. påskedag",
+          "2022-04-18 ma. 2. påskedag"
+        ],
+        [
+          "2022-04-14 to. Skjærtorsdag",
+          "2022-04-15 fr. Langfredag",
+          "2022-04-16 lø. helg",
+          "2022-04-17 sø. 1. påskedag",
+          "2022-04-18 ma. 2. påskedag",
+          "2022-04-19 ti. inneklemt",
+          "2022-04-20 on. inneklemt",
+          "2022-04-21 to. inneklemt",
+          "2022-04-22 fr. inneklemt",
+          "2022-04-23 lø. helg",
+          "2022-04-24 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2022-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2022-05-14 lø. helg",
+          "2022-05-15 sø. helg",
+          "2022-05-16 ma. inneklemt",
+          "2022-05-17 ti. 17. mai"
+        ],
+        [
+          "2022-05-17 ti. 17. mai",
+          "2022-05-18 on. inneklemt",
+          "2022-05-19 to. inneklemt",
+          "2022-05-20 fr. inneklemt",
+          "2022-05-21 lø. helg",
+          "2022-05-22 sø. helg"
+        ],
+        [
+          "2022-05-21 lø. helg",
+          "2022-05-22 sø. helg",
+          "2022-05-23 ma. inneklemt",
+          "2022-05-24 ti. inneklemt",
+          "2022-05-25 on. inneklemt",
+          "2022-05-26 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2022-05-26 to. Kristi himmelfartsdag",
+          "2022-05-27 fr. inneklemt",
+          "2022-05-28 lø. helg",
+          "2022-05-29 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2022-06",
+      "monthName": "juni",
+      "groups": [
+        [
+          "2022-06-04 lø. helg",
+          "2022-06-05 sø. 1. pinsedag",
+          "2022-06-06 ma. 2. pinsedag",
+          "2022-06-07 ti. inneklemt",
+          "2022-06-08 on. inneklemt",
+          "2022-06-09 to. inneklemt",
+          "2022-06-10 fr. inneklemt",
+          "2022-06-11 lø. helg",
+          "2022-06-12 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2022-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2022-12-24 lø. helg",
+          "2022-12-25 sø. 1. juledag",
+          "2022-12-26 ma. 2. juledag",
+          "2022-12-27 ti. inneklemt",
+          "2022-12-28 on. inneklemt",
+          "2022-12-29 to. inneklemt",
+          "2022-12-30 fr. inneklemt",
+          "2022-12-31 lø. helg",
+          "2023-01-01 sø. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2023": [
+    {
+      "monthKey": "2023-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2023-04-01 lø. helg",
+          "2023-04-02 sø. Palmesøndag",
+          "2023-04-03 ma. inneklemt",
+          "2023-04-04 ti. inneklemt",
+          "2023-04-05 on. inneklemt",
+          "2023-04-06 to. Skjærtorsdag",
+          "2023-04-07 fr. Langfredag",
+          "2023-04-08 lø. helg",
+          "2023-04-09 sø. 1. påskedag",
+          "2023-04-10 ma. 2. påskedag"
+        ],
+        [
+          "2023-04-06 to. Skjærtorsdag",
+          "2023-04-07 fr. Langfredag",
+          "2023-04-08 lø. helg",
+          "2023-04-09 sø. 1. påskedag",
+          "2023-04-10 ma. 2. påskedag",
+          "2023-04-11 ti. inneklemt",
+          "2023-04-12 on. inneklemt",
+          "2023-04-13 to. inneklemt",
+          "2023-04-14 fr. inneklemt",
+          "2023-04-15 lø. helg",
+          "2023-04-16 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2023-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2023-04-29 lø. helg",
+          "2023-04-30 sø. helg",
+          "2023-05-01 ma. 1. mai",
+          "2023-05-02 ti. inneklemt",
+          "2023-05-03 on. inneklemt",
+          "2023-05-04 to. inneklemt",
+          "2023-05-05 fr. inneklemt",
+          "2023-05-06 lø. helg",
+          "2023-05-07 sø. helg"
+        ],
+        [
+          "2023-05-13 lø. helg",
+          "2023-05-14 sø. helg",
+          "2023-05-15 ma. inneklemt",
+          "2023-05-16 ti. inneklemt",
+          "2023-05-17 on. 17. mai",
+          "2023-05-18 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2023-05-17 on. 17. mai",
+          "2023-05-18 to. Kristi himmelfartsdag",
+          "2023-05-19 fr. inneklemt",
+          "2023-05-20 lø. helg",
+          "2023-05-21 sø. helg"
+        ],
+        [
+          "2023-05-27 lø. helg",
+          "2023-05-28 sø. 1. pinsedag",
+          "2023-05-29 ma. 2. pinsedag",
+          "2023-05-30 ti. inneklemt",
+          "2023-05-31 on. inneklemt",
+          "2023-06-01 to. inneklemt",
+          "2023-06-02 fr. inneklemt",
+          "2023-06-03 lø. helg",
+          "2023-06-04 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2023-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2023-12-23 lø. helg",
+          "2023-12-24 sø. helg",
+          "2023-12-25 ma. 1. juledag",
+          "2023-12-26 ti. 2. juledag",
+          "2023-12-27 on. inneklemt",
+          "2023-12-28 to. inneklemt",
+          "2023-12-29 fr. inneklemt",
+          "2023-12-30 lø. helg",
+          "2023-12-31 sø. helg",
+          "2024-01-01 ma. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2024": [
+    {
+      "monthKey": "2024-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2023-12-30 lø. helg",
+          "2023-12-31 sø. helg",
+          "2024-01-01 ma. Nyttårsdag",
+          "2024-01-02 ti. inneklemt",
+          "2024-01-03 on. inneklemt",
+          "2024-01-04 to. inneklemt",
+          "2024-01-05 fr. inneklemt",
+          "2024-01-06 lø. helg",
+          "2024-01-07 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2024-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2024-03-23 lø. helg",
+          "2024-03-24 sø. Palmesøndag",
+          "2024-03-25 ma. inneklemt",
+          "2024-03-26 ti. inneklemt",
+          "2024-03-27 on. inneklemt",
+          "2024-03-28 to. Skjærtorsdag",
+          "2024-03-29 fr. Langfredag",
+          "2024-03-30 lø. helg",
+          "2024-03-31 sø. 1. påskedag",
+          "2024-04-01 ma. 2. påskedag"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2024-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2024-03-28 to. Skjærtorsdag",
+          "2024-03-29 fr. Langfredag",
+          "2024-03-30 lø. helg",
+          "2024-03-31 sø. 1. påskedag",
+          "2024-04-01 ma. 2. påskedag",
+          "2024-04-02 ti. inneklemt",
+          "2024-04-03 on. inneklemt",
+          "2024-04-04 to. inneklemt",
+          "2024-04-05 fr. inneklemt",
+          "2024-04-06 lø. helg",
+          "2024-04-07 sø. helg"
+        ],
+        [
+          "2024-04-27 lø. helg",
+          "2024-04-28 sø. helg",
+          "2024-04-29 ma. inneklemt",
+          "2024-04-30 ti. inneklemt",
+          "2024-05-01 on. 1. mai"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2024-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2024-05-01 on. 1. mai",
+          "2024-05-02 to. inneklemt",
+          "2024-05-03 fr. inneklemt",
+          "2024-05-04 lø. helg",
+          "2024-05-05 sø. helg"
+        ],
+        [
+          "2024-05-04 lø. helg",
+          "2024-05-05 sø. helg",
+          "2024-05-06 ma. inneklemt",
+          "2024-05-07 ti. inneklemt",
+          "2024-05-08 on. inneklemt",
+          "2024-05-09 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2024-05-09 to. Kristi himmelfartsdag",
+          "2024-05-10 fr. inneklemt",
+          "2024-05-11 lø. helg",
+          "2024-05-12 sø. helg"
+        ],
+        [
+          "2024-05-11 lø. helg",
+          "2024-05-12 sø. helg",
+          "2024-05-13 ma. inneklemt",
+          "2024-05-14 ti. inneklemt",
+          "2024-05-15 on. inneklemt",
+          "2024-05-16 to. inneklemt",
+          "2024-05-17 fr. 17. mai",
+          "2024-05-18 lø. helg",
+          "2024-05-19 sø. 1. pinsedag",
+          "2024-05-20 ma. 2. pinsedag"
+        ],
+        [
+          "2024-05-17 fr. 17. mai",
+          "2024-05-18 lø. helg",
+          "2024-05-19 sø. 1. pinsedag",
+          "2024-05-20 ma. 2. pinsedag",
+          "2024-05-21 ti. inneklemt",
+          "2024-05-22 on. inneklemt",
+          "2024-05-23 to. inneklemt",
+          "2024-05-24 fr. inneklemt",
+          "2024-05-25 lø. helg",
+          "2024-05-26 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2024-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2024-12-21 lø. helg",
+          "2024-12-22 sø. helg",
+          "2024-12-23 ma. inneklemt",
+          "2024-12-24 ti. inneklemt",
+          "2024-12-25 on. 1. juledag",
+          "2024-12-26 to. 2. juledag"
+        ],
+        [
+          "2024-12-25 on. 1. juledag",
+          "2024-12-26 to. 2. juledag",
+          "2024-12-27 fr. inneklemt",
+          "2024-12-28 lø. helg",
+          "2024-12-29 sø. helg"
+        ],
+        [
+          "2024-12-28 lø. helg",
+          "2024-12-29 sø. helg",
+          "2024-12-30 ma. inneklemt",
+          "2024-12-31 ti. inneklemt",
+          "2025-01-01 on. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2025": [
+    {
+      "monthKey": "2025-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2025-01-01 on. Nyttårsdag",
+          "2025-01-02 to. inneklemt",
+          "2025-01-03 fr. inneklemt",
+          "2025-01-04 lø. helg",
+          "2025-01-05 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2025-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2025-04-12 lø. helg",
+          "2025-04-13 sø. Palmesøndag",
+          "2025-04-14 ma. inneklemt",
+          "2025-04-15 ti. inneklemt",
+          "2025-04-16 on. inneklemt",
+          "2025-04-17 to. Skjærtorsdag",
+          "2025-04-18 fr. Langfredag",
+          "2025-04-19 lø. helg",
+          "2025-04-20 sø. 1. påskedag",
+          "2025-04-21 ma. 2. påskedag"
+        ],
+        [
+          "2025-04-17 to. Skjærtorsdag",
+          "2025-04-18 fr. Langfredag",
+          "2025-04-19 lø. helg",
+          "2025-04-20 sø. 1. påskedag",
+          "2025-04-21 ma. 2. påskedag",
+          "2025-04-22 ti. inneklemt",
+          "2025-04-23 on. inneklemt",
+          "2025-04-24 to. inneklemt",
+          "2025-04-25 fr. inneklemt",
+          "2025-04-26 lø. helg",
+          "2025-04-27 sø. helg"
+        ],
+        [
+          "2025-04-26 lø. helg",
+          "2025-04-27 sø. helg",
+          "2025-04-28 ma. inneklemt",
+          "2025-04-29 ti. inneklemt",
+          "2025-04-30 on. inneklemt",
+          "2025-05-01 to. 1. mai"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2025-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2025-05-01 to. 1. mai",
+          "2025-05-02 fr. inneklemt",
+          "2025-05-03 lø. helg",
+          "2025-05-04 sø. helg"
+        ],
+        [
+          "2025-05-24 lø. helg",
+          "2025-05-25 sø. helg",
+          "2025-05-26 ma. inneklemt",
+          "2025-05-27 ti. inneklemt",
+          "2025-05-28 on. inneklemt",
+          "2025-05-29 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2025-05-29 to. Kristi himmelfartsdag",
+          "2025-05-30 fr. inneklemt",
+          "2025-05-31 lø. helg",
+          "2025-06-01 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2025-06",
+      "monthName": "juni",
+      "groups": [
+        [
+          "2025-06-07 lø. helg",
+          "2025-06-08 sø. 1. pinsedag",
+          "2025-06-09 ma. 2. pinsedag",
+          "2025-06-10 ti. inneklemt",
+          "2025-06-11 on. inneklemt",
+          "2025-06-12 to. inneklemt",
+          "2025-06-13 fr. inneklemt",
+          "2025-06-14 lø. helg",
+          "2025-06-15 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2025-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2025-12-20 lø. helg",
+          "2025-12-21 sø. helg",
+          "2025-12-22 ma. inneklemt",
+          "2025-12-23 ti. inneklemt",
+          "2025-12-24 on. inneklemt",
+          "2025-12-25 to. 1. juledag",
+          "2025-12-26 fr. 2. juledag",
+          "2025-12-27 lø. helg",
+          "2025-12-28 sø. helg"
+        ],
+        [
+          "2025-12-25 to. 1. juledag",
+          "2025-12-26 fr. 2. juledag",
+          "2025-12-27 lø. helg",
+          "2025-12-28 sø. helg",
+          "2025-12-29 ma. inneklemt",
+          "2025-12-30 ti. inneklemt",
+          "2025-12-31 on. inneklemt",
+          "2026-01-01 to. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2026": [
+    {
+      "monthKey": "2026-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2026-01-01 to. Nyttårsdag",
+          "2026-01-02 fr. inneklemt",
+          "2026-01-03 lø. helg",
+          "2026-01-04 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2026-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2026-03-28 lø. helg",
+          "2026-03-29 sø. Palmesøndag",
+          "2026-03-30 ma. inneklemt",
+          "2026-03-31 ti. inneklemt",
+          "2026-04-01 on. inneklemt",
+          "2026-04-02 to. Skjærtorsdag",
+          "2026-04-03 fr. Langfredag",
+          "2026-04-04 lø. helg",
+          "2026-04-05 sø. 1. påskedag",
+          "2026-04-06 ma. 2. påskedag"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2026-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2026-04-02 to. Skjærtorsdag",
+          "2026-04-03 fr. Langfredag",
+          "2026-04-04 lø. helg",
+          "2026-04-05 sø. 1. påskedag",
+          "2026-04-06 ma. 2. påskedag",
+          "2026-04-07 ti. inneklemt",
+          "2026-04-08 on. inneklemt",
+          "2026-04-09 to. inneklemt",
+          "2026-04-10 fr. inneklemt",
+          "2026-04-11 lø. helg",
+          "2026-04-12 sø. helg"
+        ],
+        [
+          "2026-04-25 lø. helg",
+          "2026-04-26 sø. helg",
+          "2026-04-27 ma. inneklemt",
+          "2026-04-28 ti. inneklemt",
+          "2026-04-29 on. inneklemt",
+          "2026-04-30 to. inneklemt",
+          "2026-05-01 fr. 1. mai",
+          "2026-05-02 lø. helg",
+          "2026-05-03 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2026-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2026-05-09 lø. helg",
+          "2026-05-10 sø. helg",
+          "2026-05-11 ma. inneklemt",
+          "2026-05-12 ti. inneklemt",
+          "2026-05-13 on. inneklemt",
+          "2026-05-14 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2026-05-14 to. Kristi himmelfartsdag",
+          "2026-05-15 fr. inneklemt",
+          "2026-05-16 lø. helg",
+          "2026-05-17 sø. 17. mai"
+        ],
+        [
+          "2026-05-23 lø. helg",
+          "2026-05-24 sø. 1. pinsedag",
+          "2026-05-25 ma. 2. pinsedag",
+          "2026-05-26 ti. inneklemt",
+          "2026-05-27 on. inneklemt",
+          "2026-05-28 to. inneklemt",
+          "2026-05-29 fr. inneklemt",
+          "2026-05-30 lø. helg",
+          "2026-05-31 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2026-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2026-12-19 lø. helg",
+          "2026-12-20 sø. helg",
+          "2026-12-21 ma. inneklemt",
+          "2026-12-22 ti. inneklemt",
+          "2026-12-23 on. inneklemt",
+          "2026-12-24 to. inneklemt",
+          "2026-12-25 fr. 1. juledag",
+          "2026-12-26 lø. 2. juledag",
+          "2026-12-27 sø. helg"
+        ],
+        [
+          "2026-12-25 fr. 1. juledag",
+          "2026-12-26 lø. 2. juledag",
+          "2026-12-27 sø. helg",
+          "2026-12-28 ma. inneklemt",
+          "2026-12-29 ti. inneklemt",
+          "2026-12-30 on. inneklemt",
+          "2026-12-31 to. inneklemt",
+          "2027-01-01 fr. Nyttårsdag",
+          "2027-01-02 lø. helg",
+          "2027-01-03 sø. helg"
+        ]
+      ]
+    }
+  ],
+  "2027": [
+    {
+      "monthKey": "2027-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2027-03-20 lø. helg",
+          "2027-03-21 sø. Palmesøndag",
+          "2027-03-22 ma. inneklemt",
+          "2027-03-23 ti. inneklemt",
+          "2027-03-24 on. inneklemt",
+          "2027-03-25 to. Skjærtorsdag",
+          "2027-03-26 fr. Langfredag",
+          "2027-03-27 lø. helg",
+          "2027-03-28 sø. 1. påskedag",
+          "2027-03-29 ma. 2. påskedag"
+        ],
+        [
+          "2027-03-25 to. Skjærtorsdag",
+          "2027-03-26 fr. Langfredag",
+          "2027-03-27 lø. helg",
+          "2027-03-28 sø. 1. påskedag",
+          "2027-03-29 ma. 2. påskedag",
+          "2027-03-30 ti. inneklemt",
+          "2027-03-31 on. inneklemt",
+          "2027-04-01 to. inneklemt",
+          "2027-04-02 fr. inneklemt",
+          "2027-04-03 lø. helg",
+          "2027-04-04 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2027-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2027-05-01 lø. 1. mai",
+          "2027-05-02 sø. helg",
+          "2027-05-03 ma. inneklemt",
+          "2027-05-04 ti. inneklemt",
+          "2027-05-05 on. inneklemt",
+          "2027-05-06 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2027-05-06 to. Kristi himmelfartsdag",
+          "2027-05-07 fr. inneklemt",
+          "2027-05-08 lø. helg",
+          "2027-05-09 sø. helg"
+        ],
+        [
+          "2027-05-15 lø. helg",
+          "2027-05-16 sø. 1. pinsedag",
+          "2027-05-17 ma. 2. pinsedag",
+          "2027-05-18 ti. inneklemt",
+          "2027-05-19 on. inneklemt",
+          "2027-05-20 to. inneklemt",
+          "2027-05-21 fr. inneklemt",
+          "2027-05-22 lø. helg",
+          "2027-05-23 sø. helg"
+        ],
+        [
+          "2027-05-15 lø. helg",
+          "2027-05-16 sø. 1. pinsedag",
+          "2027-05-17 ma. 2. pinsedag",
+          "2027-05-18 ti. inneklemt",
+          "2027-05-19 on. inneklemt",
+          "2027-05-20 to. inneklemt",
+          "2027-05-21 fr. inneklemt",
+          "2027-05-22 lø. helg",
+          "2027-05-23 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2027-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2027-12-25 lø. 1. juledag",
+          "2027-12-26 sø. 2. juledag",
+          "2027-12-27 ma. inneklemt",
+          "2027-12-28 ti. inneklemt",
+          "2027-12-29 on. inneklemt",
+          "2027-12-30 to. inneklemt",
+          "2027-12-31 fr. inneklemt",
+          "2028-01-01 lø. Nyttårsdag",
+          "2028-01-02 sø. helg"
+        ]
+      ]
+    }
+  ],
+  "2028": [
+    {
+      "monthKey": "2028-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2028-04-08 lø. helg",
+          "2028-04-09 sø. Palmesøndag",
+          "2028-04-10 ma. inneklemt",
+          "2028-04-11 ti. inneklemt",
+          "2028-04-12 on. inneklemt",
+          "2028-04-13 to. Skjærtorsdag",
+          "2028-04-14 fr. Langfredag",
+          "2028-04-15 lø. helg",
+          "2028-04-16 sø. 1. påskedag",
+          "2028-04-17 ma. 2. påskedag"
+        ],
+        [
+          "2028-04-13 to. Skjærtorsdag",
+          "2028-04-14 fr. Langfredag",
+          "2028-04-15 lø. helg",
+          "2028-04-16 sø. 1. påskedag",
+          "2028-04-17 ma. 2. påskedag",
+          "2028-04-18 ti. inneklemt",
+          "2028-04-19 on. inneklemt",
+          "2028-04-20 to. inneklemt",
+          "2028-04-21 fr. inneklemt",
+          "2028-04-22 lø. helg",
+          "2028-04-23 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2028-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2028-04-29 lø. helg",
+          "2028-04-30 sø. helg",
+          "2028-05-01 ma. 1. mai",
+          "2028-05-02 ti. inneklemt",
+          "2028-05-03 on. inneklemt",
+          "2028-05-04 to. inneklemt",
+          "2028-05-05 fr. inneklemt",
+          "2028-05-06 lø. helg",
+          "2028-05-07 sø. helg"
+        ],
+        [
+          "2028-05-13 lø. helg",
+          "2028-05-14 sø. helg",
+          "2028-05-15 ma. inneklemt",
+          "2028-05-16 ti. inneklemt",
+          "2028-05-17 on. 17. mai"
+        ],
+        [
+          "2028-05-17 on. 17. mai",
+          "2028-05-18 to. inneklemt",
+          "2028-05-19 fr. inneklemt",
+          "2028-05-20 lø. helg",
+          "2028-05-21 sø. helg"
+        ],
+        [
+          "2028-05-20 lø. helg",
+          "2028-05-21 sø. helg",
+          "2028-05-22 ma. inneklemt",
+          "2028-05-23 ti. inneklemt",
+          "2028-05-24 on. inneklemt",
+          "2028-05-25 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2028-05-25 to. Kristi himmelfartsdag",
+          "2028-05-26 fr. inneklemt",
+          "2028-05-27 lø. helg",
+          "2028-05-28 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2028-06",
+      "monthName": "juni",
+      "groups": [
+        [
+          "2028-06-03 lø. helg",
+          "2028-06-04 sø. 1. pinsedag",
+          "2028-06-05 ma. 2. pinsedag",
+          "2028-06-06 ti. inneklemt",
+          "2028-06-07 on. inneklemt",
+          "2028-06-08 to. inneklemt",
+          "2028-06-09 fr. inneklemt",
+          "2028-06-10 lø. helg",
+          "2028-06-11 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2028-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2028-12-23 lø. helg",
+          "2028-12-24 sø. helg",
+          "2028-12-25 ma. 1. juledag",
+          "2028-12-26 ti. 2. juledag",
+          "2028-12-27 on. inneklemt",
+          "2028-12-28 to. inneklemt",
+          "2028-12-29 fr. inneklemt",
+          "2028-12-30 lø. helg",
+          "2028-12-31 sø. helg",
+          "2029-01-01 ma. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2029": [
+    {
+      "monthKey": "2029-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2028-12-30 lø. helg",
+          "2028-12-31 sø. helg",
+          "2029-01-01 ma. Nyttårsdag",
+          "2029-01-02 ti. inneklemt",
+          "2029-01-03 on. inneklemt",
+          "2029-01-04 to. inneklemt",
+          "2029-01-05 fr. inneklemt",
+          "2029-01-06 lø. helg",
+          "2029-01-07 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2029-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2029-03-24 lø. helg",
+          "2029-03-25 sø. Palmesøndag",
+          "2029-03-26 ma. inneklemt",
+          "2029-03-27 ti. inneklemt",
+          "2029-03-28 on. inneklemt",
+          "2029-03-29 to. Skjærtorsdag",
+          "2029-03-30 fr. Langfredag",
+          "2029-03-31 lø. helg",
+          "2029-04-01 sø. 1. påskedag",
+          "2029-04-02 ma. 2. påskedag"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2029-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2029-03-29 to. Skjærtorsdag",
+          "2029-03-30 fr. Langfredag",
+          "2029-03-31 lø. helg",
+          "2029-04-01 sø. 1. påskedag",
+          "2029-04-02 ma. 2. påskedag",
+          "2029-04-03 ti. inneklemt",
+          "2029-04-04 on. inneklemt",
+          "2029-04-05 to. inneklemt",
+          "2029-04-06 fr. inneklemt",
+          "2029-04-07 lø. helg",
+          "2029-04-08 sø. helg"
+        ],
+        [
+          "2029-04-28 lø. helg",
+          "2029-04-29 sø. helg",
+          "2029-04-30 ma. inneklemt",
+          "2029-05-01 ti. 1. mai"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2029-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2029-05-01 ti. 1. mai",
+          "2029-05-02 on. inneklemt",
+          "2029-05-03 to. inneklemt",
+          "2029-05-04 fr. inneklemt",
+          "2029-05-05 lø. helg",
+          "2029-05-06 sø. helg"
+        ],
+        [
+          "2029-05-05 lø. helg",
+          "2029-05-06 sø. helg",
+          "2029-05-07 ma. inneklemt",
+          "2029-05-08 ti. inneklemt",
+          "2029-05-09 on. inneklemt",
+          "2029-05-10 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2029-05-10 to. Kristi himmelfartsdag",
+          "2029-05-11 fr. inneklemt",
+          "2029-05-12 lø. helg",
+          "2029-05-13 sø. helg"
+        ],
+        [
+          "2029-05-12 lø. helg",
+          "2029-05-13 sø. helg",
+          "2029-05-14 ma. inneklemt",
+          "2029-05-15 ti. inneklemt",
+          "2029-05-16 on. inneklemt",
+          "2029-05-17 to. 17. mai"
+        ],
+        [
+          "2029-05-17 to. 17. mai",
+          "2029-05-18 fr. inneklemt",
+          "2029-05-19 lø. helg",
+          "2029-05-20 sø. 1. pinsedag",
+          "2029-05-21 ma. 2. pinsedag"
+        ],
+        [
+          "2029-05-19 lø. helg",
+          "2029-05-20 sø. 1. pinsedag",
+          "2029-05-21 ma. 2. pinsedag",
+          "2029-05-22 ti. inneklemt",
+          "2029-05-23 on. inneklemt",
+          "2029-05-24 to. inneklemt",
+          "2029-05-25 fr. inneklemt",
+          "2029-05-26 lø. helg",
+          "2029-05-27 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2029-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2029-12-22 lø. helg",
+          "2029-12-23 sø. helg",
+          "2029-12-24 ma. inneklemt",
+          "2029-12-25 ti. 1. juledag",
+          "2029-12-26 on. 2. juledag"
+        ],
+        [
+          "2029-12-25 ti. 1. juledag",
+          "2029-12-26 on. 2. juledag",
+          "2029-12-27 to. inneklemt",
+          "2029-12-28 fr. inneklemt",
+          "2029-12-29 lø. helg",
+          "2029-12-30 sø. helg"
+        ],
+        [
+          "2029-12-29 lø. helg",
+          "2029-12-30 sø. helg",
+          "2029-12-31 ma. inneklemt",
+          "2030-01-01 ti. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2030": [
+    {
+      "monthKey": "2030-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2030-01-01 ti. Nyttårsdag",
+          "2030-01-02 on. inneklemt",
+          "2030-01-03 to. inneklemt",
+          "2030-01-04 fr. inneklemt",
+          "2030-01-05 lø. helg",
+          "2030-01-06 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2030-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2030-04-13 lø. helg",
+          "2030-04-14 sø. Palmesøndag",
+          "2030-04-15 ma. inneklemt",
+          "2030-04-16 ti. inneklemt",
+          "2030-04-17 on. inneklemt",
+          "2030-04-18 to. Skjærtorsdag",
+          "2030-04-19 fr. Langfredag",
+          "2030-04-20 lø. helg",
+          "2030-04-21 sø. 1. påskedag",
+          "2030-04-22 ma. 2. påskedag"
+        ],
+        [
+          "2030-04-18 to. Skjærtorsdag",
+          "2030-04-19 fr. Langfredag",
+          "2030-04-20 lø. helg",
+          "2030-04-21 sø. 1. påskedag",
+          "2030-04-22 ma. 2. påskedag",
+          "2030-04-23 ti. inneklemt",
+          "2030-04-24 on. inneklemt",
+          "2030-04-25 to. inneklemt",
+          "2030-04-26 fr. inneklemt",
+          "2030-04-27 lø. helg",
+          "2030-04-28 sø. helg"
+        ],
+        [
+          "2030-04-27 lø. helg",
+          "2030-04-28 sø. helg",
+          "2030-04-29 ma. inneklemt",
+          "2030-04-30 ti. inneklemt",
+          "2030-05-01 on. 1. mai"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2030-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2030-05-01 on. 1. mai",
+          "2030-05-02 to. inneklemt",
+          "2030-05-03 fr. inneklemt",
+          "2030-05-04 lø. helg",
+          "2030-05-05 sø. helg"
+        ],
+        [
+          "2030-05-11 lø. helg",
+          "2030-05-12 sø. helg",
+          "2030-05-13 ma. inneklemt",
+          "2030-05-14 ti. inneklemt",
+          "2030-05-15 on. inneklemt",
+          "2030-05-16 to. inneklemt",
+          "2030-05-17 fr. 17. mai",
+          "2030-05-18 lø. helg",
+          "2030-05-19 sø. helg"
+        ],
+        [
+          "2030-05-25 lø. helg",
+          "2030-05-26 sø. helg",
+          "2030-05-27 ma. inneklemt",
+          "2030-05-28 ti. inneklemt",
+          "2030-05-29 on. inneklemt",
+          "2030-05-30 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2030-05-30 to. Kristi himmelfartsdag",
+          "2030-05-31 fr. inneklemt",
+          "2030-06-01 lø. helg",
+          "2030-06-02 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2030-06",
+      "monthName": "juni",
+      "groups": [
+        [
+          "2030-06-08 lø. helg",
+          "2030-06-09 sø. 1. pinsedag",
+          "2030-06-10 ma. 2. pinsedag",
+          "2030-06-11 ti. inneklemt",
+          "2030-06-12 on. inneklemt",
+          "2030-06-13 to. inneklemt",
+          "2030-06-14 fr. inneklemt",
+          "2030-06-15 lø. helg",
+          "2030-06-16 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2030-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2030-12-21 lø. helg",
+          "2030-12-22 sø. helg",
+          "2030-12-23 ma. inneklemt",
+          "2030-12-24 ti. inneklemt",
+          "2030-12-25 on. 1. juledag",
+          "2030-12-26 to. 2. juledag"
+        ],
+        [
+          "2030-12-25 on. 1. juledag",
+          "2030-12-26 to. 2. juledag",
+          "2030-12-27 fr. inneklemt",
+          "2030-12-28 lø. helg",
+          "2030-12-29 sø. helg"
+        ],
+        [
+          "2030-12-28 lø. helg",
+          "2030-12-29 sø. helg",
+          "2030-12-30 ma. inneklemt",
+          "2030-12-31 ti. inneklemt",
+          "2031-01-01 on. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2031": [
+    {
+      "monthKey": "2031-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2031-01-01 on. Nyttårsdag",
+          "2031-01-02 to. inneklemt",
+          "2031-01-03 fr. inneklemt",
+          "2031-01-04 lø. helg",
+          "2031-01-05 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2031-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2031-04-05 lø. helg",
+          "2031-04-06 sø. Palmesøndag",
+          "2031-04-07 ma. inneklemt",
+          "2031-04-08 ti. inneklemt",
+          "2031-04-09 on. inneklemt",
+          "2031-04-10 to. Skjærtorsdag",
+          "2031-04-11 fr. Langfredag",
+          "2031-04-12 lø. helg",
+          "2031-04-13 sø. 1. påskedag",
+          "2031-04-14 ma. 2. påskedag"
+        ],
+        [
+          "2031-04-10 to. Skjærtorsdag",
+          "2031-04-11 fr. Langfredag",
+          "2031-04-12 lø. helg",
+          "2031-04-13 sø. 1. påskedag",
+          "2031-04-14 ma. 2. påskedag",
+          "2031-04-15 ti. inneklemt",
+          "2031-04-16 on. inneklemt",
+          "2031-04-17 to. inneklemt",
+          "2031-04-18 fr. inneklemt",
+          "2031-04-19 lø. helg",
+          "2031-04-20 sø. helg"
+        ],
+        [
+          "2031-04-26 lø. helg",
+          "2031-04-27 sø. helg",
+          "2031-04-28 ma. inneklemt",
+          "2031-04-29 ti. inneklemt",
+          "2031-04-30 on. inneklemt",
+          "2031-05-01 to. 1. mai"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2031-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2031-05-01 to. 1. mai",
+          "2031-05-02 fr. inneklemt",
+          "2031-05-03 lø. helg",
+          "2031-05-04 sø. helg"
+        ],
+        [
+          "2031-05-17 lø. 17. mai",
+          "2031-05-18 sø. helg",
+          "2031-05-19 ma. inneklemt",
+          "2031-05-20 ti. inneklemt",
+          "2031-05-21 on. inneklemt",
+          "2031-05-22 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2031-05-22 to. Kristi himmelfartsdag",
+          "2031-05-23 fr. inneklemt",
+          "2031-05-24 lø. helg",
+          "2031-05-25 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2031-06",
+      "monthName": "juni",
+      "groups": [
+        [
+          "2031-05-31 lø. helg",
+          "2031-06-01 sø. 1. pinsedag",
+          "2031-06-02 ma. 2. pinsedag",
+          "2031-06-03 ti. inneklemt",
+          "2031-06-04 on. inneklemt",
+          "2031-06-05 to. inneklemt",
+          "2031-06-06 fr. inneklemt",
+          "2031-06-07 lø. helg",
+          "2031-06-08 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2031-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2031-12-20 lø. helg",
+          "2031-12-21 sø. helg",
+          "2031-12-22 ma. inneklemt",
+          "2031-12-23 ti. inneklemt",
+          "2031-12-24 on. inneklemt",
+          "2031-12-25 to. 1. juledag",
+          "2031-12-26 fr. 2. juledag",
+          "2031-12-27 lø. helg",
+          "2031-12-28 sø. helg"
+        ],
+        [
+          "2031-12-25 to. 1. juledag",
+          "2031-12-26 fr. 2. juledag",
+          "2031-12-27 lø. helg",
+          "2031-12-28 sø. helg",
+          "2031-12-29 ma. inneklemt",
+          "2031-12-30 ti. inneklemt",
+          "2031-12-31 on. inneklemt",
+          "2032-01-01 to. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2032": [
+    {
+      "monthKey": "2032-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2032-01-01 to. Nyttårsdag",
+          "2032-01-02 fr. inneklemt",
+          "2032-01-03 lø. helg",
+          "2032-01-04 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2032-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2032-03-20 lø. helg",
+          "2032-03-21 sø. Palmesøndag",
+          "2032-03-22 ma. inneklemt",
+          "2032-03-23 ti. inneklemt",
+          "2032-03-24 on. inneklemt",
+          "2032-03-25 to. Skjærtorsdag",
+          "2032-03-26 fr. Langfredag",
+          "2032-03-27 lø. helg",
+          "2032-03-28 sø. 1. påskedag",
+          "2032-03-29 ma. 2. påskedag"
+        ],
+        [
+          "2032-03-25 to. Skjærtorsdag",
+          "2032-03-26 fr. Langfredag",
+          "2032-03-27 lø. helg",
+          "2032-03-28 sø. 1. påskedag",
+          "2032-03-29 ma. 2. påskedag",
+          "2032-03-30 ti. inneklemt",
+          "2032-03-31 on. inneklemt",
+          "2032-04-01 to. inneklemt",
+          "2032-04-02 fr. inneklemt",
+          "2032-04-03 lø. helg",
+          "2032-04-04 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2032-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2032-05-01 lø. 1. mai",
+          "2032-05-02 sø. helg",
+          "2032-05-03 ma. inneklemt",
+          "2032-05-04 ti. inneklemt",
+          "2032-05-05 on. inneklemt",
+          "2032-05-06 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2032-05-06 to. Kristi himmelfartsdag",
+          "2032-05-07 fr. inneklemt",
+          "2032-05-08 lø. helg",
+          "2032-05-09 sø. helg"
+        ],
+        [
+          "2032-05-15 lø. helg",
+          "2032-05-16 sø. 1. pinsedag",
+          "2032-05-17 ma. 2. pinsedag",
+          "2032-05-18 ti. inneklemt",
+          "2032-05-19 on. inneklemt",
+          "2032-05-20 to. inneklemt",
+          "2032-05-21 fr. inneklemt",
+          "2032-05-22 lø. helg",
+          "2032-05-23 sø. helg"
+        ],
+        [
+          "2032-05-15 lø. helg",
+          "2032-05-16 sø. 1. pinsedag",
+          "2032-05-17 ma. 2. pinsedag",
+          "2032-05-18 ti. inneklemt",
+          "2032-05-19 on. inneklemt",
+          "2032-05-20 to. inneklemt",
+          "2032-05-21 fr. inneklemt",
+          "2032-05-22 lø. helg",
+          "2032-05-23 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2032-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2032-12-25 lø. 1. juledag",
+          "2032-12-26 sø. 2. juledag",
+          "2032-12-27 ma. inneklemt",
+          "2032-12-28 ti. inneklemt",
+          "2032-12-29 on. inneklemt",
+          "2032-12-30 to. inneklemt",
+          "2032-12-31 fr. inneklemt",
+          "2033-01-01 lø. Nyttårsdag",
+          "2033-01-02 sø. helg"
+        ]
+      ]
+    }
+  ],
+  "2033": [
+    {
+      "monthKey": "2033-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2033-04-09 lø. helg",
+          "2033-04-10 sø. Palmesøndag",
+          "2033-04-11 ma. inneklemt",
+          "2033-04-12 ti. inneklemt",
+          "2033-04-13 on. inneklemt",
+          "2033-04-14 to. Skjærtorsdag",
+          "2033-04-15 fr. Langfredag",
+          "2033-04-16 lø. helg",
+          "2033-04-17 sø. 1. påskedag",
+          "2033-04-18 ma. 2. påskedag"
+        ],
+        [
+          "2033-04-14 to. Skjærtorsdag",
+          "2033-04-15 fr. Langfredag",
+          "2033-04-16 lø. helg",
+          "2033-04-17 sø. 1. påskedag",
+          "2033-04-18 ma. 2. påskedag",
+          "2033-04-19 ti. inneklemt",
+          "2033-04-20 on. inneklemt",
+          "2033-04-21 to. inneklemt",
+          "2033-04-22 fr. inneklemt",
+          "2033-04-23 lø. helg",
+          "2033-04-24 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2033-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2033-05-14 lø. helg",
+          "2033-05-15 sø. helg",
+          "2033-05-16 ma. inneklemt",
+          "2033-05-17 ti. 17. mai"
+        ],
+        [
+          "2033-05-17 ti. 17. mai",
+          "2033-05-18 on. inneklemt",
+          "2033-05-19 to. inneklemt",
+          "2033-05-20 fr. inneklemt",
+          "2033-05-21 lø. helg",
+          "2033-05-22 sø. helg"
+        ],
+        [
+          "2033-05-21 lø. helg",
+          "2033-05-22 sø. helg",
+          "2033-05-23 ma. inneklemt",
+          "2033-05-24 ti. inneklemt",
+          "2033-05-25 on. inneklemt",
+          "2033-05-26 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2033-05-26 to. Kristi himmelfartsdag",
+          "2033-05-27 fr. inneklemt",
+          "2033-05-28 lø. helg",
+          "2033-05-29 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2033-06",
+      "monthName": "juni",
+      "groups": [
+        [
+          "2033-06-04 lø. helg",
+          "2033-06-05 sø. 1. pinsedag",
+          "2033-06-06 ma. 2. pinsedag",
+          "2033-06-07 ti. inneklemt",
+          "2033-06-08 on. inneklemt",
+          "2033-06-09 to. inneklemt",
+          "2033-06-10 fr. inneklemt",
+          "2033-06-11 lø. helg",
+          "2033-06-12 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2033-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2033-12-24 lø. helg",
+          "2033-12-25 sø. 1. juledag",
+          "2033-12-26 ma. 2. juledag",
+          "2033-12-27 ti. inneklemt",
+          "2033-12-28 on. inneklemt",
+          "2033-12-29 to. inneklemt",
+          "2033-12-30 fr. inneklemt",
+          "2033-12-31 lø. helg",
+          "2034-01-01 sø. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2034": [
+    {
+      "monthKey": "2034-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2034-04-01 lø. helg",
+          "2034-04-02 sø. Palmesøndag",
+          "2034-04-03 ma. inneklemt",
+          "2034-04-04 ti. inneklemt",
+          "2034-04-05 on. inneklemt",
+          "2034-04-06 to. Skjærtorsdag",
+          "2034-04-07 fr. Langfredag",
+          "2034-04-08 lø. helg",
+          "2034-04-09 sø. 1. påskedag",
+          "2034-04-10 ma. 2. påskedag"
+        ],
+        [
+          "2034-04-06 to. Skjærtorsdag",
+          "2034-04-07 fr. Langfredag",
+          "2034-04-08 lø. helg",
+          "2034-04-09 sø. 1. påskedag",
+          "2034-04-10 ma. 2. påskedag",
+          "2034-04-11 ti. inneklemt",
+          "2034-04-12 on. inneklemt",
+          "2034-04-13 to. inneklemt",
+          "2034-04-14 fr. inneklemt",
+          "2034-04-15 lø. helg",
+          "2034-04-16 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2034-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2034-04-29 lø. helg",
+          "2034-04-30 sø. helg",
+          "2034-05-01 ma. 1. mai",
+          "2034-05-02 ti. inneklemt",
+          "2034-05-03 on. inneklemt",
+          "2034-05-04 to. inneklemt",
+          "2034-05-05 fr. inneklemt",
+          "2034-05-06 lø. helg",
+          "2034-05-07 sø. helg"
+        ],
+        [
+          "2034-05-13 lø. helg",
+          "2034-05-14 sø. helg",
+          "2034-05-15 ma. inneklemt",
+          "2034-05-16 ti. inneklemt",
+          "2034-05-17 on. 17. mai",
+          "2034-05-18 to. Kristi himmelfartsdag"
+        ],
+        [
+          "2034-05-17 on. 17. mai",
+          "2034-05-18 to. Kristi himmelfartsdag",
+          "2034-05-19 fr. inneklemt",
+          "2034-05-20 lø. helg",
+          "2034-05-21 sø. helg"
+        ],
+        [
+          "2034-05-27 lø. helg",
+          "2034-05-28 sø. 1. pinsedag",
+          "2034-05-29 ma. 2. pinsedag",
+          "2034-05-30 ti. inneklemt",
+          "2034-05-31 on. inneklemt",
+          "2034-06-01 to. inneklemt",
+          "2034-06-02 fr. inneklemt",
+          "2034-06-03 lø. helg",
+          "2034-06-04 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2034-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2034-12-23 lø. helg",
+          "2034-12-24 sø. helg",
+          "2034-12-25 ma. 1. juledag",
+          "2034-12-26 ti. 2. juledag",
+          "2034-12-27 on. inneklemt",
+          "2034-12-28 to. inneklemt",
+          "2034-12-29 fr. inneklemt",
+          "2034-12-30 lø. helg",
+          "2034-12-31 sø. helg",
+          "2035-01-01 ma. Nyttårsdag"
+        ]
+      ]
+    }
+  ],
+  "2035": [
+    {
+      "monthKey": "2035-01",
+      "monthName": "januar",
+      "groups": [
+        [
+          "2034-12-30 lø. helg",
+          "2034-12-31 sø. helg",
+          "2035-01-01 ma. Nyttårsdag",
+          "2035-01-02 ti. inneklemt",
+          "2035-01-03 on. inneklemt",
+          "2035-01-04 to. inneklemt",
+          "2035-01-05 fr. inneklemt",
+          "2035-01-06 lø. helg",
+          "2035-01-07 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2035-03",
+      "monthName": "mars",
+      "groups": [
+        [
+          "2035-03-17 lø. helg",
+          "2035-03-18 sø. Palmesøndag",
+          "2035-03-19 ma. inneklemt",
+          "2035-03-20 ti. inneklemt",
+          "2035-03-21 on. inneklemt",
+          "2035-03-22 to. Skjærtorsdag",
+          "2035-03-23 fr. Langfredag",
+          "2035-03-24 lø. helg",
+          "2035-03-25 sø. 1. påskedag",
+          "2035-03-26 ma. 2. påskedag"
+        ],
+        [
+          "2035-03-22 to. Skjærtorsdag",
+          "2035-03-23 fr. Langfredag",
+          "2035-03-24 lø. helg",
+          "2035-03-25 sø. 1. påskedag",
+          "2035-03-26 ma. 2. påskedag",
+          "2035-03-27 ti. inneklemt",
+          "2035-03-28 on. inneklemt",
+          "2035-03-29 to. inneklemt",
+          "2035-03-30 fr. inneklemt",
+          "2035-03-31 lø. helg",
+          "2035-04-01 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2035-04",
+      "monthName": "april",
+      "groups": [
+        [
+          "2035-04-28 lø. helg",
+          "2035-04-29 sø. helg",
+          "2035-04-30 ma. inneklemt",
+          "2035-05-01 ti. 1. mai"
+        ],
+        [
+          "2035-04-28 lø. helg",
+          "2035-04-29 sø. helg",
+          "2035-04-30 ma. inneklemt",
+          "2035-05-01 ti. inneklemt",
+          "2035-05-02 on. inneklemt",
+          "2035-05-03 to. Kristi himmelfartsdag"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2035-05",
+      "monthName": "mai",
+      "groups": [
+        [
+          "2035-05-01 ti. 1. mai",
+          "2035-05-02 on. inneklemt",
+          "2035-05-03 to. inneklemt",
+          "2035-05-04 fr. inneklemt",
+          "2035-05-05 lø. helg",
+          "2035-05-06 sø. helg"
+        ],
+        [
+          "2035-05-03 to. Kristi himmelfartsdag",
+          "2035-05-04 fr. inneklemt",
+          "2035-05-05 lø. helg",
+          "2035-05-06 sø. helg"
+        ],
+        [
+          "2035-05-12 lø. helg",
+          "2035-05-13 sø. 1. pinsedag",
+          "2035-05-14 ma. 2. pinsedag",
+          "2035-05-15 ti. inneklemt",
+          "2035-05-16 on. inneklemt",
+          "2035-05-17 to. inneklemt",
+          "2035-05-18 fr. inneklemt",
+          "2035-05-19 lø. helg",
+          "2035-05-20 sø. helg"
+        ],
+        [
+          "2035-05-12 lø. helg",
+          "2035-05-13 sø. 1. pinsedag",
+          "2035-05-14 ma. inneklemt",
+          "2035-05-15 ti. inneklemt",
+          "2035-05-16 on. inneklemt",
+          "2035-05-17 to. 17. mai"
+        ],
+        [
+          "2035-05-17 to. 17. mai",
+          "2035-05-18 fr. inneklemt",
+          "2035-05-19 lø. helg",
+          "2035-05-20 sø. helg"
+        ]
+      ]
+    },
+    {
+      "monthKey": "2035-12",
+      "monthName": "desember",
+      "groups": [
+        [
+          "2035-12-22 lø. helg",
+          "2035-12-23 sø. helg",
+          "2035-12-24 ma. inneklemt",
+          "2035-12-25 ti. 1. juledag",
+          "2035-12-26 on. 2. juledag"
+        ],
+        [
+          "2035-12-25 ti. 1. juledag",
+          "2035-12-26 on. 2. juledag",
+          "2035-12-27 to. inneklemt",
+          "2035-12-28 fr. inneklemt",
+          "2035-12-29 lø. helg",
+          "2035-12-30 sø. helg"
+        ],
+        [
+          "2035-12-29 lø. helg",
+          "2035-12-30 sø. helg",
+          "2035-12-31 ma. inneklemt",
+          "2036-01-01 ti. Nyttårsdag"
+        ]
+      ]
+    }
+  ]
+}

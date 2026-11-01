@@ -12,18 +12,33 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev      # Start development server (requires Node ≥ 22)
 npm run build    # Production build → dist/
 npm run preview  # Preview the production build locally
+npm run check    # astro check (TypeScript)
+npm test         # Vitest unit tests (algorithm golden files)
+npm run test:e2e # Playwright: smoke, interaction and visual regression (desktop + mobile)
 ```
-
-No automated tests. Verification is done via `npm run build` and manual browser inspection.
 
 Node ≥ 22 is required. If the default Node is too old, use:
 ```bash
 /c/Users/Jon/AppData/Roaming/nvm/v22.12.0/node.exe node_modules/.bin/astro build
 ```
 
+## Tests
+
+CI (`.github/workflows/ci.yml`) runs on every PR to `staging`/`main`: typecheck → unit tests → build → Playwright.
+
+- **Unit (`tests/unit/`)** — golden files in `tests/unit/__golden__/` lock the holiday data and the full squeeze-day output for 2021–2035, *including* known `//!` limitations (e.g. the duplicate May 2027 group when 17. mai and 2. pinsedag coincide). A deliberate algorithm change → review the diff, then `npm test -- -u`.
+- **E2E (`tests/e2e/`)** — the site is built with a frozen clock (`tests/e2e/freeze-time.mjs`, 2026-05-10) so the current year, the ±5 range and the open month card never drift. Every test fails on console errors or 4xx/5xx requests.
+- **Visual baselines (`tests/e2e/__screenshots__/`)** — only valid when generated in the Playwright Docker image CI uses (the site uses system fonts). Never regenerate them locally or as part of a dependency PR. To re-baseline deliberately: run the "Update visual baselines" workflow on the branch, or push a commit containing `[update-screenshots]`, then push again to re-run CI.
+- Locally without the bundled browser: `PW_CHANNEL=chrome npm run test:e2e` (visual tests will differ from CI baselines; that's expected).
+
+### Dependency PRs
+
+- `deps/weekly-*` → `staging`: auto-merged by CI when all checks are green and the PR doesn't touch tests, baselines or CI config.
+- `deps/major-*`: always manual.
+
 ## Stack
 
-- **Astro 6** — pure SSG, zero React, zero client-side JavaScript
+- **Astro 7** — pure SSG, zero React, zero client-side JavaScript
 - **Tailwind CSS v4** — configured via `@theme {}` in `src/styles/global.css` (no `tailwind.config.js`)
 - **TypeScript** — strict mode
 - **Node 24.x** — pinned in `package.json` engines field
