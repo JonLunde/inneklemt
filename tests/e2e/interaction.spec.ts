@@ -65,6 +65,42 @@ test.describe('value badge tooltip', () => {
     await expect(tooltip).toBeHidden();
   });
 
+  test('closes when tapping/clicking outside, also on touch devices', async ({ page }, testInfo) => {
+    await page.goto('/');
+    const anchor = page.locator('main details[open] .tooltip-anchor').first();
+    const badge = anchor.locator('[role="img"]');
+    const tooltip = anchor.locator('.tooltip-content');
+    const isMobile = testInfo.project.name === 'mobile';
+
+    if (isMobile) await badge.tap();
+    else await badge.click();
+    await expect(tooltip).toBeVisible();
+
+    // Tap/click on plain, non-interactive text outside the badge.
+    const outside = page.locator('section dl dd').first();
+    if (isMobile) await outside.tap();
+    else await outside.click();
+    await expect(tooltip).toBeHidden();
+  });
+
+  test('desktop: shows on hover and hides when the pointer leaves', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'desktop', 'hover only applies to real pointers');
+    await page.goto('/');
+    const anchor = page.locator('main details[open] .tooltip-anchor').first();
+    const tooltip = anchor.locator('.tooltip-content');
+    await anchor.locator('[role="img"]').hover();
+    await expect(tooltip).toBeVisible();
+    await page.locator('h1').hover();
+    await expect(tooltip).toBeHidden();
+  });
+
+  test('touch: no sticky hover — tooltip only shows while the badge has focus', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'mobile', 'touch only');
+    await page.goto('/');
+    const hoverRuleActive = await page.evaluate(() => matchMedia('(hover: hover)').matches);
+    expect(hoverRuleActive).toBe(false);
+  });
+
   test('badge has an accessible label with the ratio', async ({ page }) => {
     await page.goto('/');
     const badge = page.locator('main details[open] [role="img"]').first();
