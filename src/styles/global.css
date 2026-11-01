@@ -59,7 +59,26 @@ details > summary::-webkit-details-marker {
   border-left-color: #111827;
 }
 
-.tooltip-anchor:hover .tooltip-content,
+/* Shown on keyboard/tap focus everywhere, and on hover only for real pointers.
+   Touch browsers (iOS in particular) keep a "sticky" :hover after a tap, so hover
+   is limited to devices that can actually hover. */
 .tooltip-anchor:focus-within .tooltip-content {
   display: block;
+}
+
+@media (hover: hover) {
+  .tooltip-anchor:hover .tooltip-content {
+    display: block;
+  }
+}
+
+/* iOS Safari only treats a tap as a click (and moves focus away from the badge) when it
+   lands on something "clickable". Marking the page as clickable on touch devices makes a
+   tap anywhere outside the badge close the tooltip. The tap highlight is turned off so
+   the page doesn't flash grey. */
+@media (hover: none) {
+  body {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
 }
